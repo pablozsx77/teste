@@ -9,8 +9,8 @@
 
     :root {
       --bg-space: #07080d;
-      --bg-panel: rgba(14, 17, 27, 0.88);
-      --bg-card: rgba(21, 26, 40, 0.92);
+      --bg-panel: rgba(14, 17, 27, 0.90);
+      --bg-card: rgba(21, 26, 40, 0.94);
       --border-subtle: rgba(255, 255, 255, 0.08);
       --border-active: rgba(224, 49, 21, 0.5);
       
@@ -234,31 +234,76 @@
       color: #ffffff;
     }
 
-    /* Top Cluster Filter Bar */
-    .filter-bar-wrap {
+    /* Top Cluster Filter Bar Container with Left/Right Scroll Arrows */
+    .filter-bar-container {
       position: absolute;
       top: 80px;
       left: 18px;
       right: 18px;
       display: flex;
+      align-items: center;
+      gap: 6px;
+      z-index: 20;
+      pointer-events: none;
+    }
+    .filter-scroll-btn {
+      pointer-events: auto;
+      width: 32px;
+      height: 34px;
+      border-radius: 10px;
+      background: var(--bg-panel);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-white);
+      font-size: 13px;
+      font-weight: 900;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+      flex-shrink: 0;
+    }
+    .filter-scroll-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: scale(1.05);
+    }
+    .filter-bar-wrap {
+      pointer-events: auto;
+      flex: 1;
+      display: flex;
       gap: 8px;
       overflow-x: auto;
-      padding-bottom: 6px;
-      z-index: 20;
-      pointer-events: auto;
-      scrollbar-width: none;
+      padding: 2px 2px 6px 2px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(224, 49, 21, 0.4) transparent;
+      scroll-behavior: smooth;
+      cursor: grab;
+    }
+    .filter-bar-wrap:active {
+      cursor: grabbing;
     }
     .filter-bar-wrap::-webkit-scrollbar {
-      display: none;
+      height: 4px;
     }
+    .filter-bar-wrap::-webkit-scrollbar-thumb {
+      background: rgba(224, 49, 21, 0.35);
+      border-radius: 4px;
+    }
+    .filter-bar-wrap::-webkit-scrollbar-thumb:hover {
+      background: var(--dub-red);
+    }
+
     .filter-chip {
       flex-shrink: 0;
-      height: 32px;
-      padding: 0 13px;
+      height: 34px;
+      padding: 0 14px;
       background: var(--bg-panel);
       backdrop-filter: blur(12px);
       border: 1px solid var(--border-subtle);
-      border-radius: 9px;
+      border-radius: 10px;
       color: var(--text-muted);
       font-size: 11.5px;
       font-weight: 800;
@@ -267,16 +312,17 @@
       align-items: center;
       gap: 7px;
       transition: all 0.2s ease;
+      white-space: nowrap;
     }
     .filter-chip:hover {
       color: #ffffff;
       border-color: rgba(255, 255, 255, 0.25);
     }
     .filter-chip.active {
-      background: rgba(255, 255, 255, 0.12);
+      background: rgba(255, 255, 255, 0.14);
       color: #ffffff;
       border-color: var(--chip-color, var(--dub-red));
-      box-shadow: 0 0 15px rgba(224, 49, 21, 0.25);
+      box-shadow: 0 0 16px rgba(224, 49, 21, 0.3);
     }
     .chip-dot {
       width: 7px;
@@ -327,7 +373,7 @@
       background: var(--border-subtle);
     }
 
-    /* Quick Critical Business Flows (Bottom Left) */
+    /* Quick Critical Business Flows (Bottom Left) with Left/Right Scroll Controls */
     .flows-panel {
       position: absolute;
       bottom: 20px;
@@ -336,14 +382,20 @@
       backdrop-filter: blur(14px);
       border: 1px solid var(--border-subtle);
       border-radius: 14px;
-      padding: 12px 14px;
+      padding: 10px 14px;
       display: flex;
       flex-direction: column;
-      gap: 9px;
+      gap: 8px;
       z-index: 15;
       pointer-events: auto;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-      max-width: 320px;
+      max-width: 460px;
+    }
+    .flows-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
     }
     .flows-title {
       font-size: 10.5px;
@@ -352,16 +404,60 @@
       letter-spacing: 0.8px;
       color: var(--text-dim);
     }
+    .flows-nav-arrows {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .flow-nav-btn {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      font-size: 11px;
+      font-weight: 900;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+    .flow-nav-btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+    }
+
     .flows-grid {
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       gap: 6px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(224, 49, 21, 0.35) transparent;
+      scroll-behavior: smooth;
+      cursor: grab;
     }
+    .flows-grid:active {
+      cursor: grabbing;
+    }
+    .flows-grid::-webkit-scrollbar {
+      height: 3px;
+    }
+    .flows-grid::-webkit-scrollbar-thumb {
+      background: rgba(224, 49, 21, 0.35);
+      border-radius: 3px;
+    }
+
     .flow-btn {
+      flex-shrink: 0;
+      white-space: nowrap;
       background: rgba(255, 255, 255, 0.04);
       border: 1px solid var(--border-subtle);
       border-radius: 8px;
-      padding: 5px 10px;
+      padding: 6px 11px;
       font-size: 11px;
       font-weight: 800;
       color: var(--text-white);
@@ -384,7 +480,7 @@
     .viewport-controls {
       position: absolute;
       bottom: 20px;
-      right: 175px;
+      right: 195px;
       display: flex;
       gap: 6px;
       z-index: 15;
@@ -412,13 +508,13 @@
       border-color: rgba(255, 255, 255, 0.25);
     }
 
-    /* 3D Minimap Gyroscope (Bottom Right) */
+    /* 3D Minimap Gyroscope (Bottom Right) with Dynamic Image Updates */
     .minimap-container {
       position: absolute;
       bottom: 20px;
       right: 18px;
-      width: 145px;
-      height: 145px;
+      width: 165px;
+      height: 165px;
       background: var(--bg-panel);
       backdrop-filter: blur(14px);
       border: 1px solid var(--border-subtle);
@@ -427,22 +523,67 @@
       z-index: 15;
       pointer-events: auto;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      cursor: pointer;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .minimap-container:hover {
+      border-color: rgba(255, 255, 255, 0.25);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
     }
     #minimap-canvas {
       width: 100%;
       height: 100%;
       display: block;
     }
-    .minimap-label {
+    .minimap-header {
       position: absolute;
-      top: 6px;
+      top: 8px;
       left: 10px;
+      right: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      pointer-events: none;
+    }
+    .minimap-label {
       font-size: 9px;
       font-weight: 900;
       letter-spacing: 0.6px;
-      color: var(--text-dim);
+      color: var(--text-white);
       text-transform: uppercase;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100px;
+    }
+    .minimap-status-badge {
+      font-size: 8px;
+      font-weight: 900;
+      padding: 1px 5px;
+      border-radius: 4px;
+      background: rgba(224, 49, 21, 0.3);
+      color: #ff9f8e;
+      border: 1px solid rgba(224, 49, 21, 0.5);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .minimap-footer {
+      position: absolute;
+      bottom: 6px;
+      left: 10px;
+      right: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       pointer-events: none;
+      font-size: 8px;
+      font-weight: 800;
+      color: var(--text-dim);
+    }
+    .minimap-node-count {
+      color: #ffffff;
+      font-family: var(--font-mono);
     }
 
     /* Node Inspector Side Panel (Slide-in Right) */

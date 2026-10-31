@@ -29,6 +29,9 @@
       width: window.innerWidth,
       height: window.innerHeight,
 
+      // Layout Modes: 'atom' | 'orbit_focus' | 'tour_focus'
+      layoutMode: 'atom',
+
       // 3D Camera System
       camera: {
         yaw: 0.45,
@@ -66,7 +69,7 @@
       incomingMap: new Map(),
       neighborsMap: new Map(),
 
-      // Fast Lookup Maps
+      // Fast Lookup Sets for active focus
       connectedNodeIds: new Set(),
       connectedLinkIds: new Set(),
 
@@ -105,7 +108,7 @@
       });
     }
 
-    // 3D Atomic Math & Physics Engine
+    // 3D Atomic Math & Dynamic Physics Engine
     const PhysicsEngine = {
       // Rotate 3D vector by pitch (X), yaw (Y), roll (Z)
       rotateVector: function(x, y, z, pitchDeg, yawDeg, rollDeg = 0) {
@@ -134,7 +137,7 @@
       step: function() {
         if (!AppState.physicsRunning) return;
         const nodes = GRAPH_DATA.nodes;
-        const factor = 0.18; // smooth critically damped monotonic glide
+        const factor = 0.18; // smooth critically damped monotonic glide with zero wobble
 
         for (let i = 0; i < nodes.length; i++) {
           const n = nodes[i];
@@ -154,8 +157,9 @@
         }
       },
 
-      // Global 3D Atomic Structure Layout
+      // Global 3D Atomic Structure Layout (Modelo Rutherford-Bohr Completo)
       setGlobalLayout: function() {
+        AppState.layoutMode = 'atom';
         AppState.activeCluster = "all";
         AppState.selectedNode = null;
         AppState.activeTour = null;
@@ -264,7 +268,130 @@
         AppState.camera.targetFocalX = 0;
         AppState.camera.targetFocalY = 0;
         AppState.camera.targetFocalZ = 0;
+        AppState.camera.targetPitch = 0.35;
+        AppState.camera.targetYaw = 0.45;
         AppState.camera.targetDist = 2600;
+
+        // Update Minimap UI Header
+        GraphRenderer.updateMinimapHeader("ORIENTAÇÃO 3D", "GLOBAL", "218 NÓS", null);
+      },
+
+      // Dynamic Orbital Focus Organization (As bolinhas se organizam)
+      setOrbitalFocusLayout: function(clusterKey) {
+        AppState.layoutMode = 'orbit_focus';
+        AppState.activeCluster = clusterKey;
+        AppState.selectedNode = null;
+        AppState.activeTour = null;
+        AppState.connectedNodeIds.clear();
+        AppState.connectedLinkIds.clear();
+
+        if (clusterKey === "all") {
+          this.setGlobalLayout();
+          return;
+        }
+
+        const nodes = GRAPH_DATA.nodes;
+        const clusterNodes = nodes.filter(n => n.cluster === clusterKey);
+        if (clusterNodes.length === 0) return;
+
+        const clusterNodeIds = new Set(clusterNodes.map(n => n.id));
+        const connectedExtIds = new Set();
+
+        clusterNodes.forEach(cn => {
+          AppState.connectedNodeIds.add(cn.id);
+          const nbrs = AppState.neighborsMap.get(cn.id);
+          if (nbrs) {
+            nbrs.forEach(nid => {
+              if (!clusterNodeIds.has(nid)) {
+                connectedExtIds.add(nid);
+                AppState.connectedNodeIds.add(nid);
+              }
+            });
+          }
+        });
+
+        // Collect connecting links
+        GRAPH_DATA.links.forEach(l => {
+          if (AppState.connectedNodeIds.has(l.sId) && AppState.connectedNodeIds.has(l.tId)) {
+            AppState.connectedLinkIds.add(l.id || (l.sId + "_" + l.tId));
+          }
+        });
+
+        // 1. Arrange Cluster Nodes in organized front-facing orbital formation
+        const N = clusterNodes.length;
+        let rInner = 450;
+        if (N <= 8) rInner = 380;
+        else if (N <= 16) rInner = 480;
+        else if (N <= 30) rInner = 640;
+        else rInner = 750;
+
+        if (N <= 36) {
+          clusterNodes.forEach((n, i) => {
+            const theta = (2 * Math.PI * i) / N - Math.PI / 2;
+            n.targetX = rInner * Math.cos(theta);
+            n.targetY = rInner * Math.sin(theta);
+            n.targetZ = 0; // Front viewing plane
+          });
+        } else {
+          // Double concentric ring for larger clusters (Edge Functions / Database)
+          const half = Math.ceil(N / 2);
+          const r1 = 540;
+          const r2 = 780;
+          clusterNodes.forEach((n, i) => {
+            if (i < half) {
+              const theta = (2 * Math.PI * i) / half - Math.PI / 2;
+              n.targetX = r1 * Math.cos(theta);
+              n.targetY = r1 * Math.sin(theta);
+              n.targetZ = -30;
+            } else {
+              const theta = (2 * Math.PI * (i - half)) / (N - half) - Math.PI / 2;
+              n.targetX = r2 * Math.cos(theta);
+              n.targetY = r2 * Math.sin(theta);
+              n.targetZ = 30;
+            }
+          });
+        }
+
+        // 2. Arrange Direct External Connected Neighbors in outer concentric ring
+        const extArr = Array.from(connectedExtIds).map(id => AppState.nodeMap.get(id)).filter(Boolean);
+        const extCount = extArr.length;
+        const rOuter = (N > 36 ? 1050 : rInner + 360);
+
+        extArr.forEach((n, i) => {
+          const theta = (2 * Math.PI * i) / Math.max(1, extCount) - Math.PI / 2;
+          n.targetX = rOuter * Math.cos(theta);
+          n.targetY = rOuter * Math.sin(theta);
+          n.targetZ = 60 * Math.sin(theta * 3);
+        });
+
+        // 3. Unrelated Background Nodes smoothly retreat to outer sphere
+        const activeSet = AppState.connectedNodeIds;
+        let bgIdx = 0;
+        const totalBg = Math.max(1, nodes.length - activeSet.size);
+        nodes.forEach(n => {
+          if (!activeSet.has(n.id)) {
+            const ratio = Math.max(-1.0, Math.min(1.0, 1 - (2 * (bgIdx + 0.5)) / totalBg));
+            const phi = Math.acos(ratio);
+            const theta = Math.PI * (1 + Math.sqrt(5)) * bgIdx;
+            const rBg = 2400;
+            n.targetX = rBg * Math.sin(phi) * Math.cos(theta);
+            n.targetY = rBg * Math.cos(phi);
+            n.targetZ = -400 + rBg * Math.sin(phi) * Math.sin(theta) * 0.5;
+            bgIdx++;
+          }
+        });
+
+        // 4. Smoothly Frame Camera directly facing the organized ring
+        AppState.camera.targetFocalX = 0;
+        AppState.camera.targetFocalY = 0;
+        AppState.camera.targetFocalZ = 0;
+        AppState.camera.targetPitch = 0.12;
+        AppState.camera.targetYaw = 0.04;
+        AppState.camera.targetDist = Math.max(1300, (extCount > 0 ? rOuter * 2.3 : rInner * 2.5));
+
+        // Update Minimap UI Header to reflect the active orbit
+        const clusterDef = GRAPH_DATA.clusters[clusterKey] || { name: clusterKey.toUpperCase(), color: '#ffffff' };
+        GraphRenderer.updateMinimapHeader(clusterDef.name, "ORGANIZADA", `${N} NÓS`, clusterDef.color);
       },
 
       // Focus camera on single node in 3D
@@ -292,39 +419,75 @@
         AppState.camera.targetFocalY = node.y;
         AppState.camera.targetFocalZ = node.z;
         AppState.camera.targetDist = 880;
+
+        // Update Minimap UI Header
+        GraphRenderer.updateMinimapHeader(node.name, "INSPEÇÃO", "1 NÓ", node.color);
       },
 
-      // Focus camera on cluster centroid
-      focusOnCluster: function(clusterKey) {
-        AppState.activeCluster = clusterKey;
+      // Dynamic Pipeline Organization for Business Critical Tours
+      setTourFocusLayout: function(tourKey) {
+        AppState.layoutMode = 'tour_focus';
+        AppState.activeTour = tourKey;
         AppState.selectedNode = null;
+
+        const tourPaths = {
+          booking_pix: ["page_cliente_agendar", "ef_efi_create_pix_charge", "tbl_efi_pix_charges", "tbl_agendamentos", "ef_whatsapp_proxy"],
+          barber_payout: ["page_barbeiro_main", "barb_carteira_pix", "ef_woovi_withdraw", "tbl_saques", "tbl_transacoes_financeiras"],
+          ai_support: ["hub_ai", "ef_ai_support_chat", "api_openai", "tbl_ai_actions_log", "hub_core"],
+          whatsapp_dispatch: ["hub_whatsapp", "adm_disparos_painel", "ef_whatsapp_proxy", "tbl_whatsapp_instances", "tbl_whatsapp_verification_codes"],
+          backend_infra: ["hub_core", "hub_database", "hub_edge_functions", "hub_external", "page_auth"]
+        };
+
+        const path = tourPaths[tourKey] || [];
         AppState.connectedNodeIds.clear();
         AppState.connectedLinkIds.clear();
 
-        if (clusterKey === "all") {
-          this.setGlobalLayout();
-          return;
-        }
+        path.forEach(id => AppState.connectedNodeIds.add(id));
 
-        const nodes = GRAPH_DATA.nodes.filter(n => n.cluster === clusterKey);
-        if (nodes.length === 0) return;
-
-        let sumX = 0, sumY = 0, sumZ = 0;
-        nodes.forEach(n => {
-          sumX += n.targetX;
-          sumY += n.targetY;
-          sumZ += n.targetZ;
-          AppState.connectedNodeIds.add(n.id);
+        GRAPH_DATA.links.forEach(l => {
+          if (AppState.connectedNodeIds.has(l.sId) && AppState.connectedNodeIds.has(l.tId)) {
+            AppState.connectedLinkIds.add(l.id || (l.sId + "_" + l.tId));
+          }
         });
 
-        const cx = sumX / nodes.length;
-        const cy = sumY / nodes.length;
-        const cz = sumZ / nodes.length;
+        // Arrange tour pipeline linearly from left to right facing viewer
+        const count = path.length;
+        const spacing = 320;
+        const startX = -((count - 1) * spacing) / 2;
 
-        AppState.camera.targetFocalX = cx;
-        AppState.camera.targetFocalY = cy;
-        AppState.camera.targetFocalZ = cz;
-        AppState.camera.targetDist = clusterKey === "database" || clusterKey === "edge_fn" ? 1800 : 1250;
+        path.forEach((id, i) => {
+          const n = AppState.nodeMap.get(id);
+          if (n) {
+            n.targetX = startX + i * spacing;
+            n.targetY = 0;
+            n.targetZ = 0;
+          }
+        });
+
+        // Unrelated nodes retreat to background with safe Math.acos clamp
+        const nodes = GRAPH_DATA.nodes;
+        let bgIdx = 0;
+        const totalBg = Math.max(1, nodes.length - AppState.connectedNodeIds.size);
+        nodes.forEach(n => {
+          if (!AppState.connectedNodeIds.has(n.id)) {
+            const ratio = Math.max(-1.0, Math.min(1.0, 1 - (2 * (bgIdx + 0.5)) / totalBg));
+            const phi = Math.acos(ratio);
+            const theta = Math.PI * (1 + Math.sqrt(5)) * bgIdx;
+            n.targetX = 2200 * Math.sin(phi) * Math.cos(theta);
+            n.targetY = 2200 * Math.cos(phi);
+            n.targetZ = -500 + 1000 * Math.sin(phi);
+            bgIdx++;
+          }
+        });
+
+        AppState.camera.targetFocalX = 0;
+        AppState.camera.targetFocalY = 0;
+        AppState.camera.targetFocalZ = 0;
+        AppState.camera.targetPitch = 0.08;
+        AppState.camera.targetYaw = 0;
+        AppState.camera.targetDist = Math.max(1400, count * 360);
+
+        GraphRenderer.updateMinimapHeader("FLUXO CRÍTICO", "PIPELINE", `${count} ETAPAS`, "#e03115");
       }
     };
 
@@ -345,7 +508,7 @@
         this.resize();
         window.addEventListener("resize", () => this.resize());
 
-        // Initialize 3D Layout
+        // Initialize Global 3D Atomic Layout
         PhysicsEngine.setGlobalLayout();
 
         // Start 60 FPS Render Loop
@@ -358,8 +521,32 @@
         this.canvas.width = window.innerWidth;
         this.canvas.height = window.innerHeight;
 
-        this.mmCanvas.width = 145;
-        this.mmCanvas.height = 145;
+        this.mmCanvas.width = 165;
+        this.mmCanvas.height = 165;
+      },
+
+      updateMinimapHeader: function(label, status, count, color) {
+        const lblEl = document.getElementById("minimap-label");
+        const statusEl = document.getElementById("minimap-status-badge");
+        const countEl = document.getElementById("minimap-node-count");
+        if (lblEl) {
+          lblEl.textContent = label;
+          if (color) lblEl.style.color = color;
+          else lblEl.style.color = "#ffffff";
+        }
+        if (statusEl) {
+          statusEl.textContent = status;
+          if (color) {
+            statusEl.style.background = `${color}33`;
+            statusEl.style.borderColor = color;
+            statusEl.style.color = color;
+          } else {
+            statusEl.style.background = "rgba(224, 49, 21, 0.3)";
+            statusEl.style.borderColor = "rgba(224, 49, 21, 0.5)";
+            statusEl.style.color = "#ff9f8e";
+          }
+        }
+        if (countEl) countEl.textContent = count;
       },
 
       // Perspective 3D Projection Formula
@@ -399,12 +586,12 @@
       render: function() {
         this.quantumPulseTime += 0.025;
 
-        // Continuous subtle atomic ambient drift
-        if (AppState.idleRotation && !AppState.isDragging && !AppState.selectedNode) {
+        // Continuous subtle atomic ambient drift when in global atom mode
+        if (AppState.idleRotation && !AppState.isDragging && !AppState.selectedNode && AppState.layoutMode === 'atom') {
           AppState.camera.targetYaw += 0.0006;
         }
 
-        // Camera Smooth Direct Interpolation
+        // Camera Smooth Direct Interpolation (Monotonic Asymptotic)
         const cam = AppState.camera;
         const cFactor = 0.16;
         cam.yaw += (cam.targetYaw - cam.yaw) * cFactor;
@@ -414,7 +601,7 @@
         cam.focalY += (cam.targetFocalY - cam.focalY) * cFactor;
         cam.focalZ += (cam.targetFocalZ - cam.focalZ) * cFactor;
 
-        // Physics step
+        // Physics step (zero wobble)
         PhysicsEngine.step();
 
         const ctx = this.ctx;
@@ -440,8 +627,12 @@
           n.proj = this.project3D(n.x, n.y, n.z, w, h, cam);
         }
 
-        // 3. Draw 3D Atomic Orbital Tracks (Alpha, Beta, Gamma)
-        this.draw3DAtomicOrbits(ctx, w, h, cam);
+        // 3. Draw 3D Atomic Orbital Tracks (Ellipses in 3D Space)
+        if (AppState.layoutMode === 'atom') {
+          this.draw3DAtomicOrbits(ctx, w, h, cam);
+        } else if (AppState.layoutMode === 'orbit_focus') {
+          this.drawFocusedOrbitRing(ctx, w, h, cam);
+        }
 
         // 4. Draw 3D Links & Quantum Filaments
         this.draw3DLinks(ctx);
@@ -449,19 +640,19 @@
         // 5. Draw 3D Depth-Sorted Nodes & Bold Labels
         this.draw3DNodes(ctx);
 
-        // 6. Draw 3D Orientation Minimap Gyroscope
+        // 6. Draw Dynamic 3D Minimap Gyroscope (A imagem muda com a órbita!)
         this.render3DMinimap();
 
         requestAnimationFrame(() => this.render());
       },
 
-      // Draw the iconic 3D Atomic Orbitals (Ellipses in 3D Space)
+      // Draw the iconic 3D Atomic Orbitals (Global Mode)
       draw3DAtomicOrbits: function(ctx, w, h, cam) {
         ctx.save();
         const rings = [
-          { a: 780, b: 520, p: 35, y: 45, r: 0, color: "rgba(212, 175, 55, 0.18)", label: "ÓRBITA ALPHA: GESTÃO" },
-          { a: 1020, b: 680, p: -35, y: -45, r: 0, color: "rgba(0, 210, 255, 0.18)", label: "ÓRBITA BETA: OPERAÇÃO" },
-          { a: 1260, b: 840, p: 0, y: 90, r: 55, color: "rgba(224, 49, 21, 0.18)", label: "ÓRBITA GAMMA: IA & FINANCEIRO" }
+          { a: 780, b: 520, p: 35, y: 45, r: 0, color: "rgba(212, 175, 55, 0.18)" },
+          { a: 1020, b: 680, p: -35, y: -45, r: 0, color: "rgba(0, 210, 255, 0.18)" },
+          { a: 1260, b: 840, p: 0, y: 90, r: 55, color: "rgba(224, 49, 21, 0.18)" }
         ];
 
         rings.forEach(ring => {
@@ -513,14 +704,41 @@
         ctx.restore();
       },
 
+      // Draw Organized Formation Guide Ring (Focused Mode)
+      drawFocusedOrbitRing: function(ctx, w, h, cam) {
+        ctx.save();
+        const clusterDef = GRAPH_DATA.clusters[AppState.activeCluster] || { color: '#ffffff' };
+        
+        // Draw primary focused ring
+        ctx.beginPath();
+        let started = false;
+        const segments = 72;
+        const r1 = 640;
+
+        for (let i = 0; i <= segments; i++) {
+          const theta = (2 * Math.PI * i) / segments;
+          const p = this.project3D(r1 * Math.cos(theta), r1 * Math.sin(theta), 0, w, h, cam);
+          if (p) {
+            if (!started) { ctx.moveTo(p.x, p.y); started = true; }
+            else { ctx.lineTo(p.x, p.y); }
+          }
+        }
+        ctx.strokeStyle = `${clusterDef.color}33`;
+        ctx.lineWidth = 1.8;
+        ctx.setLineDash([4, 6]);
+        ctx.stroke();
+
+        ctx.restore();
+      },
+
       // Draw 3D Connecting Filaments
       draw3DLinks: function(ctx) {
         ctx.save();
         const links = GRAPH_DATA.links;
         const hasSelection = AppState.selectedNode !== null;
-        const hasCluster = AppState.activeCluster !== "all";
+        const isOrbitFocus = AppState.layoutMode === 'orbit_focus';
+        const isTourFocus = AppState.layoutMode === 'tour_focus';
 
-        // Separate active vs background links for depth performance
         for (let i = 0; i < links.length; i++) {
           const l = links[i];
           const a = AppState.nodeMap.get(l.sId);
@@ -528,30 +746,30 @@
           if (!a || !b || !a.proj || !b.proj) continue;
 
           const isConnected = hasSelection && (AppState.connectedLinkIds.has(l.id) || (a === AppState.selectedNode || b === AppState.selectedNode));
-          const inActiveCluster = hasCluster && (a.cluster === AppState.activeCluster || b.cluster === AppState.activeCluster);
+          const isOrbitLink = isOrbitFocus && (AppState.connectedLinkIds.has(l.id) || (a.cluster === AppState.activeCluster && b.cluster === AppState.activeCluster));
+          const isTourLink = isTourFocus && AppState.connectedLinkIds.has(l.id);
 
-          if (hasSelection && !isConnected) {
-            continue; // Skip dim non-connected links when a node is highlighted
+          if ((hasSelection || isOrbitFocus || isTourFocus) && !isConnected && !isOrbitLink && !isTourLink) {
+            continue; // Clean visual: hide non-related links
           }
 
           ctx.beginPath();
           ctx.moveTo(a.proj.x, a.proj.y);
           ctx.lineTo(b.proj.x, b.proj.y);
 
-          if (isConnected) {
-            // Neon glowing energetic laser
+          if (isConnected || isTourLink) {
             ctx.strokeStyle = "rgba(224, 49, 21, 0.85)";
             ctx.lineWidth = Math.max(1.8, 3.2 * Math.min(a.proj.scale, b.proj.scale));
             ctx.shadowColor = "#e03115";
             ctx.shadowBlur = 8;
             ctx.stroke();
             ctx.shadowBlur = 0;
-          } else if (inActiveCluster) {
-            ctx.strokeStyle = "rgba(0, 210, 255, 0.4)";
-            ctx.lineWidth = 1.2;
+          } else if (isOrbitLink) {
+            const cDef = GRAPH_DATA.clusters[AppState.activeCluster] || { color: '#00d2ff' };
+            ctx.strokeStyle = `${cDef.color}99`;
+            ctx.lineWidth = Math.max(1.2, 2.0 * Math.min(a.proj.scale, b.proj.scale));
             ctx.stroke();
-          } else if (!hasSelection && !hasCluster) {
-            // Subtle 3D filament with depth-based opacity
+          } else {
             const avgScale = (a.proj.scale + b.proj.scale) * 0.5;
             const alpha = Math.min(0.22, Math.max(0.04, 0.15 * avgScale * 1.5));
             ctx.strokeStyle = `rgba(255, 255, 255, ${alpha.toFixed(3)})`;
@@ -561,7 +779,7 @@
         }
 
         // Animated Quantum Photons along highlighted links
-        if (hasSelection) {
+        if (hasSelection || isTourFocus || isOrbitFocus) {
           AppState.quantumPhotons.forEach(pt => {
             const a = AppState.nodeMap.get(pt.link.sId);
             const b = AppState.nodeMap.get(pt.link.tId);
@@ -599,7 +817,8 @@
         visibleNodes.sort((a, b) => b.proj.zCam - a.proj.zCam);
 
         const hasSelection = AppState.selectedNode !== null;
-        const hasCluster = AppState.activeCluster !== "all";
+        const isOrbitFocus = AppState.layoutMode === 'orbit_focus';
+        const isTourFocus = AppState.layoutMode === 'tour_focus';
 
         for (let i = 0; i < visibleNodes.length; i++) {
           const n = visibleNodes[i];
@@ -607,13 +826,16 @@
           const isSelected = n === AppState.selectedNode;
           const isConnected = hasSelection && AppState.connectedNodeIds.has(n.id);
           const isHovered = n === AppState.hoveredNode;
-          const inCluster = hasCluster && n.cluster === AppState.activeCluster;
+          const inCluster = isOrbitFocus && (n.cluster === AppState.activeCluster);
+          const inActiveSet = isTourFocus && AppState.connectedNodeIds.has(n.id);
 
           let alpha = 1.0;
           if (hasSelection) {
             alpha = isConnected ? 1.0 : 0.15;
-          } else if (hasCluster) {
-            alpha = inCluster ? 1.0 : 0.18;
+          } else if (isOrbitFocus) {
+            alpha = inCluster ? 1.0 : (AppState.connectedNodeIds.has(n.id) ? 0.85 : 0.08);
+          } else if (isTourFocus) {
+            alpha = inActiveSet ? 1.0 : 0.08;
           }
 
           const baseR = n.radius || 10;
@@ -623,7 +845,7 @@
           ctx.globalAlpha = alpha;
 
           // 1. Quantum Glow Halo for major nodes or highlighted
-          if (n.id === "hub_core" || isSelected || isConnected || isHovered) {
+          if (n.id === "hub_core" || isSelected || isConnected || isHovered || (inCluster && p.scale > 0.4)) {
             const glowR = r * (isSelected ? 2.8 : 2.2);
             const glowGrad = ctx.createRadialGradient(p.x, p.y, r * 0.5, p.x, p.y, glowR);
             glowGrad.addColorStop(0, n.glow || "rgba(224, 49, 21, 0.6)");
@@ -663,7 +885,6 @@
 
           // Central Nucleus: Logo & Corona Waves
           if (n.id === "hub_core") {
-            // Animated Pulse Rings
             const pulseR = r + (Math.sin(this.quantumPulseTime * 2) * 0.5 + 0.5) * 16 * p.scale;
             ctx.strokeStyle = "rgba(224, 49, 21, 0.55)";
             ctx.lineWidth = 1.8;
@@ -671,7 +892,6 @@
             ctx.arc(p.x, p.y, pulseR, 0, Math.PI * 2);
             ctx.stroke();
 
-            // Brand Logo in Nucleus Center
             if (BrandImage.complete && BrandImage.naturalWidth > 0 && r > 14) {
               const iconSize = r * 1.35;
               ctx.drawImage(BrandImage, p.x - iconSize / 2, p.y - iconSize / 2, iconSize, iconSize);
@@ -691,9 +911,9 @@
 
           // 3. Bold High-Contrast Typography Labels
           const isMajor = n.id === "hub_core" || n.type === "hub" || isSelected || isHovered;
-          const shouldShowLabel = isSelected || isHovered || isConnected || (isMajor && p.scale > 0.32) || (p.scale > 0.65 && n.cluster !== "database");
+          const shouldShowLabel = isSelected || isHovered || isConnected || (inCluster && p.scale > 0.35) || (inActiveSet && p.scale > 0.35) || (isMajor && p.scale > 0.32) || (p.scale > 0.65 && n.cluster !== "database");
 
-          if (shouldShowLabel && alpha > 0.3) {
+          if (shouldShowLabel && alpha > 0.25) {
             const fontSize = Math.max(10, Math.min(18, Math.round((isMajor ? 13 : 11) * Math.min(1.4, Math.max(0.7, p.scale)))));
             ctx.font = `${isMajor ? '800' : '700'} ${fontSize}px "Plus Jakarta Sans", sans-serif`;
             ctx.textAlign = "center";
@@ -707,7 +927,6 @@
             const pillX = p.x - pillW / 2;
             const pillY = textY - 3;
 
-            // Semi-transparent dark pill background for crisp readability
             ctx.fillStyle = isSelected ? "rgba(224, 49, 21, 0.85)" : "rgba(11, 14, 25, 0.88)";
             ctx.beginPath();
             ctx.roundRect(pillX, pillY, pillW, pillH, 5);
@@ -719,7 +938,6 @@
               ctx.stroke();
             }
 
-            // Bold white text with subtle shadow
             ctx.fillStyle = "#ffffff";
             ctx.fillText(text, p.x, textY);
           }
@@ -728,10 +946,10 @@
         }
       },
 
-      // Render Live 3D Miniature Minimap Gyroscope (Bottom Right)
+      // Render Dynamic 3D Minimap Gyroscope (A imagem no canto inferior direito muda com a órbita!)
       render3DMinimap: function() {
         const ctx = this.mmCtx;
-        const w = 145, h = 145;
+        const w = 165, h = 165;
         const cam = AppState.camera;
 
         ctx.clearRect(0, 0, w, h);
@@ -739,6 +957,10 @@
         // Dark Cosmic Background
         ctx.fillStyle = "#0c0f1a";
         ctx.fillRect(0, 0, w, h);
+
+        const isOrbitFocus = AppState.layoutMode === 'orbit_focus';
+        const activeClusterKey = AppState.activeCluster;
+        const activeClusterDef = GRAPH_DATA.clusters[activeClusterKey] || null;
 
         // Miniature camera mirroring main view
         const mmCam = {
@@ -751,63 +973,152 @@
           focalZ: 0
         };
 
-        // Draw 3 Miniature 3D Wireframe Rings
-        const rings = [
-          { a: 180, b: 120, p: 35, y: 45, r: 0, color: "rgba(212, 175, 55, 0.5)" },
-          { a: 220, b: 150, p: -35, y: -45, r: 0, color: "rgba(0, 210, 255, 0.5)" },
-          { a: 260, b: 180, p: 0, y: 90, r: 55, color: "rgba(224, 49, 21, 0.5)" }
-        ];
+        if (!isOrbitFocus || activeClusterKey === 'all') {
+          // ================= GLOBAL 3D ATOM GYROSCOPE =================
+          const rings = [
+            { a: 180, b: 120, p: 35, y: 45, r: 0, color: "rgba(212, 175, 55, 0.5)" },
+            { a: 220, b: 150, p: -35, y: -45, r: 0, color: "rgba(0, 210, 255, 0.5)" },
+            { a: 260, b: 180, p: 0, y: 90, r: 55, color: "rgba(224, 49, 21, 0.5)" }
+          ];
 
-        rings.forEach(ring => {
-          ctx.beginPath();
-          let started = false;
-          for (let i = 0; i <= 36; i++) {
-            const theta = (2 * Math.PI * i) / 36;
-            const lx = ring.a * Math.cos(theta);
-            const ly = ring.b * Math.sin(theta);
-            const pos = PhysicsEngine.rotateVector(lx, ly, 0, ring.p, ring.y, ring.r);
-            const p = this.project3D(pos.x, pos.y, pos.z, w, h, mmCam);
-            if (p) {
-              if (!started) { ctx.moveTo(p.x, p.y); started = true; }
-              else { ctx.lineTo(p.x, p.y); }
-            }
-          }
-          ctx.strokeStyle = ring.color;
-          ctx.lineWidth = 1;
-          ctx.stroke();
-        });
-
-        // Draw Miniature Nucleus
-        const nucP = this.project3D(0, 0, 0, w, h, mmCam);
-        if (nucP) {
-          ctx.fillStyle = "#e03115";
-          ctx.beginPath();
-          ctx.arc(nucP.x, nucP.y, 4, 0, Math.PI * 2);
-          ctx.fill();
-        }
-
-        // Draw Orientation Vector Axes (X: Red, Y: Green, Z: Blue)
-        const axes = [
-          { x: 120, y: 0, z: 0, color: "#e03115", label: "X" },
-          { x: 0, y: -120, z: 0, color: "#10b981", label: "Y" },
-          { x: 0, y: 0, z: 120, color: "#00d2ff", label: "Z" }
-        ];
-
-        axes.forEach(ax => {
-          const p = this.project3D(ax.x, ax.y, ax.z, w, h, mmCam);
-          if (nucP && p) {
-            ctx.strokeStyle = ax.color;
-            ctx.lineWidth = 1.5;
+          rings.forEach(ring => {
             ctx.beginPath();
-            ctx.moveTo(nucP.x, nucP.y);
-            ctx.lineTo(p.x, p.y);
+            let started = false;
+            for (let i = 0; i <= 36; i++) {
+              const theta = (2 * Math.PI * i) / 36;
+              const lx = ring.a * Math.cos(theta);
+              const ly = ring.b * Math.sin(theta);
+              const pos = PhysicsEngine.rotateVector(lx, ly, 0, ring.p, ring.y, ring.r);
+              const p = this.project3D(pos.x, pos.y, pos.z, w, h, mmCam);
+              if (p) {
+                if (!started) { ctx.moveTo(p.x, p.y); started = true; }
+                else { ctx.lineTo(p.x, p.y); }
+              }
+            }
+            ctx.strokeStyle = ring.color;
+            ctx.lineWidth = 1.2;
             ctx.stroke();
+          });
 
-            ctx.fillStyle = ax.color;
-            ctx.font = '800 8.5px "Plus Jakarta Sans", sans-serif';
-            ctx.fillText(ax.label, p.x + 3, p.y - 3);
+          // Miniature Nucleus
+          const nucP = this.project3D(0, 0, 0, w, h, mmCam);
+          if (nucP) {
+            ctx.fillStyle = "#e03115";
+            ctx.beginPath();
+            ctx.arc(nucP.x, nucP.y, 4, 0, Math.PI * 2);
+            ctx.fill();
           }
-        });
+
+          // XYZ Axes
+          const axes = [
+            { x: 120, y: 0, z: 0, color: "#e03115", label: "X" },
+            { x: 0, y: -120, z: 0, color: "#10b981", label: "Y" },
+            { x: 0, y: 0, z: 120, color: "#00d2ff", label: "Z" }
+          ];
+
+          axes.forEach(ax => {
+            const p = this.project3D(ax.x, ax.y, ax.z, w, h, mmCam);
+            if (nucP && p) {
+              ctx.strokeStyle = ax.color;
+              ctx.lineWidth = 1.5;
+              ctx.beginPath();
+              ctx.moveTo(nucP.x, nucP.y);
+              ctx.lineTo(p.x, p.y);
+              ctx.stroke();
+
+              ctx.fillStyle = ax.color;
+              ctx.font = '800 8.5px "Plus Jakarta Sans", sans-serif';
+              ctx.fillText(ax.label, p.x + 3, p.y - 3);
+            }
+          });
+        } else {
+          // ================= FOCUSED ORBITAL MODE (A IMAGEM MUDA!) =================
+          // Draw faint background atomic guide rings
+          const faintRings = [
+            { a: 180, b: 120, p: 35, y: 45, r: 0 },
+            { a: 220, b: 150, p: -35, y: -45, r: 0 },
+            { a: 260, b: 180, p: 0, y: 90, r: 55 }
+          ];
+          faintRings.forEach(ring => {
+            ctx.beginPath();
+            let started = false;
+            for (let i = 0; i <= 24; i++) {
+              const theta = (2 * Math.PI * i) / 24;
+              const lx = ring.a * Math.cos(theta);
+              const ly = ring.b * Math.sin(theta);
+              const pos = PhysicsEngine.rotateVector(lx, ly, 0, ring.p, ring.y, ring.r);
+              const p = this.project3D(pos.x, pos.y, pos.z, w, h, mmCam);
+              if (p) {
+                if (!started) { ctx.moveTo(p.x, p.y); started = true; }
+                else { ctx.lineTo(p.x, p.y); }
+              }
+            }
+            ctx.strokeStyle = "rgba(255, 255, 255, 0.08)";
+            ctx.lineWidth = 0.8;
+            ctx.setLineDash([3, 4]);
+            ctx.stroke();
+            ctx.setLineDash([]);
+          });
+
+          // Draw the Highlighted Active Orbit Ring in brilliant glowing neon!
+          const activeColor = activeClusterDef?.color || "#e03115";
+          const cx = w / 2, cy = h / 2 + 5;
+          const focusR = 48;
+
+          // Radial energy halo behind active orbit
+          const orbGrad = ctx.createRadialGradient(cx, cy, 10, cx, cy, focusR * 1.5);
+          orbGrad.addColorStop(0, `${activeColor}22`);
+          orbGrad.addColorStop(1, "transparent");
+          ctx.fillStyle = orbGrad;
+          ctx.beginPath();
+          ctx.arc(cx, cy, focusR * 1.5, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Outer Concentric Dependency Ring
+          ctx.strokeStyle = "rgba(255, 255, 255, 0.18)";
+          ctx.lineWidth = 1;
+          ctx.setLineDash([2, 4]);
+          ctx.beginPath();
+          ctx.arc(cx, cy, focusR + 22, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.setLineDash([]);
+
+          // Active Orbit Track
+          ctx.strokeStyle = activeColor;
+          ctx.lineWidth = 2.4;
+          ctx.shadowColor = activeColor;
+          ctx.shadowBlur = 10;
+          ctx.beginPath();
+          ctx.arc(cx, cy, focusR, 0, Math.PI * 2);
+          ctx.stroke();
+          ctx.shadowBlur = 0;
+
+          // Plot glowing particle beads for the cluster's nodes
+          const cNodes = GRAPH_DATA.nodes.filter(n => n.cluster === activeClusterKey);
+          const beadCount = Math.min(16, cNodes.length);
+          for (let b = 0; b < beadCount; b++) {
+            const beadAngle = (2 * Math.PI * b) / beadCount + this.quantumPulseTime * 0.2;
+            const bx = cx + focusR * Math.cos(beadAngle);
+            const by = cy + focusR * Math.sin(beadAngle);
+
+            ctx.fillStyle = "#ffffff";
+            ctx.shadowColor = activeColor;
+            ctx.shadowBlur = 6;
+            ctx.beginPath();
+            ctx.arc(bx, by, 2.2, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.shadowBlur = 0;
+          }
+
+          // Central Nucleus Dot
+          ctx.fillStyle = activeColor;
+          ctx.beginPath();
+          ctx.arc(cx, cy, 5, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.strokeStyle = "#ffffff";
+          ctx.lineWidth = 1.2;
+          ctx.stroke();
+        }
       }
     };
 
@@ -828,6 +1139,7 @@
         this.bindQuickControls();
         this.bindSearchModal();
         this.bindInspector();
+        this.bindMinimapClick();
       },
 
       bindMouseDrag: function() {
@@ -868,13 +1180,13 @@
               const cam = AppState.camera;
               const panScale = (cam.dist / cam.fov) * 1.25;
 
-              const cy = Math.cos(cam.yaw), sy = Math.sin(cam.yaw);
-              const cp = Math.cos(cam.pitch), sp = Math.sin(cam.pitch);
+              const cosYaw = Math.cos(cam.yaw), sinYaw = Math.sin(cam.yaw);
+              const cosPitch = Math.cos(cam.pitch), sinPitch = Math.sin(cam.pitch);
 
               // Camera Right Vector
-              const rx = cy, ry = 0, rz = -sy;
+              const rx = cosYaw, ry = 0, rz = -sinYaw;
               // Camera Up Vector
-              const ux = -sy * sp, uy = cp, uz = -cy * sp;
+              const ux = -sinYaw * sinPitch, uy = cosPitch, uz = -cosYaw * sinPitch;
 
               cam.targetFocalX -= (moveX * rx - moveY * ux) * panScale;
               cam.targetFocalY -= (moveX * ry - moveY * uy) * panScale;
@@ -1060,14 +1372,12 @@
       closeInspector: function() {
         this.panel.classList.remove("open");
         AppState.selectedNode = null;
-        AppState.connectedNodeIds.clear();
-        AppState.connectedLinkIds.clear();
 
-        // Return camera to origin
-        AppState.camera.targetFocalX = 0;
-        AppState.camera.targetFocalY = 0;
-        AppState.camera.targetFocalZ = 0;
-        AppState.camera.targetDist = 2600;
+        if (AppState.activeCluster !== "all") {
+          PhysicsEngine.setOrbitalFocusLayout(AppState.activeCluster);
+        } else {
+          PhysicsEngine.setGlobalLayout();
+        }
       },
 
       bindInspector: function() {
@@ -1080,12 +1390,51 @@
         });
       },
 
-      // Top Filter Bar Chips with Toggle Behavior
+      // Top Filter Bar Chips with Horizontal Navigation & Drag/Wheel Movement
       bindFilterBar: function() {
         const bar = document.getElementById("filter-bar");
+        const btnLeft = document.getElementById("filter-scroll-left");
+        const btnRight = document.getElementById("filter-scroll-right");
+
         bar.innerHTML = "";
 
-        // "Todos" Chip
+        // 1. Horizontal Scroll Buttons
+        if (btnLeft) {
+          btnLeft.onclick = () => bar.scrollBy({ left: -260, behavior: "smooth" });
+        }
+        if (btnRight) {
+          btnRight.onclick = () => bar.scrollBy({ left: 260, behavior: "smooth" });
+        }
+
+        // 2. Mouse Wheel Horizontal Scroll
+        bar.addEventListener("wheel", (e) => {
+          e.preventDefault();
+          bar.scrollLeft += (e.deltaY || e.deltaX) * 1.4;
+        }, { passive: false });
+
+        // 3. Mouse Drag-to-Scroll
+        let isFilterDragging = false;
+        let filterStartX = 0;
+        let filterScrollStart = 0;
+
+        bar.addEventListener("mousedown", (e) => {
+          if (e.target.closest(".filter-chip")) return; // let chips handle clicks
+          isFilterDragging = true;
+          filterStartX = e.clientX;
+          filterScrollStart = bar.scrollLeft;
+        });
+
+        window.addEventListener("mousemove", (e) => {
+          if (!isFilterDragging) return;
+          const dx = e.clientX - filterStartX;
+          bar.scrollLeft = filterScrollStart - dx;
+        });
+
+        window.addEventListener("mouseup", () => {
+          isFilterDragging = false;
+        });
+
+        // 4. "Todos" Chip
         const allChip = document.createElement("button");
         allChip.className = "filter-chip active";
         allChip.innerHTML = `<span class="chip-dot" style="background:#ffffff"></span><span>Todos (218)</span>`;
@@ -1094,7 +1443,7 @@
         };
         bar.appendChild(allChip);
 
-        // Clusters
+        // 5. Cluster Chips
         Object.entries(GRAPH_DATA.clusters).forEach(([key, conf]) => {
           const count = GRAPH_DATA.nodes.filter(n => n.cluster === key).length;
           if (count === 0) return;
@@ -1105,7 +1454,7 @@
           chip.innerHTML = `<span class="chip-dot" style="background:${conf.color}"></span><span>${conf.name} (${count})</span>`;
 
           chip.onclick = () => {
-            // If already active, toggle back to ALL
+            // Toggle Deselection: If clicking already active cluster, return to ALL
             if (AppState.activeCluster === key) {
               this.setActiveFilter("all");
             } else {
@@ -1121,11 +1470,15 @@
         const chips = document.querySelectorAll(".filter-chip");
         chips.forEach(c => c.classList.remove("active"));
 
+        // Clear active tours
+        document.querySelectorAll(".flow-btn").forEach(b => b.classList.remove("active"));
+        AppState.activeTour = null;
+
         if (clusterKey === "all") {
-          chips[0].classList.add("active");
-          PhysicsEngine.setGlobalLayout();
+          chips[0]?.classList.add("active");
+          PhysicsEngine.setGlobalLayout(); // Volta a ser organizada em forma de átomo
         } else {
-          PhysicsEngine.focusOnCluster(clusterKey);
+          PhysicsEngine.setOrbitalFocusLayout(clusterKey); // As bolinhas se organizam
           chips.forEach(c => {
             if (c.textContent.includes(GRAPH_DATA.clusters[clusterKey]?.name)) {
               c.classList.add("active");
@@ -1134,60 +1487,83 @@
         }
       },
 
-      // Business Critical Flows with Toggle Behavior
+      // Business Critical Flows with Horizontal Navigation & Drag/Wheel Movement
       bindBusinessFlows: function() {
+        const flowsGrid = document.getElementById("flows-grid");
+        const btnLeft = document.getElementById("flow-scroll-left");
+        const btnRight = document.getElementById("flow-scroll-right");
+
+        // 1. Horizontal Scroll Buttons
+        if (btnLeft) {
+          btnLeft.onclick = () => flowsGrid.scrollBy({ left: -180, behavior: "smooth" });
+        }
+        if (btnRight) {
+          btnRight.onclick = () => flowsGrid.scrollBy({ left: 180, behavior: "smooth" });
+        }
+
+        // 2. Mouse Wheel Horizontal Scroll
+        flowsGrid.addEventListener("wheel", (e) => {
+          e.preventDefault();
+          flowsGrid.scrollLeft += (e.deltaY || e.deltaX) * 1.4;
+        }, { passive: false });
+
+        // 3. Mouse Drag-to-Scroll
+        let isFlowDragging = false;
+        let flowStartX = 0;
+        let flowScrollStart = 0;
+
+        flowsGrid.addEventListener("mousedown", (e) => {
+          if (e.target.closest(".flow-btn")) return;
+          isFlowDragging = true;
+          flowStartX = e.clientX;
+          flowScrollStart = flowsGrid.scrollLeft;
+        });
+
+        window.addEventListener("mousemove", (e) => {
+          if (!isFlowDragging) return;
+          const dx = e.clientX - flowStartX;
+          flowsGrid.scrollLeft = flowScrollStart - dx;
+        });
+
+        window.addEventListener("mouseup", () => {
+          isFlowDragging = false;
+        });
+
+        // 4. Tour Button Click Handlers with Toggle Behavior
         const buttons = document.querySelectorAll(".flow-btn");
         buttons.forEach(btn => {
           btn.onclick = () => {
             const tourKey = btn.dataset.tour;
             if (AppState.activeTour === tourKey) {
-              // Deselect flow
+              // Deselect: return to full atom
               btn.classList.remove("active");
               AppState.activeTour = null;
               PhysicsEngine.setGlobalLayout();
             } else {
               buttons.forEach(b => b.classList.remove("active"));
               btn.classList.add("active");
-              AppState.activeTour = tourKey;
-              this.activateTour(tourKey);
+
+              // Clear cluster chip active state
+              document.querySelectorAll(".filter-chip").forEach(c => c.classList.remove("active"));
+
+              PhysicsEngine.setTourFocusLayout(tourKey);
             }
           };
         });
       },
 
-      activateTour: function(tourKey) {
-        const tourPaths = {
-          booking_pix: ["view_client_booking", "ef_create_pix_charge", "tbl_woovi_charges", "tbl_agendamentos", "ef_whatsapp_proxy"],
-          barber_payout: ["view_barber_dashboard", "ef_woovi_withdraw", "tbl_saques", "tbl_transacoes_financeiras"],
-          ai_support: ["view_admin_ai_assistant", "ef_ai_copilot_chat", "tbl_ai_knowledge_base", "hub_core"],
-          whatsapp_dispatch: ["view_admin_whatsapp", "ef_send_appointment_reminder", "tbl_whatsapp_instances", "tbl_whatsapp_messages_log"],
-          backend_infra: ["hub_core", "hub_database", "hub_edge_functions", "hub_external", "hub_auth"]
+      // Minimap Card Click (Allows cycling through orbits or resetting)
+      bindMinimapClick: function() {
+        const card = document.getElementById("minimap-card");
+        if (!card) return;
+
+        const clusterKeys = ["all", "admin", "barber", "financial", "edge_fn", "database"];
+        card.onclick = () => {
+          let currentIdx = clusterKeys.indexOf(AppState.activeCluster);
+          if (currentIdx === -1) currentIdx = 0;
+          const nextKey = clusterKeys[(currentIdx + 1) % clusterKeys.length];
+          this.setActiveFilter(nextKey);
         };
-
-        const path = tourPaths[tourKey] || [];
-        AppState.connectedNodeIds.clear();
-        AppState.connectedLinkIds.clear();
-
-        let sumX = 0, sumY = 0, sumZ = 0;
-        let count = 0;
-
-        path.forEach(id => {
-          const n = AppState.nodeMap.get(id);
-          if (n) {
-            AppState.connectedNodeIds.add(n.id);
-            sumX += n.targetX;
-            sumY += n.targetY;
-            sumZ += n.targetZ;
-            count++;
-          }
-        });
-
-        if (count > 0) {
-          AppState.camera.targetFocalX = sumX / count;
-          AppState.camera.targetFocalY = sumY / count;
-          AppState.camera.targetFocalZ = sumZ / count;
-          AppState.camera.targetDist = 1400;
-        }
       },
 
       bindQuickControls: function() {
