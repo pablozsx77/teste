@@ -1,63 +1,53 @@
-# Barbearia DUB — Topologia & Arquitetura Completa do Ecossistema
+# Barbearia DUB — Modelo Atômico do Sistema & Topologia Quântica
 
-Visualizador interativo cósmico da arquitetura de software, fluxos operacionais, banco de dados e integrações da **Barbearia DUB**.
+Visualizador interativo de alta precisão em formato de **Átomo Quântico (Modelo Bohr-Rutherford)**, mapeando todos os componentes, órbitas eletrônicas, banco de dados e integrações da **Barbearia DUB**.
 
 ---
 
-## Métricas Mapeadas
+## Métricas do Átomo
 
-- **218 Componentes e Módulos Catalogados**
-- **573 Conexões e Relações de Dependência Ativas**
-- **92 Tabelas PostgreSQL** com Row Level Security (RLS)
-- **50 Supabase Edge Functions** (Deno Serverless)
-- **19 Telas e Rotas** (Landing, Auth, Onboarding, Admin, Barbeiro, Cliente, Suporte)
-- **8 Gateways e APIs Externas** (Woovi OpenPix, EFI Bank, Evolution WhatsApp, OpenAI GPT-4o, Google Gemini, Instagram Graph API, Firebase FCM)
+- **218 Partículas & Módulos Mapeados**
+- **573 Ligações Quânticas & Dependências Ativas**
+- **92 Prótons no Banco de Dados (PostgreSQL + RLS)**
+- **50 Elétrons na Nuvem Serverless (Supabase Edge Functions)**
+- **19 Telas e Rotas Operacionais**
+- **8 Gateways e APIs Externas Integradas**
 - **11 Hooks Customizados de Estado Reativo**
 
 ---
 
-## Estrutura do Projeto
+## Estrutura das Camadas Atômicas
 
-```
-├── index.html                   # Ponto de entrada da aplicação
-├── assets/
-│   └── logo.png                 # Emblema oficial da Barbearia DUB
-├── css/
-│   ├── main.css                 # Variáveis do sistema de design e resets
-│   ├── header.css               # Cabeçalho executivo, busca global e filtros
-│   ├── panel.css                # Painel inspetor lateral e chips de conexões
-│   └── tours.css                # Barra de jornadas críticas e controles
-└── js/
-    ├── data.js                  # Topologia completa dos nós e conexões
-    ├── state.js                 # Gerenciamento de estado da aplicação
-    ├── physics.js               # Motor de física, espaçamento e layouts
-    ├── renderer.js              # Renderizador Canvas 2D em 60 FPS
-    ├── events.js                # Interações de mouse, atalhos e busca
-    └── app.js                   # Inicialização e orquestração do ciclo de vida
-```
+1. **Núcleo Central Atômico ($R = 160\text{px}$)**:
+   - O coração do ecossistema: Engine Core Barbearia DUB, Hub de Autenticação, Hub do Banco de Dados, Hub Serverless e a entidade mestre de Barbeiros.
+   - Envolto por um campo de confinamento eletromagnético em carmim (`#e03115`) e ouro nobre (`#d4af37`).
+
+2. **Órbitas Eletrônicas Internas (Níveis de Energia)**:
+   - **Órbita 1 ($R = 400\text{px}$)**: Gestão & Dono (22 partículas)
+   - **Órbita 2 ($R = 660\text{px}$)**: Operação Barbeiro, Clientes & Checkout Pix (25 partículas)
+   - **Órbita 3 ($R = 920\text{px}$)**: Automação WhatsApp, IA BIA, Assinaturas & Hooks (17 partículas)
+   - **Órbita 4 ($R = 1140\text{px}$)**: Polos de Conexão Externa & Gateways (9 partículas)
+
+3. **Camadas de Valência**:
+   - **Camada K ($R = 1380\text{px}$)**: 50 Supabase Edge Functions orbitando em alta velocidade.
+   - **Camada L1 ($R = 1660\text{px}$)**: 46 Tabelas PostgreSQL de Cadastros e Operações.
+   - **Camada L2 ($R = 1940\text{px}$)**: 46 Tabelas PostgreSQL de Auditoria, Segurança e Transações.
+
+4. **Órbitas Elípticas Rutherfordianas**:
+   - Três grandes trajetórias orbitais elípticas ($0^\circ, 55^\circ, -55^\circ$) com fótons e quanta de energia viajando em tempo real.
 
 ---
 
-## Funcionalidades Interativas
+## Experiência Visual & Usabilidade
 
-1. **Reorganização Dinâmica ao Clicar**:
-   - Clicar em qualquer bolinha posiciona o elemento no centro e reorganiza suas conexões em anéis concêntricos espaçados com física de mola suave.
-   - Clicar novamente na bolinha selecionada ou no botão **X** desmarca e retorna à visão geral do projeto.
-2. **Filtros por Módulo**:
-   - Filtragem rápida por *Gestão & Dono, Operação Barbeiro, Experiência Cliente, Motor Pix & Financeiro, Edge Functions, Banco de Dados*, etc.
-3. **Fluxos Críticos de Negócio (Jornadas Guiadas)**:
-   - **Agendamento & Pix**: Do acesso do cliente ao lembrete automático 2h antes.
-   - **Saque Barbeiro**: Conclusão do corte, split de comissão e Pix out protegido por PIN.
-   - **Suporte IA BIA**: Canal de suporte 24/7 integrado a modelos de linguagem e RAG.
-   - **Automação WhatsApp**: Disparos em massa segmentados e recuperação de inativos.
-   - **Infraestrutura Backend**: 50 Edge Functions interagindo com 92 tabelas PostgreSQL.
-4. **Busca Instantânea (`Ctrl + K`)**:
-   - Localização em tempo real de qualquer componente, rota, tabela ou função.
-5. **Radar Minimap**:
-   - Visão em tempo real da posição da câmera no universo da aplicação.
+- **Tipografia Mais Grossa e Marcante**: Fontes em pesos 700 e 800 (`Plus Jakarta Sans`), com etiquetas em pílulas escuras de alto contraste.
+- **Movimento Direto Sem Balanço (Zero Wobble)**: Interpolação assintótica crítica com amortecimento perfeito — os nós e a câmera deslizam suavemente e travam com firmeza na posição sem oscilar ou tremer.
+- **Deseleção Inteligente (Toggle)**: Clicar novamente em uma partícula selecionada ou no botão **X** desmarca e retorna à visão global.
+- **Sensor de Orbitais (Minimap)**: Radar orbital no canto inferior direito.
+- **Busca Global Instantânea (`Ctrl + K`)**: Localização em tempo real de qualquer elemento do sistema.
 
 ---
 
 ## Como Executar
 
-Basta abrir o arquivo `index.html` em qualquer navegador web moderno. Não requer dependências, compilação ou servidor local.
+Basta abrir o arquivo `index.html` em qualquer navegador web moderno.

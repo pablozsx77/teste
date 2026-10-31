@@ -1,4 +1,4 @@
-// State Management for Barbearia DUB Galaxy Visualizer
+// State Management for Barbearia DUB Atomic Visualizer
 const AppState = {
   width: window.innerWidth,
   height: window.innerHeight,
@@ -28,7 +28,8 @@ const AppState = {
   incomingMap: new Map(),
   neighborsMap: new Map(),
 
-  particles: []
+  // Quantum Energy Quanta traveling on atomic orbits
+  atomicQuanta: []
 };
 
 // Initialize Lookup Tables
@@ -50,12 +51,38 @@ GRAPH_DATA.links.forEach(l => {
   }
 });
 
-// Ambient Particles
-for (let i = 0; i < 180; i++) {
-  AppState.particles.push({
-    x: (Math.random() - 0.5) * 4500,
-    y: (Math.random() - 0.5) * 4500,
-    size: Math.random() * 1.5 + 0.3,
-    alpha: Math.random() * 0.4 + 0.1
+// Seed Quantum Energy Quanta along atomic orbital tracks
+const orbitalRings = [400, 660, 920, 1140, 1380, 1660, 1940];
+for (let i = 0; i < 70; i++) {
+  const r = orbitalRings[i % orbitalRings.length];
+  AppState.atomicQuanta.push({
+    type: "ring",
+    r: r,
+    angle: Math.random() * Math.PI * 2,
+    speed: (0.002 + Math.random() * 0.003) * (i % 2 === 0 ? 1 : -1),
+    size: Math.random() * 2.2 + 1.2,
+    color: i % 3 === 0 ? "#00d2ff" : (i % 3 === 1 ? "#d4af37" : "#ff5e42"),
+    alpha: Math.random() * 0.5 + 0.35
+  });
+}
+
+// Elliptical quanta for Rutherford orbital paths
+const ellipticalTracks = [
+  { a: 780, b: 340, rot: 0 },
+  { a: 860, b: 380, rot: Math.PI / 3.2 },
+  { a: 940, b: 420, rot: -Math.PI / 3.2 }
+];
+for (let i = 0; i < 30; i++) {
+  const trk = ellipticalTracks[i % ellipticalTracks.length];
+  AppState.atomicQuanta.push({
+    type: "ellipse",
+    a: trk.a,
+    b: trk.b,
+    rot: trk.rot,
+    t: Math.random() * Math.PI * 2,
+    speed: (0.003 + Math.random() * 0.004) * (i % 2 === 0 ? 1 : -1),
+    size: Math.random() * 2.5 + 1.5,
+    color: i % 2 === 0 ? "#00d2ff" : "#d4af37",
+    alpha: Math.random() * 0.6 + 0.4
   });
 }

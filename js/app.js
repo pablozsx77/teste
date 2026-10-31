@@ -1,6 +1,6 @@
-// Application Bootstrapper
+// Application Bootstrapper & Atomic Orbitals
 document.addEventListener("DOMContentLoaded", () => {
-  // Tour definitions
+  // Tour definitions (Transições Quânticas & Fluxos Atômicos)
   AppState.TOURS = {
     booking: {
       key: "booking",
@@ -61,13 +61,14 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  // Render Filter Tabs
+  // Render Filter Tabs by Atomic Orbital
   const filterBar = document.getElementById("filter-bar");
   filterBar.innerHTML = "";
 
   const allBtn = document.createElement("button");
   allBtn.className = "filter-tab active";
-  allBtn.innerHTML = '<span class="tab-dot" style="background:#f8fafc"></span> Todos <span class="tab-count">(' + GRAPH_DATA.nodes.length + ')</span>';
+  allBtn.dataset.cluster = "all";
+  allBtn.innerHTML = '<span class="tab-dot" style="background:#00d2ff"></span> Átomo Completo <span class="tab-count">(' + GRAPH_DATA.nodes.length + ')</span>';
   allBtn.onclick = () => {
     if (AppState.focusMode === "global") return;
     EventManager.resetToGlobal();
@@ -99,12 +100,18 @@ document.addEventListener("DOMContentLoaded", () => {
   GraphRenderer.init();
   EventManager.init();
 
-  // Resize handler
-  window.addEventListener("resize", () => GraphRenderer.resize());
-
-  // Initial Global Layout
+  // Initial Atomic Global Layout
   PhysicsEngine.setGlobalLayout();
 
-  // Start 60fps Loop
+  // Instantly position nodes on initial boot
+  GRAPH_DATA.nodes.forEach(n => {
+    n.x = n.targetX;
+    n.y = n.targetY;
+  });
+  AppState.camX = AppState.targetCamX;
+  AppState.camY = AppState.targetCamY;
+  AppState.zoom = AppState.targetZoom;
+
+  // Start Animation Loop
   GraphRenderer.render();
 });

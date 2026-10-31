@@ -1,4 +1,4 @@
-/* Inspector Drawer & Details */
+/* Inspector Drawer & Details - Bold Typography */
 .inspector-panel {
   position: absolute;
   top: 16px;
@@ -6,7 +6,7 @@
   bottom: 20px;
   width: 430px;
   max-width: calc(100vw - 40px);
-  background: rgba(16, 18, 26, 0.96);
+  background: rgba(14, 16, 25, 0.96);
   backdrop-filter: blur(30px);
   -webkit-backdrop-filter: blur(30px);
   border: 1px solid var(--border-subtle);
@@ -15,9 +15,9 @@
   display: flex;
   flex-direction: column;
   z-index: 30;
-  box-shadow: -20px 0 50px rgba(0, 0, 0, 0.75);
+  box-shadow: -20px 0 50px rgba(0, 0, 0, 0.85);
   transform: translateX(calc(100% + 40px));
-  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   overflow-y: auto;
 }
 
@@ -38,51 +38,51 @@
   align-items: center;
   gap: 6px;
   font-size: 10px;
-  font-weight: 700;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.6px;
   padding: 3px 8px;
   border-radius: 4px;
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(255, 255, 255, 0.08);
   color: var(--text-secondary);
   margin-bottom: 8px;
 }
 
 .panel-title {
-  font-size: 18px;
-  font-weight: 700;
+  font-size: 19px;
+  font-weight: 800;
   color: var(--text-primary);
   line-height: 1.3;
   word-break: break-word;
 }
 
 .panel-close-btn {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.06);
   border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
   width: 32px;
   height: 32px;
   border-radius: 8px;
-  color: var(--text-muted);
-  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: all 0.15s;
+  cursor: pointer;
+  transition: all 0.2s ease;
   flex-shrink: 0;
 }
 
 .panel-close-btn:hover {
-  background: rgba(197, 48, 24, 0.2);
-  border-color: rgba(197, 48, 24, 0.4);
-  color: #ff8570;
+  background: rgba(224, 49, 21, 0.25);
+  color: #ffffff;
+  border-color: rgba(224, 49, 21, 0.5);
 }
 
 .panel-close-btn svg {
-  width: 15px;
-  height: 15px;
+  width: 16px;
+  height: 16px;
   stroke: currentColor;
-  fill: none;
-  stroke-width: 2.2;
+  stroke-width: 2.5;
+  stroke-linecap: round;
 }
 
 .panel-group {
@@ -90,63 +90,23 @@
 }
 
 .panel-label {
-  font-size: 10px;
-  font-weight: 700;
+  font-size: 11px;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.8px;
+  letter-spacing: 0.6px;
   color: var(--text-muted);
   margin-bottom: 8px;
 }
 
 .panel-desc-box {
-  font-size: 12px;
-  color: #cbd5e1;
-  line-height: 1.6;
-  background: rgba(0, 0, 0, 0.25);
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid rgba(255, 255, 255, 0.04);
-}
-
-.chips-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-.node-link-chip {
   background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--border-subtle);
-  border-radius: 6px;
-  padding: 6px 10px;
-  font-size: 11px;
-  color: var(--text-primary);
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  transition: all 0.15s;
-}
-
-.node-link-chip:hover {
-  background: rgba(197, 48, 24, 0.15);
-  border-color: rgba(197, 48, 24, 0.4);
-  color: #ff8570;
-  transform: translateY(-1px);
-}
-
-.chip-indicator {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-}
-
-.chip-rel {
-  font-size: 9px;
-  padding: 1px 4px;
-  border-radius: 3px;
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--text-muted);
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  line-height: 1.6;
 }
 
 .meta-table {
@@ -158,23 +118,57 @@
 .meta-row {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 6px 10px;
-  background: rgba(0, 0, 0, 0.2);
+  align-items: flex-start;
+  padding: 7px 10px;
+  background: rgba(255, 255, 255, 0.02);
   border-radius: 6px;
-  border: 1px solid rgba(255, 255, 255, 0.03);
-  font-size: 11px;
+  font-size: 11.5px;
 }
 
-.meta-label {
+.meta-key {
   color: var(--text-muted);
-  font-weight: 500;
+  font-weight: 700;
 }
 
-.meta-value {
+.meta-val {
   color: var(--text-primary);
-  font-weight: 600;
+  font-weight: 800;
   text-align: right;
-  max-width: 60%;
+  max-width: 65%;
   word-break: break-all;
+}
+
+.chips-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  max-height: 160px;
+  overflow-y: auto;
+}
+
+.conn-chip {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  padding: 5px 9px;
+  border-radius: 6px;
+  font-size: 11.5px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.conn-chip:hover {
+  background: rgba(224, 49, 21, 0.2);
+  border-color: rgba(224, 49, 21, 0.5);
+  color: #ffffff;
+}
+
+.conn-chip-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
 }

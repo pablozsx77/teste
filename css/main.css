@@ -1,17 +1,19 @@
-/* Barbearia DUB - Core Design System */
+/* Barbearia DUB - Atomic Design System */
 :root {
-  --bg-main: #0c0d12;
-  --bg-elevated: #13151f;
-  --bg-card: #181b26;
-  --brand-red: #c53018;
-  --brand-red-glow: rgba(197, 48, 24, 0.45);
+  --bg-main: #07080d;
+  --bg-elevated: #0e1019;
+  --bg-card: #131622;
+  --brand-red: #e03115;
+  --brand-red-glow: rgba(224, 49, 21, 0.45);
   --brand-gold: #d4af37;
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-focus: rgba(197, 48, 24, 0.5);
-  --font-stack: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --brand-cyan: #00d2ff;
+  --brand-cyan-glow: rgba(0, 210, 255, 0.35);
+  --text-primary: #ffffff;
+  --text-secondary: #9aa8bc;
+  --text-muted: #5e6c82;
+  --border-subtle: rgba(255, 255, 255, 0.09);
+  --border-focus: rgba(224, 49, 21, 0.6);
+  --font-stack: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
 * {
@@ -28,6 +30,7 @@ body, html {
   overflow: hidden;
   background-color: var(--bg-main);
   font-family: var(--font-stack);
+  font-weight: 700;
   color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
