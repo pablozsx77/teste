@@ -34,6 +34,23 @@ const AppState = {
 
 // Initialize Lookup Tables
 GRAPH_DATA.nodes.forEach(n => {
+  const c = GRAPH_DATA.clusters[n.cluster] || { color: '#94a3b8', glow: '#64748b' };
+  n.color = c.color;
+  n.glow = c.glow;
+  if (n.id === 'hub_core') {
+    n.radius = 24;
+  } else if (n.id.startsWith('hub_')) {
+    n.radius = 16;
+  } else {
+    n.radius = Math.max(6, Math.min(18, Math.round(Math.sqrt(n.val || 10) * 3)));
+  }
+  n.x = AppState.width / 2;
+  n.y = AppState.height / 2;
+  n.targetX = AppState.width / 2;
+  n.targetY = AppState.height / 2;
+  n.vx = 0;
+  n.vy = 0;
+
   AppState.nodeMap.set(n.id, n);
   AppState.outgoingMap.set(n.id, []);
   AppState.incomingMap.set(n.id, []);
