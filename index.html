@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Barbearia DUB — Topologia & Arquitetura do Sistema</title>
+  <link rel="icon" type="image/png" href="assets/logo.png">
+
+  <!-- Modular Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/header.css">
+  <link rel="stylesheet" href="css/panel.css">
+  <link rel="stylesheet" href="css/tours.css">
+</head>
+<body>
+
+  <!-- Top Navigation Header -->
+  <header class="top-header">
+    <div class="brand-identity">
+      <img src="assets/logo.png" alt="Barbearia DUB" class="brand-logo-img">
+      <div class="brand-titles">
+        <div class="brand-title-row">
+          <span class="brand-title-text">Barbearia DUB</span>
+          <span class="brand-badge">Arquitetura</span>
+        </div>
+        <span class="brand-subtitle">Topologia & Mapa de Conexões do Sistema</span>
+      </div>
+      <div class="stats-counter">
+        <span>Componentes: <strong>218</strong></span>
+        <span>Conexões: <strong>573</strong></span>
+        <span>Tabelas: <strong>92</strong></span>
+        <span>Edge Functions: <strong>50</strong></span>
+      </div>
+    </div>
+
+    <!-- Global Search -->
+    <div class="search-container">
+      <svg class="search-svg-icon" viewBox="0 0 24 24">
+        <circle cx="11" cy="11" r="8"></circle>
+        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+      </svg>
+      <input type="text" id="search-input" class="search-input-field" placeholder="Buscar módulo, rota, tabela, edge function..." autocomplete="off">
+      <span class="search-kbd-tag">Ctrl+K</span>
+      <div id="search-dropdown" class="search-dropdown"></div>
+    </div>
+
+    <!-- Top Action Controls -->
+    <div class="top-controls">
+      <button id="btn-reset-view" class="btn-action" title="Visão Geral / Todos">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><circle cx="12" cy="12" r="3" fill="currentColor"></circle></svg>
+        <span>Visão Geral</span>
+      </button>
+      <button id="btn-toggle-physics" class="btn-action" title="Pausar / Retomar Física">
+        <svg id="svg-physics" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect></svg>
+        <span id="label-physics">Pausar</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Filter Bar by Cluster -->
+  <nav class="filter-bar" id="filter-bar"></nav>
+
+  <!-- Bottom Story Tours Panel -->
+  <div class="bottom-flow-panel">
+    <div class="flow-card">
+      <div class="flow-card-header">
+        <span class="flow-card-title">Fluxos Críticos de Negócio</span>
+      </div>
+      <div class="flow-buttons">
+        <button class="flow-btn" data-tour="booking">Agendamento & Pix</button>
+        <button class="flow-btn" data-tour="payout">Saque Barbeiro</button>
+        <button class="flow-btn" data-tour="ai">Suporte IA BIA</button>
+        <button class="flow-btn" data-tour="marketing">Disparos WhatsApp</button>
+        <button class="flow-btn" data-tour="backend">Infraestrutura Backend</button>
+      </div>
+
+      <!-- Active Tour Stepper Controls -->
+      <div class="tour-stepper-box" id="tour-stepper-box">
+        <span class="tour-step-info" id="tour-step-label">Passo 1</span>
+        <div class="tour-step-actions">
+          <button class="tour-step-btn" id="tour-step-prev">Anterior</button>
+          <button class="tour-step-btn" id="tour-step-next">Próximo</button>
+          <button class="tour-step-btn" id="tour-step-exit" style="color:#ff6b52;">Desmarcar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Viewport Navigation Dock -->
+  <div class="viewport-dock">
+    <button class="btn-dock" id="vp-in" title="Aumentar Zoom">
+      <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+    </button>
+    <button class="btn-dock" id="vp-out" title="Diminuir Zoom">
+      <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+    </button>
+    <button class="btn-dock" id="vp-fit" title="Enquadrar Todos">
+      <svg viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg>
+    </button>
+  </div>
+
+  <!-- Radar Minimap -->
+  <div class="radar-dock">
+    <canvas id="radar-canvas"></canvas>
+  </div>
+
+  <!-- Minimal Cursor Tooltip -->
+  <div id="cursor-tooltip">
+    <div class="tooltip-header">
+      <div class="tooltip-dot" id="tip-dot"></div>
+      <div class="tooltip-title" id="tip-title"></div>
+    </div>
+    <div class="tooltip-desc" id="tip-desc"></div>
+  </div>
+
+  <!-- Canvas Container -->
+  <div id="canvas-container">
+    <canvas id="graph-canvas"></canvas>
+  </div>
+
+  <!-- Inspector Side Drawer -->
+  <aside class="inspector-panel" id="inspector-panel">
+    <div class="panel-header">
+      <div>
+        <div class="panel-badge" id="panel-badge">Módulo</div>
+        <h2 class="panel-title" id="panel-title">Componente</h2>
+      </div>
+      <button class="panel-close-btn" id="panel-close" title="Fechar e voltar à visão geral (Esc)">
+        <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+
+    <div class="panel-group">
+      <div class="panel-label">Finalidade & Operação</div>
+      <div class="panel-desc-box" id="panel-desc"></div>
+    </div>
+
+    <div class="panel-group" id="panel-meta-group">
+      <div class="panel-label">Especificações Técnicas</div>
+      <div class="meta-table" id="panel-meta"></div>
+    </div>
+
+    <div class="panel-group">
+      <div class="panel-label" id="panel-out-label">Conexões de Saída (Envia Para)</div>
+      <div class="chips-container" id="panel-outgoing"></div>
+    </div>
+
+    <div class="panel-group">
+      <div class="panel-label" id="panel-in-label">Conexões de Entrada (Recebe De)</div>
+      <div class="chips-container" id="panel-incoming"></div>
+    </div>
+  </aside>
+
+  <!-- Modular Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/state.js"></script>
+  <script src="js/physics.js"></script>
+  <script src="js/renderer.js"></script>
+  <script src="js/events.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
