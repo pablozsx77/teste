@@ -1,0 +1,1277 @@
+// Embedded Graph Data
+    const GRAPH_DATA = {"clusters": {"core": {"name": "Núcleo Atômico Central", "color": "#f8fafc", "glow": "#e03115", "border": "#e03115"}, "landing": {"name": "Órbita Alpha: Onboarding", "color": "#94a3b8", "glow": "#64748b", "border": "#475569"}, "admin": {"name": "Órbita Alpha: Gestão & Dono", "color": "#d4af37", "glow": "#b8972e", "border": "#997b20"}, "barber": {"name": "Órbita Beta: Operação Barbeiro", "color": "#10b981", "glow": "#059669", "border": "#047857"}, "client": {"name": "Órbita Beta: Experiência Cliente", "color": "#00d2ff", "glow": "#0284c7", "border": "#0369a1"}, "financial": {"name": "Órbita Gamma: Motor Pix & Finanças", "color": "#34d399", "glow": "#059669", "border": "#047857"}, "whatsapp": {"name": "Órbita Gamma: Automação WhatsApp", "color": "#22c55e", "glow": "#16a34a", "border": "#15803d"}, "ai": {"name": "Órbita Gamma: Inteligência Artificial", "color": "#818cf8", "glow": "#6366f1", "border": "#4f46e5"}, "subscriptions": {"name": "Órbita Alpha: Assinaturas & Planos", "color": "#fbbf24", "glow": "#d97706", "border": "#b45309"}, "store": {"name": "Órbita Beta: Loja & Produtos", "color": "#fb923c", "glow": "#ea580c", "border": "#c2410c"}, "hooks": {"name": "Órbita Beta: Hooks Reativos", "color": "#14b8a6", "glow": "#0d9488", "border": "#0f766e"}, "external": {"name": "Órbita Gamma: Gateways & APIs", "color": "#f97316", "glow": "#ea580c", "border": "#c2410c"}, "edge_fn": {"name": "Camada Quântica K: Supabase Edge Functions", "color": "#60a5fa", "glow": "#2563eb", "border": "#1d4ed8"}, "database": {"name": "Camada de Valência L: Banco PostgreSQL", "color": "#f43f5e", "glow": "#e11d48", "border": "#be123c"}}, "nodes": [{"id": "hub_core", "name": "BARBEIRO DUB ECOSYSTEM", "cluster": "core", "category": "Núcleo Central", "desc": "Cérebro central da plataforma SaaS BarbeiroDub. Coordena autenticação multi-tenant, roteamento resiliente, persistência local e conexões com Supabase.", "val": 42, "details": {"stack": "React 18 + Vite + TailwindCSS + Supabase + TanStack Query Persist", "modelo": "Multi-Tenant White-label com isolamento por barbearia", "proposito": "Automatizar 100% da rotina de barbearias: agendamentos, pagamentos Pix com split, marketing WhatsApp e inteligência artificial."}}, {"id": "hub_landing", "name": "Público & Onboarding", "cluster": "landing", "category": "Páginas de Entrada", "desc": "Portal público, landing page estilo Luma, fluxo de auth em 2 etapas e onboarding do dono.", "val": 28, "details": {}}, {"id": "hub_client", "name": "Experiência do Cliente", "cluster": "client", "category": "Agendamento & Fidelidade", "desc": "Web app para agendamento rápido, escolha de barbeiro/serviço, pagamento Pix e fidelidade.", "val": 30, "details": {}}, {"id": "hub_barber", "name": "Painel do Barbeiro", "cluster": "barber", "category": "Operação do Profissional", "desc": "App mobile-first para barbeiros: agenda em tempo real, confirmação de corte, carteira digital Pix e saques.", "val": 30, "details": {}}, {"id": "hub_admin", "name": "Painel do Dono (Admin)", "cluster": "admin", "category": "Gestão & Inteligência", "desc": "Comando executivo: controle de faturamento, rateio de comissões, equipe, horários e relatórios DRE.", "val": 32, "details": {}}, {"id": "hub_financial", "name": "Motor Financeiro & Pix", "cluster": "financial", "category": "Carteira Digital & Pix", "desc": "Infraestrutura Pix instantânea via Woovi e EFI. Criação de subcontas, split automático e taxas anti-no-show.", "val": 32, "details": {}}, {"id": "hub_whatsapp", "name": "Marketing & WhatsApp", "cluster": "whatsapp", "category": "Automação de Mensagens", "desc": "Motor de disparos em massa, lembretes pré-corte 24h/2h, recuperação de inativos e cupons.", "val": 28, "details": {}}, {"id": "hub_ai", "name": "Inteligência Artificial (IA)", "cluster": "ai", "category": "Assistentes & Geradores", "desc": "Assistente BIA 24/7, gerador de promoções inteligentes e legendas com OpenAI e Google Gemini.", "val": 28, "details": {}}, {"id": "hub_subscriptions", "name": "Assinaturas & Planos VIP", "cluster": "subscriptions", "category": "Receita Recorrente", "desc": "Planos mensais e cortes ilimitados com cobrança automatizada via Pix recorrente.", "val": 26, "details": {}}, {"id": "hub_store", "name": "Loja & Produtos", "cluster": "store", "category": "E-commerce de Barbearia", "desc": "Catálogo integrado de produtos (pomadas, shampoos, óleos) com controle de estoque e pedidos.", "val": 24, "details": {}}, {"id": "hub_edge_functions", "name": "Supabase Edge Functions", "cluster": "edge_fn", "category": "Backend Serverless", "desc": "50 funções serverless Deno rodando na borda com segurança RLS, gateways de pagamento e webhooks.", "val": 34, "details": {}}, {"id": "hub_database", "name": "Banco de Dados PostgreSQL", "cluster": "database", "category": "Camada de Dados", "desc": "92 tabelas relacionais com RLS, mais de 100 RPCs transacionais e logs de auditoria imutáveis.", "val": 36, "details": {}}, {"id": "hub_external", "name": "APIs & Gateways Externos", "cluster": "external", "category": "Serviços Terceiros", "desc": "Integrações com Woovi (OpenPix), EFI Bank, WhatsApp Evolution, OpenAI, Gemini, Instagram e Firebase.", "val": 28, "details": {}}, {"id": "hub_hooks", "name": "Hooks & Estado Reativo", "cluster": "hooks", "category": "Reatividade Frontend", "desc": "54 custom hooks para cache otimista, sincronização com Supabase e controle de estado.", "val": 26, "details": {}}, {"id": "page_index", "name": "Index (Landing Page)", "cluster": "landing", "category": "Página", "desc": "Landing page de alta conversão estilo Luma com micro-animações, apresentação de features e planos.", "val": 16, "details": {}}, {"id": "page_auth", "name": "Auth (Login / Cadastro)", "cluster": "landing", "category": "Página", "desc": "Autenticação em tela cheia estilo Mr. Caseiro: validação de telefone, email e senha.", "val": 17, "details": {}}, {"id": "page_auth_callback", "name": "Auth Callback", "cluster": "landing", "category": "Página", "desc": "Tratamento de callbacks de autenticação, verificação de sessão e redirecionamento de permissão.", "val": 13, "details": {}}, {"id": "page_onboarding", "name": "Onboarding do Dono", "cluster": "landing", "category": "Página", "desc": "Wizard interativo de 8 etapas para configuração de nova barbearia, unidades, horários e equipe.", "val": 19, "details": {}}, {"id": "page_tenant_public", "name": "Tenant Public Page (/b/:slug)", "cluster": "landing", "category": "Página", "desc": "Vitrine pública da barbearia acessada pelos clientes via link na bio ou QR Code.", "val": 19, "details": {}}, {"id": "page_forgot_password", "name": "Esqueci a Senha", "cluster": "landing", "category": "Página", "desc": "Solicitação de recuperação de senha com envio seguro de link transacional.", "val": 13, "details": {}}, {"id": "page_reset_password", "name": "Resetar Senha", "cluster": "landing", "category": "Página", "desc": "Definição de nova senha com validação de força e criptografia segura.", "val": 13, "details": {}}, {"id": "page_agenda_fullscreen", "name": "Agenda Fullscreen", "cluster": "admin", "category": "Página", "desc": "Modo tela cheia para tablets e monitores na bancada da barbearia.", "val": 16, "details": {}}, {"id": "page_admin_relatorios", "name": "Admin Relatórios Mensais", "cluster": "admin", "category": "Página", "desc": "Visão detalhada de DRE mensal, comparativo de trimestres e ticket médio.", "val": 17, "details": {}}, {"id": "page_admin_main", "name": "Admin Dashboard (/admin)", "cluster": "admin", "category": "Página", "desc": "Painel executivo master com navegação por abas para todas as áreas de gestão.", "val": 22, "details": {}}, {"id": "page_barbeiro_main", "name": "Barbeiro App (/barbeiro)", "cluster": "barber", "category": "Página", "desc": "Aplicativo mobile do profissional com agenda do dia, carteira e atendimentos.", "val": 22, "details": {}}, {"id": "page_cliente_main", "name": "Cliente App (/cliente)", "cluster": "client", "category": "Página", "desc": "Área autenticada do cliente com agendamentos futuros, histórico e saldo.", "val": 18, "details": {}}, {"id": "page_cliente_agendar", "name": "Cliente Agendar (/cliente/agendar)", "cluster": "client", "category": "Página", "desc": "Fluxo completo de reserva com seleção de barbeiro, horário e pagamento.", "val": 21, "details": {}}, {"id": "page_cliente_assinar", "name": "Cliente Assinar (/cliente/assinar)", "cluster": "subscriptions", "category": "Página", "desc": "Catálogo e checkout de assinaturas de cortes mensais.", "val": 17, "details": {}}, {"id": "page_support_chat", "name": "Suporte com IA - BIA (/suporte)", "cluster": "ai", "category": "Página", "desc": "Chat conversacional com inteligência artificial para clientes e profissionais.", "val": 18, "details": {}}, {"id": "page_unit_admin_auth", "name": "Unit Admin Auth", "cluster": "admin", "category": "Página", "desc": "Login isolado para gerentes de unidades locais e filiais.", "val": 14, "details": {}}, {"id": "page_unit_admin_dash", "name": "Unit Admin Dashboard", "cluster": "admin", "category": "Página", "desc": "Gestão operacional exclusiva da filial sem acesso ao financeiro geral da rede.", "val": 16, "details": {}}, {"id": "page_test_login", "name": "Test Auto Login", "cluster": "landing", "category": "Página", "desc": "Ambiente de desenvolvimento para simulação rápida de personas (dono, barbeiro, cliente).", "val": 12, "details": {}}, {"id": "page_not_found", "name": "Página 404", "cluster": "landing", "category": "Página", "desc": "Tratamento amigável de links quebrados com redirecionamento inteligente.", "val": 11, "details": {}}, {"id": "adm_dashboard_kpis", "name": "Dashboard & Métricas em Tempo Real", "cluster": "admin", "category": "Módulo Admin", "desc": "Cards de faturamento bruto, líquido, ticket médio, taxa de ocupação e novos clientes.", "val": 17, "details": {}}, {"id": "adm_agenda_grid", "name": "Agenda Multi-Profissional (Semanal/Diária)", "cluster": "admin", "category": "Módulo Admin", "desc": "Grade visual completa de todos os barbeiros com bloqueios, encaixes e cores de status.", "val": 18, "details": {}}, {"id": "adm_financeiro_flow", "name": "Gestão Financeira & Comissões", "cluster": "admin", "category": "Módulo Admin", "desc": "Relatório de comissões pagas, repasses pendentes e despesas operacionais.", "val": 18, "details": {}}, {"id": "adm_equipe_barbeiros", "name": "Gestão de Equipe & Permissões", "cluster": "admin", "category": "Módulo Admin", "desc": "Cadastro de barbeiros, definição de comissão percentual por serviço e regras de trabalho.", "val": 17, "details": {}}, {"id": "adm_servicos_catalog", "name": "Catálogo de Serviços & Duração", "cluster": "admin", "category": "Módulo Admin", "desc": "Cadastro de cortes, barba, químicas, tempos de execução e categorização.", "val": 16, "details": {}}, {"id": "adm_horarios_config", "name": "Horários da Casa & Exceções", "cluster": "admin", "category": "Módulo Admin", "desc": "Configuração de expediente padrão da barbearia, feriados e folgas coletivas.", "val": 16, "details": {}}, {"id": "adm_unidades_rede", "name": "Rede Multi-Unidade (Franquias)", "cluster": "admin", "category": "Módulo Admin", "desc": "Gestão de filiais, atribuição de equipe por unidade e controle de endereço.", "val": 17, "details": {}}, {"id": "adm_crm_clientes", "name": "CRM de Clientes & Histórico", "cluster": "admin", "category": "Módulo Admin", "desc": "Base completa com frequência, valor vitalício (LTV), débitos de no-show e bloqueios.", "val": 16, "details": {}}, {"id": "adm_campanhas_mkt", "name": "Campanhas de Marketing & Automação", "cluster": "admin", "category": "Módulo Admin", "desc": "Automação de mensagens para inativos, aniversariantes e promoções relâmpago.", "val": 17, "details": {}}, {"id": "adm_disparos_painel", "name": "Disparador em Massa WhatsApp", "cluster": "admin", "category": "Módulo Admin", "desc": "Envio em lotes via WhatsApp com delay anti-ban e agendamento prévio.", "val": 17, "details": {}}, {"id": "adm_cupons_promocoes", "name": "Cupons & Descontos", "cluster": "admin", "category": "Módulo Admin", "desc": "Criação de cupons promocionais com regras de uso e validade.", "val": 15, "details": {}}, {"id": "adm_planos_gestao", "name": "Gestão de Planos & Assinaturas VIP", "cluster": "admin", "category": "Módulo Admin", "desc": "Configuração de mensalidades com limites de cortes e renovação automática.", "val": 16, "details": {}}, {"id": "adm_loja_estoque", "name": "Loja de Produtos & Estoque", "cluster": "admin", "category": "Módulo Admin", "desc": "Controle de estoque de cosméticos, pedidos de balcão e margem de lucro.", "val": 16, "details": {}}, {"id": "adm_suporte_tickets", "name": "Painel de Atendimento & Tickets", "cluster": "admin", "category": "Módulo Admin", "desc": "Visualização de conversas da IA BIA e intervenção humana quando solicitada.", "val": 15, "details": {}}, {"id": "adm_dados_empresa", "name": "Dados Cadastrais & Hub Visual", "cluster": "admin", "category": "Módulo Admin", "desc": "Identificação empresarial, CNPJ, WhatsApp institucional, logo e cores do app.", "val": 15, "details": {}}, {"id": "adm_seguranca_pin", "name": "Segurança do Painel & PIN", "cluster": "admin", "category": "Módulo Admin", "desc": "PIN financeiro para aprovação de saques e alterações críticas no sistema.", "val": 15, "details": {}}, {"id": "barb_dashboard_view", "name": "Dashboard Pessoal do Barbeiro", "cluster": "barber", "category": "Módulo Barbeiro", "desc": "Faturamento do dia, total de cortes realizados, comissão acumulada e próximos horários.", "val": 17, "details": {}}, {"id": "barb_agenda_timeline", "name": "Agenda em Linha do Tempo", "cluster": "barber", "category": "Módulo Barbeiro", "desc": "Timeline dinâmica com identificação de slots livres, clientes agendados e intervalo de almoço.", "val": 18, "details": {}}, {"id": "barb_carteira_pix", "name": "Carteira Digital Pix", "cluster": "barber", "category": "Módulo Barbeiro", "desc": "Visualização do saldo real via subconta Woovi, extrato detalhado e solicitações de saque.", "val": 19, "details": {}}, {"id": "barb_saque_instantaneo", "name": "Saque Pix com PIN de Segurança", "cluster": "barber", "category": "Módulo Barbeiro", "desc": "Transferência direta de saldo para a chave Pix do barbeiro com proteção de PIN.", "val": 18, "details": {}}, {"id": "barb_confirmacao_cortes", "name": "Confirmação & Finalização de Cortes", "cluster": "barber", "category": "Módulo Barbeiro", "desc": "Marcação de atendimento concluído, cobrança em dinheiro/Pix e lançamento no extrato.", "val": 17, "details": {}}, {"id": "barb_horarios_individuais", "name": "Escala de Trabalho & Modo Férias", "cluster": "barber", "category": "Módulo Barbeiro", "desc": "Customização da jornada do profissional e bloqueio temporário por férias ou atestado.", "val": 16, "details": {}}, {"id": "barb_portfolio_insta", "name": "Portfólio de Cortes via Instagram", "cluster": "barber", "category": "Módulo Barbeiro", "desc": "Exibição de cortes postados no Instagram profissional para valorizar o perfil.", "val": 15, "details": {}}, {"id": "barb_avaliacoes_feed", "name": "Avaliações & Reputação do Barbeiro", "cluster": "barber", "category": "Módulo Barbeiro", "desc": "Feed de notas e comentários deixados pelos clientes após o corte.", "val": 15, "details": {}}, {"id": "barb_meu_plano", "name": "Meu Plano SaaS Barbeiro", "cluster": "barber", "category": "Módulo Barbeiro", "desc": "Acompanhamento da assinatura de uso da plataforma pelo profissional autônomo.", "val": 14, "details": {}}, {"id": "ef_admin_cancel_appointments", "name": "admin-cancel-appointments", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "Função de motor de agendamentos e horários: admin-cancel-appointments.", "val": 16, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["agendamentos", "creditos", "notificacoes", "pagamentos", "user_roles"]}}, {"id": "ef_ai_support_chat", "name": "ai-support-chat", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "Função de Inteligência Artificial: ai-support-chat.", "val": 16, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["agendamentos", "ai_actions_log", "assinaturas", "configuracoes_horario", "creditos", "horarios_excepcionais", "logs_agendamentos", "pagamentos", "pending_bookings", "pending_tickets", "pontos", "profiles", "resgates", "support_conversations", "support_messages", "support_tickets", "system_logs", "webhook_logs"]}}, {"id": "ef_cancel_subscription", "name": "cancel-subscription", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "Edge Function serverless responsável pela operação 'cancel-subscription'.", "val": 14, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["assinaturas"]}}, {"id": "ef_check_availability", "name": "check-availability", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "Função de Inteligência Artificial: check-availability.", "val": 16, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["agendamentos", "barbeiros", "pending_bookings"]}}, {"id": "ef_confirm_plan_payment", "name": "confirm-plan-payment", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "Edge Function serverless responsável pela operação 'confirm-plan-payment'.", "val": 14, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["agendamentos", "assinaturas", "barbeiros", "pagamentos", "pagamentos_plano_barbearia", "profiles", "user_roles"]}}, {"id": "ef_create_barber", "name": "create-barber", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "* CREATE-BARBER — Cria um barbeiro DUB (admin global)  REFATORADO: Usa _shared/response.ts e _shared/auth.ts  Fluxo: Verifica admin → cria auth user → cria barbeiro →        armazena dados privados → atribui role", "val": 14, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["barbeiros", "barbeiros_private", "user_roles"]}}, {"id": "ef_create_payment", "name": "create-payment", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "* Valida CPF usando o algoritmo oficial", "val": 14, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["agendamentos", "barbeiro_servico_duracao", "barbeiros", "configuracoes_horario", "configuracoes_horario_barbeiro", "horarios_excepcionais", "horarios_excepcionais_barbeiro", "notificacoes", "pagamentos", "pending_bookings", "profiles", "servicos"]}}, {"id": "ef_create_subscription", "name": "create-subscription", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "Edge Function serverless responsável pela operação 'create-subscription'.", "val": 14, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["assinaturas", "barbeiros", "planos", "profiles"]}}, {"id": "ef_create_tenant_barber", "name": "create-tenant-barber", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "Edge Function serverless responsável pela operação 'create-tenant-barber'.", "val": 14, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["barbeiros", "barbeiros_private", "tenants", "user_roles"]}}, {"id": "ef_create_tenant_plan_subscription", "name": "create-tenant-plan-subscription", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "* create-tenant-plan-subscription Assinatura SaaS da barbearia via Pix Automático Woovi (PIX_RECURRING, jornada 3: o primeiro pagamento já autoriza a recorrência mensal). O valor é direcionado à subconta \"DUB\". A barbearia só é liberada depois que o banco confirma o pagamento.  Ações:  - { action: \"", "val": 14, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["barbeiros", "informacoes_empresa", "profiles", "system_config", "tenant_assinaturas", "tenant_members", "tenant_planos", "tenant_unidades", "tenants", "woovi_charges"]}}, {"id": "ef_delete_barber", "name": "delete-barber", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "* DELETE-BARBER — Exclui completamente um barbeiro do sistema  REFATORADO: Usa _shared/response.ts e _shared/auth.ts  Remove: agendamentos, pagamentos, comissões, avaliações, horários, portfólio, financeiro, WhatsApp, dados privados, perfil, roles e usuário do auth.", "val": 14, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["account_deletion_feedback", "admin_google_tokens", "agendamento_lembretes_log", "agendamentos", "ai_actions_log", "ai_feedback", "assinaturas", "audit_logs", "barbeiro_avaliacoes", "barbeiro_google_tokens", "barbeiro_portfolio", "barbeiro_servico_duracao", "barbeiro_unidades", "barbeiros", "barbeiros_private", "chaves_pix", "comissoes", "configuracoes_horario_barbeiro", "contas_bancarias", "creditos", "depositos", "dispositivos_conectados", "email_confirmation_tokens", "financeiro_auth_attempts", "financeiro_auth_sessions", "horarios_excepcionais_barbeiro", "logs_agendamentos", "notificacoes", "pagamentos", "pending_bookings", "pending_tickets", "pin_financeiro", "plano_agendamentos_usos", "pontos", "profiles", "resgates", "saques", "support_conversations", "support_tickets", "tenants", "user_roles", "wallet_balances", "wallet_deposits", "wallet_transactions", "whatsapp_instances", "whatsapp_verification_codes"]}}, {"id": "ef_delete_tenant_account", "name": "delete-tenant-account", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "* Edge Function: delete-tenant-account  Remove completamente uma barbearia (tenant) do sistema: 2. Remove instâncias WhatsApp da Evolution API 3. Apaga todos os dados do banco vinculados ao tenant 4. Remove o registro do tenant e o user_role do owner", "val": 14, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["account_deletion_feedback", "admin_google_tokens", "agendamento_lembretes_log", "agendamentos", "ai_actions_log", "ai_feedback", "audit_logs", "barbeiro_avaliacoes", "barbeiro_google_tokens", "barbeiro_servico_duracao", "barbeiros", "barbeiros_private", "chaves_pix", "comissoes", "configuracoes_horario_barbeiro", "contas_bancarias", "creditos", "depositos", "discount_coupons", "disparos_programados", "dispositivos_conectados", "email_confirmation_tokens", "financeiro_auth_attempts", "financeiro_auth_sessions", "horarios_excepcionais_barbeiro", "notificacoes", "pagamentos", "pending_bookings", "pending_tickets", "pin_financeiro", "plano_agendamentos_usos", "planos", "pontos", "profiles", "promocoes", "resgates", "saques", "servicos", "support_conversations", "support_tickets", "tenant_members", "tenant_mensagem_templates", "tenant_webhook_config", "tenants", "user_roles", "wallet_balances", "wallet_deposits", "wallet_transactions", "whatsapp_instances", "whatsapp_verification_codes"]}}, {"id": "ef_delete_unit", "name": "delete-unit", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "* DELETE-UNIT EDGE FUNCTION  Exclusão atômica de uma unidade com cascade correto: 1. Deleta vínculos em barbeiro_unidades 2. Nullifica unidade_id em agendamentos 3. Nullifica unidade_id em barbeiros 4. Deleta o registro em tenant_unidades  Ordem respeita FK constraints (filhas antes do pai).", "val": 14, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["agendamentos", "barbeiro_unidades", "barbeiros", "barber_unit_roles", "client_booking_blocks", "configuracoes_horario_unidade", "horarios_excepcionais", "tenant_unidades"]}}, {"id": "ef_efi_create_pix_charge", "name": "efi-create-pix-charge", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "Função de integração financeira EFI Bank: efi-create-pix-charge.", "val": 15, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["barbeiros", "chaves_pix", "efi_pix_charges"]}}, {"id": "ef_efi_send_pix", "name": "efi-send-pix", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "Função de integração financeira EFI Bank: efi-send-pix.", "val": 15, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["barbeiros", "carteiras", "chaves_pix", "transacoes_financeiras"]}}, {"id": "ef_efi_validate_pix_key", "name": "efi-validate-pix-key", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "Função de integração financeira EFI Bank: efi-validate-pix-key.", "val": 15, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["barbeiros"]}}, {"id": "ef_efi_webhook", "name": "efi-webhook", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "Função de integração financeira EFI Bank: efi-webhook.", "val": 15, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["carteiras", "efi_pix_charges", "efi_webhook_events"]}}, {"id": "ef_encrypt_pix_key", "name": "encrypt-pix-key", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "* encrypt-pix-key Recebe a chave PIX em texto plano e a salva criptografada (AES-256-GCM) usando PIX_ENCRYPTION_KEY (32 bytes em base64 ou hex) configurada no servidor.  Body: {   tipo,   chave,   apelido?,   nome_titular?,   instituicao?,   barbeiro_id?,   is_default? }", "val": 14, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["chaves_pix"]}}, {"id": "ef_execute_scheduled_dispatches", "name": "execute-scheduled-dispatches", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "Função de mensageria e automação WhatsApp: execute-scheduled-dispatches.", "val": 16, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["barbeiros", "disparos_programados", "profiles", "system_logs", "tenants", "webhook_config", "whatsapp_instances"]}}, {"id": "ef_generate_caption", "name": "generate-caption", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "Função de Inteligência Artificial: generate-caption.", "val": 16, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": []}}, {"id": "ef_generate_dispatch_message", "name": "generate-dispatch-message", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "Função de mensageria e automação WhatsApp: generate-dispatch-message.", "val": 16, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": []}}, {"id": "ef_generate_promotion_ai", "name": "generate-promotion-ai", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "Função de Inteligência Artificial: generate-promotion-ai.", "val": 16, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["system_logs"]}}, {"id": "ef_generate_subscription_charges", "name": "generate-subscription-charges", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "Edge Function serverless responsável pela operação 'generate-subscription-charges'.", "val": 14, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["assinaturas"]}}, {"id": "ef_google_calendar_sync", "name": "google-calendar-sync", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "Edge Function serverless responsável pela operação 'google-calendar-sync'.", "val": 14, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["agendamentos"]}}, {"id": "ef_health_check", "name": "health-check", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "* HEALTH-CHECK — Verifica a saúde dos serviços integrados  Migrado para padrão ok/fail de _shared/response.ts", "val": 14, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["profiles", "system_health_checks"]}}, {"id": "ef_instagram_auth", "name": "instagram-auth", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "* Edge function para gerenciar autenticação OAuth do Instagram.  Endpoints: - POST { action: \"get_auth_url\", barbeiro_id } → retorna URL de autorização - POST { action: \"exchange_code\", code, barbeiro_id } → troca code por token - POST { action: \"disconnect\", barbeiro_id } → remove conexão - POST {", "val": 14, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["barbeiros", "instagram_connections", "instagram_posts_cache"]}}, {"id": "ef_manage_clients", "name": "manage-clients", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "Edge Function serverless responsável pela operação 'manage-clients'.", "val": 14, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["agendamentos", "audit_logs", "barbeiros", "profiles", "servicos", "system_config", "tenant_clientes", "tenants", "user_roles", "wallet_balances"]}}, {"id": "ef_process_withdrawal", "name": "process-withdrawal", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "Edge Function serverless responsável pela operação 'process-withdrawal'.", "val": 14, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": []}}, {"id": "ef_renew_subscription", "name": "renew-subscription", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "* ═══════════════════════════════════════════════════════════ RENEW-SUBSCRIPTION — Renovação antecipada de plano ═══════════════════════════════════════════════════════════  Fluxo:   1. Autenticação via JWT   2. Chama RPC renovar_plano_cliente (valida usos restantes)   3. Dinheiro → RPC já renovou,", "val": 14, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["assinaturas", "notificacoes", "planos"]}}, {"id": "ef_reset_client_password", "name": "reset-client-password", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "Edge Function serverless responsável pela operação 'reset-client-password'.", "val": 14, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["audit_logs", "user_roles"]}}, {"id": "ef_save_efi_credentials", "name": "save-efi-credentials", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "Função de integração financeira EFI Bank: save-efi-credentials.", "val": 15, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["barbeiros", "efi_credenciais", "user_roles"]}}, {"id": "ef_send_appointment_reminders", "name": "send-appointment-reminders", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "Função de mensageria e automação WhatsApp: send-appointment-reminders.", "val": 16, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["agendamento_lembretes_log", "agendamentos", "agente_config", "agente_webhook_global", "barbeiros", "mensagem_templates", "profiles", "servicos", "tenants", "webhook_config", "whatsapp_instances"]}}, {"id": "ef_send_confirmation_email", "name": "send-confirmation-email", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "Função de Inteligência Artificial: send-confirmation-email.", "val": 16, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["email_confirmation_tokens", "system_logs"]}}, {"id": "ef_send_push_notification", "name": "send-push-notification", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "Edge Function serverless responsável pela operação 'send-push-notification'.", "val": 14, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["barbeiros", "barbeiros_private", "barber_fcm_tokens", "decrypted_secrets", "whatsapp_instances"]}}, {"id": "ef_send_webhook_event", "name": "send-webhook-event", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "* Formata o número de telefone no padrão WhatsApp: NUMERO@s.whatsapp.net", "val": 14, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["agendamentos", "barbeiros", "mensagem_templates", "profiles", "system_logs", "tenants", "webhook_config", "whatsapp_instances"]}}, {"id": "ef_speech_to_text", "name": "speech-to-text", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "Função de Inteligência Artificial: speech-to-text.", "val": 16, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": []}}, {"id": "ef_store_api", "name": "store-api", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "* ═══════════════════════════════════════════════════════════ STORE-API — API unificada do módulo de Loja ═══════════════════════════════════════════════════════════  Consolida todas as operações de loja em uma única Edge Function para economizar slots. Roteamento via campo \"action\" no body.  Action", "val": 14, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["barbeiros", "financeiro_auth_sessions", "notificacoes", "pedido_itens", "pedidos", "produtos", "reservas_estoque", "saques", "tenants", "woovi_charges"]}}, {"id": "ef_update_unit_barbers", "name": "update-unit-barbers", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "* UPDATE-UNIT-BARBERS EDGE FUNCTION  Atualiza atomicamente os vínculos entre barbeiros e uma unidade. 1. Deleta todos os vínculos existentes para a unidade 2. Insere os novos vínculos (se houver)  Se o insert falhar após o delete, a unidade ficará sem vínculos — preferível a um estado inconsistente", "val": 14, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["barbeiro_unidades"]}}, {"id": "ef_validate_appointment", "name": "validate-appointment", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "Função de motor de agendamentos e horários: validate-appointment.", "val": 16, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["agendamentos", "barbeiros", "pending_bookings"]}}, {"id": "ef_whatsapp_proxy", "name": "whatsapp-proxy", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "Função de mensageria e automação WhatsApp: whatsapp-proxy.", "val": 16, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["agente_webhook_global", "ai_agents", "barbeiros", "barbeiros_private", "tenants", "whatsapp_instances"]}}, {"id": "ef_whatsapp_verification", "name": "whatsapp-verification", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "Função de mensageria e automação WhatsApp: whatsapp-verification.", "val": 16, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["barbeiros", "system_logs", "tenant_clientes", "tenants", "webhook_config", "whatsapp_instances", "whatsapp_verification_codes"]}}, {"id": "ef_woovi_auto_withdraw_cron", "name": "woovi-auto-withdraw-cron", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "Função de integração financeira Woovi/OpenPix: woovi-auto-withdraw-cron.", "val": 16, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["barbeiros", "saques"]}}, {"id": "ef_woovi_create_charge", "name": "woovi-create-charge", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "Função de integração financeira Woovi/OpenPix: woovi-create-charge.", "val": 16, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["agendamentos"]}}, {"id": "ef_woovi_create_subaccount", "name": "woovi-create-subaccount", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "Função de integração financeira Woovi/OpenPix: woovi-create-subaccount.", "val": 16, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["barbeiros"]}}, {"id": "ef_woovi_get_balance", "name": "woovi-get-balance", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "Função de integração financeira Woovi/OpenPix: woovi-get-balance.", "val": 16, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["barbeiros"]}}, {"id": "ef_woovi_history", "name": "woovi-history", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "Função de integração financeira Woovi/OpenPix: woovi-history.", "val": 16, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["barbeiros", "saques", "woovi_charges"]}}, {"id": "ef_woovi_update_settings", "name": "woovi-update-settings", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "Função de integração financeira Woovi/OpenPix: woovi-update-settings.", "val": 16, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["barbeiros"]}}, {"id": "ef_woovi_wallet", "name": "woovi-wallet", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "Função de integração financeira Woovi/OpenPix: woovi-wallet.", "val": 16, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["barbeiros", "financeiro_auth_sessions", "saques", "system_config", "woovi_charges"]}}, {"id": "ef_woovi_webhook", "name": "woovi-webhook", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "Função de integração financeira Woovi/OpenPix: woovi-webhook.", "val": 16, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["webhook_logs", "woovi_charges"]}}, {"id": "ef_woovi_withdraw", "name": "woovi-withdraw", "cluster": "edge_fn", "category": "Supabase Edge Function", "desc": "Função de integração financeira Woovi/OpenPix: woovi-withdraw.", "val": 16, "details": {"runtime": "Deno / TypeScript", "tabelas_acessadas": ["barbeiros", "financeiro_auth_sessions", "saques"]}}, {"id": "tbl_agendamentos", "name": "agendamentos", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Tabela mestre de agendamentos: data, hora, cliente, barbeiro, status, total e notas.", "val": 12, "details": {"colunas": ["id", "user_id", "barbeiro_id", "servico_id", "data", "hora", "duracao", "status", "preco", "is_free", "usado_redemption_id", "observacoes", "created_at", "updated_at"], "referencias": ["auth", "servicos", "barbeiros"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_ai_actions_log", "name": "ai_actions_log", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Registro de ações tomadas autonomamente pelo agente de IA.", "val": 12, "details": {"colunas": ["id", "created_at", "session_id", "conversation_id", "user_id", "action_type", "action_name", "parameters", "result", "success", "error_message", "before_state", "after_state", "auto_approved", "approved_by"], "referencias": ["support_conversations"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_ai_feedback", "name": "ai_feedback", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Avaliações de usuários sobre as respostas fornecidas pela IA BIA.", "val": 12, "details": {"colunas": ["id", "created_at", "conversation_id", "message_id", "user_id", "rating", "helpful", "comment", "resolved_issue"], "referencias": ["support_messages", "support_conversations"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_assinaturas", "name": "assinaturas", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Contratos ativos de assinaturas de clientes com contagem de cortes.", "val": 12, "details": {"colunas": ["id", "user_id", "plano_id", "status", "next_billing_date", "payment_method", "gateway_subscription_id", "created_at", "updated_at"], "referencias": ["auth", "planos"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_audit_logs", "name": "audit_logs", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Rastreabilidade de ações críticas (quem alterou o que e quando).", "val": 12, "details": {"colunas": ["id", "user_id", "action", "entity_type", "entity_id", "old_values", "new_values", "ip_address", "user_agent", "created_at"], "referencias": [], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_barbeiro_formas_pagamento", "name": "barbeiro_formas_pagamento", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Métodos de pagamento aceitos pelo barbeiro (Pix, Dinheiro, Cartão).", "val": 12, "details": {"colunas": ["id", "barbeiro_id", "user_id", "pix_habilitado", "pagamento_barbearia_habilitado", "created_at", "updated_at"], "referencias": ["barbeiros"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_barbeiro_servico_duracao", "name": "barbeiro_servico_duracao", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Tempo de execução e preço customizado por barbeiro para cada serviço.", "val": 12, "details": {"colunas": ["id", "barbeiro_id", "servico_id", "duracao_personalizada", "created_at", "updated_at"], "referencias": ["servicos", "barbeiros"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_barbeiro_taxa_cancelamento", "name": "barbeiro_taxa_cancelamento", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Configurações individuais de tolerância e valor de taxa por no-show.", "val": 12, "details": {"colunas": ["id", "barbeiro_id", "tenant_id", "habilitado", "tipo", "valor", "horas_antecedencia", "created_at", "updated_at"], "referencias": ["barbeiros"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_barbeiro_unidades", "name": "barbeiro_unidades", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Vínculo de unidades onde o profissional presta atendimento.", "val": 12, "details": {"colunas": ["id", "barbeiro_id", "unidade_id", "is_primary", "created_at"], "referencias": ["tenant_unidades", "barbeiros"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_barbeiros", "name": "barbeiros", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Perfil do profissional: foto, biografia, chave Pix, comissão e configurações operacionais.", "val": 12, "details": {"colunas": ["id", "user_id", "apelido", "comissao_pct", "ativo", "created_at"], "referencias": ["auth"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_barber_fcm_tokens", "name": "barber_fcm_tokens", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Tokens de push notification de dispositivos móveis dos barbeiros.", "val": 12, "details": {"colunas": ["id", "barbeiro_id", "token", "platform", "user_agent", "last_seen_at", "created_at", "updated_at"], "referencias": ["barbeiros"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_barber_home_snapshot", "name": "barber_home_snapshot", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Snapshot serializado da tela inicial do barbeiro para carregamento instantâneo offline.", "val": 12, "details": {"colunas": ["barbeiro_id", "computed_for_date", "today_count", "yesterday_count", "pending_cash_count", "month_cuts", "last_month_cuts", "apt_month_revenue", "apt_last_month_revenue", "plan_cash_month", "plan_cash_last_month", "plan_pix_month", "plan_pix_last_month", "next_appointment", "recent_appointments"], "referencias": ["barbeiros"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_campanhas_config", "name": "campanhas_config", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Definições de campanhas de reativação de clientes e marketing.", "val": 12, "details": {"colunas": ["id", "tenant_id", "tipo", "ativo", "indicacoes_necessarias", "premio_descricao", "created_at", "updated_at"], "referencias": ["tenants"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_carteiras", "name": "carteiras", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Controle de saldo disponível, saldo bloqueado e rendimentos por barbeiro.", "val": 12, "details": {"colunas": ["id", "barbeiro_id", "saldo_disponivel", "pix_automatico_ativo", "chave_pix", "tipo_chave_pix", "chave_pix_validada", "chave_pix_titular", "chave_pix_validada_em", "created_at", "updated_at"], "referencias": ["barbeiros"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_chaves_pix", "name": "chaves_pix", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Chaves Pix de barbeiros e barbearias validadas para transações.", "val": 12, "details": {"colunas": ["id", "user_id", "barbeiro_id", "tipo", "chave", "apelido", "is_default", "created_at", "updated_at"], "referencias": ["barbeiros"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_client_booking_blocks", "name": "client_booking_blocks", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Registro de bloqueios de clientes por faltas recorrentes ou comportamento indevido.", "val": 12, "details": {"colunas": ["id", "tenant_id", "client_user_id", "scope", "barbeiro_id", "blocked_by_user_id", "created_at", "updated_at"], "referencias": ["tenants", "barbeiros"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_client_home_snapshot", "name": "client_home_snapshot", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Snapshot em cache da tela do cliente para renderização rápida sem rede.", "val": 12, "details": {"colunas": ["user_id", "profile", "appointments", "pending_bookings", "has_active_plan", "available_credits", "paid_completed_count", "total_completed_count", "redemptions_total", "redemptions_available", "required_points", "points", "loyalty_active", "is_stale", "updated_at"], "referencias": [], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_cliente_debitos_cancelamento", "name": "cliente_debitos_cancelamento", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Débitos pendentes gerados contra clientes que cancelaram fora do prazo.", "val": 12, "details": {"colunas": ["id", "cliente_id", "barbeiro_id", "tenant_id", "agendamento_id", "valor_taxa", "tipo_taxa", "porcentagem_aplicada", "valor_servico_original", "motivo", "status", "pix_charge_id", "pix_payload", "pix_qrcode", "pago_em"], "referencias": ["barbeiros"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_comissoes", "name": "comissoes", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Detalhamento de comissões calculadas por cada atendimento concluído.", "val": 12, "details": {"colunas": ["id", "barbeiro_id", "appointment_id", "valor", "percentual", "pago", "created_at"], "referencias": ["agendamentos", "barbeiros"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_configuracoes_horario", "name": "configuracoes_horario", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Grade semanal padrão de horários de abertura e fechamento da barbearia.", "val": 12, "details": {"colunas": ["id", "dia_semana", "aberto", "hora_abertura", "hora_fechamento", "hora_almoco_inicio", "hora_almoco_fim", "delay_entre_servicos", "created_at", "updated_at"], "referencias": [], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_configuracoes_horario_unidade", "name": "configuracoes_horario_unidade", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Horários específicos por unidade filial da rede.", "val": 12, "details": {"colunas": ["id", "tenant_id", "unidade_id", "dia_semana", "aberto", "hora_abertura", "hora_fechamento", "hora_almoco_inicio", "hora_almoco_fim", "delay_entre_servicos", "slot_interval_minutes", "created_at", "updated_at"], "referencias": ["tenant_unidades", "tenants"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_contas_bancarias", "name": "contas_bancarias", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Dados bancários cadastrados para repasse e transferências.", "val": 12, "details": {"colunas": ["id", "user_id", "barbeiro_id", "banco_codigo", "banco_nome", "titular_nome", "titular_cpf_cnpj", "agencia", "conta", "conta_digito", "tipo_conta", "is_default", "created_at", "updated_at"], "referencias": ["barbeiros"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_contas_financeiras", "name": "contas_financeiras", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Contas contábeis para controle de fluxo de caixa e centros de custo.", "val": 12, "details": {"colunas": ["id", "responsavel_nome", "responsavel_barbeiro_id", "tipo_conta", "asaas_account_id", "asaas_wallet_id", "efi_account_id", "observacoes", "ativo", "created_at", "updated_at", "created_by"], "referencias": ["barbeiros"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_creditos", "name": "creditos", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Saldo de créditos concedidos aos clientes para uso em novos cortes.", "val": 12, "details": {"colunas": ["id", "user_id", "valor", "origem", "usado", "agendamento_origem_id", "agendamento_usado_id", "created_at", "expires_at"], "referencias": ["auth"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_depositos", "name": "depositos", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Créditos inseridos na plataforma via gateway ou estorno.", "val": 12, "details": {"colunas": ["id", "user_id", "barbeiro_id", "valor", "status", "pix_qr_code", "pix_payload", "gateway_payment_id", "expires_at", "confirmado_em", "created_at", "updated_at"], "referencias": ["barbeiros"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_discount_coupons", "name": "discount_coupons", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Cupons de desconto com código alfanumérico e percentual.", "val": 12, "details": {"colunas": ["id", "tenant_id", "code", "nome", "percent", "active", "starts_at", "expires_at", "created_at"], "referencias": ["tenants"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_disparos_programados", "name": "disparos_programados", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Fila de mensagens programadas para envio via WhatsApp com horário fixado.", "val": 12, "details": {"colunas": ["id", "mensagem", "contatos_ids", "data_programada", "executado", "executado_em", "resultado", "created_at", "created_by"], "referencias": ["auth"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_dispositivos_autorizados", "name": "dispositivos_autorizados", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Dispositivos confiáveis habilitados para login sem OTP.", "val": 12, "details": {"colunas": ["id", "device_fingerprint", "device_name", "device_type", "descricao", "autorizado_por", "created_at"], "referencias": ["auth"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_dispositivos_conectados", "name": "dispositivos_conectados", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Sessões ativas com IP, user-agent e última atividade.", "val": 12, "details": {"colunas": ["id", "user_id", "device_fingerprint", "device_name", "device_type", "browser", "os", "ip_address", "last_activity", "is_active", "created_at"], "referencias": ["auth"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_efi_pix_charges", "name": "efi_pix_charges", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Cobranças geradas pelo gateway de contingência EFI Bank.", "val": 12, "details": {"colunas": ["id", "txid", "loc_id", "br_code", "qr_code_image", "valor", "barbeiro_id", "user_id", "chave_pix_destino", "descricao", "status", "expires_at", "paid_at", "e2e_id", "raw_charge"], "referencias": ["barbeiros"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_efi_pix_payouts", "name": "efi_pix_payouts", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Transferências Pix efetuadas pelo EFI Bank.", "val": 12, "details": {"colunas": ["id", "charge_id", "barbeiro_id", "idempotency_key", "efi_id_envio", "e2e_id", "chave_pix_destino", "valor", "status", "error_message", "raw_response", "created_at", "updated_at", "completed_at"], "referencias": ["barbeiros", "efi_pix_charges"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_efi_saldo_alertas", "name": "efi_saldo_alertas", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Alertas de saldo mínimo na conta bancária corporativa.", "val": 12, "details": {"colunas": ["id", "ambiente", "saldo_atual", "limite_minimo", "resolvido", "resolvido_em", "detalhes", "created_at"], "referencias": [], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_efi_webhook_events", "name": "efi_webhook_events", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Log de webhooks recebidos do banco EFI Bank.", "val": 12, "details": {"colunas": ["id", "event_signature", "txid", "e2e_id", "payload", "processed_at"], "referencias": [], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_email_confirmation_tokens", "name": "email_confirmation_tokens", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Tokens de validação de email no cadastro.", "val": 12, "details": {"colunas": ["id", "user_id", "token", "expires_at", "created_at", "used_at"], "referencias": [], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_financeiro_marco_zero", "name": "financeiro_marco_zero", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Ponto de referência contábil para auditorias e reconciliação de saldo.", "val": 12, "details": {"colunas": ["id", "data_corte", "criado_por", "created_at"], "referencias": [], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_financial_entries", "name": "financial_entries", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Lançamentos financeiros de receitas e despesas gerais da barbearia.", "val": 12, "details": {"colunas": ["id", "tipo", "categoria", "descricao", "valor", "data", "nota_anexo", "related_appointment_id", "created_at", "updated_at"], "referencias": ["agendamentos"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_horarios_excepcionais", "name": "horarios_excepcionais", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Horários especiais, feriados ou bloqueios extraordinários na agenda.", "val": 12, "details": {"colunas": ["id", "data", "aberto", "hora_abertura", "hora_fechamento", "hora_almoco_inicio", "hora_almoco_fim", "motivo", "created_at", "updated_at"], "referencias": [], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_informacoes_aplicativo", "name": "informacoes_aplicativo", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Versão do app, changelog e notas de atualização.", "val": 12, "details": {"colunas": ["id", "categoria", "chave", "titulo", "conteudo", "ordem", "ativo", "atualizado_em", "atualizado_por"], "referencias": ["auth"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_informacoes_empresa", "name": "informacoes_empresa", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Cadastro empresarial, termos de uso e política de privacidade.", "val": 12, "details": {"colunas": ["id", "categoria", "chave", "valor", "ativo", "atualizado_em"], "referencias": [], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_instagram_connections", "name": "instagram_connections", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Tokens de acesso e dados da conta do Instagram conectada.", "val": 12, "details": {"colunas": ["id", "barbeiro_id", "ig_user_id", "ig_username", "access_token", "token_expires_at", "profile_picture_url", "show_posts_on_landing", "created_at", "updated_at"], "referencias": ["barbeiros"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_instagram_posts_cache", "name": "instagram_posts_cache", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Cache de imagens recentes do Instagram para rápida exibição no perfil.", "val": 12, "details": {"colunas": ["id", "connection_id", "ig_post_id", "media_type", "media_url", "thumbnail_url", "caption", "permalink", "post_timestamp", "cached_at"], "referencias": ["instagram_connections"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_logs_agendamentos", "name": "logs_agendamentos", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Histórico imutável de alterações de status dos agendamentos.", "val": 12, "details": {"colunas": ["id", "agendamento_id", "usuario_id", "acao", "timestamp", "detalhes"], "referencias": ["agendamentos"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_loja_cupons", "name": "loja_cupons", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Cupons de desconto válidos exclusivamente para itens da loja física.", "val": 12, "details": {"colunas": ["id", "tenant_id", "produto_id", "codigo", "descricao", "tipo_desconto", "valor_desconto", "valor_minimo", "max_usos_total", "max_usos_por_cliente", "usos_count", "valido_de", "valido_ate", "ativo", "created_by"], "referencias": ["produtos", "tenants"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_manutencao_emails_permitidos", "name": "manutencao_emails_permitidos", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Lista de emails com acesso permitido durante o Modo Manutenção.", "val": 12, "details": {"colunas": ["id", "email", "descricao", "created_at", "created_by"], "referencias": ["auth"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_mensagem_templates", "name": "mensagem_templates", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Templates de texto com tags dinâmicas como {nome}, {horario} e {barbeiro}.", "val": 12, "details": {"colunas": ["id", "slug", "nome", "descricao", "conteudo", "variaveis_disponiveis", "categoria", "ativo", "updated_by", "created_at", "updated_at"], "referencias": [], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_notificacoes", "name": "notificacoes", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Notificações internas in-app entregues no painel do usuário.", "val": 12, "details": {"colunas": ["id", "user_id", "tipo", "titulo", "mensagem", "agendamento_id", "lida", "created_at"], "referencias": ["auth", "agendamentos"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_pagamentos", "name": "pagamentos", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Tabela PostgreSQL do ecossistema: pagamentos.", "val": 12, "details": {"colunas": ["id", "user_id", "assinatura_id", "agendamento_id", "metodo", "valor", "status", "gateway_payment_id", "data_pagamento", "created_at"], "referencias": ["assinaturas", "auth", "agendamentos"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_pagamentos_plano_barbearia", "name": "pagamentos_plano_barbearia", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Faturamento das assinaturas do próprio SaaS da plataforma.", "val": 12, "details": {"colunas": ["id", "assinatura_id", "user_id", "barbeiro_id", "confirmado_por", "valor", "competencia", "observacoes", "created_at"], "referencias": ["assinaturas", "barbeiros"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_pending_bookings", "name": "pending_bookings", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Reservas em processo de pagamento ou aguardando aprovação.", "val": 12, "details": {"colunas": ["id", "user_id", "servico_id", "barbeiro_id", "data", "hora", "duracao", "preco", "observacoes", "payment_intent_id", "payment_method", "created_at", "expires_at"], "referencias": ["servicos", "barbeiros"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_pending_tickets", "name": "pending_tickets", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Chamados que necessitam de intervenção de um atendente humano.", "val": 12, "details": {"colunas": ["id", "pending_ticket_id", "created_at", "session_id", "conversation_id", "user_id", "user_name", "user_phone", "user_email", "summary", "description", "priority", "category", "retry_count", "status"], "referencias": ["support_tickets", "support_conversations"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_pin_financeiro", "name": "pin_financeiro", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Hash criptográfico de PINs de segurança para movimentações na carteira.", "val": 12, "details": {"colunas": ["id", "user_id", "pin_hash", "created_at", "updated_at"], "referencias": [], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_pix_charge_audit", "name": "pix_charge_audit", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Log de auditoria e validação de pagamentos Pix recebidos.", "val": 12, "details": {"colunas": ["id", "charge_id", "txid", "previous_status", "new_status", "decision_reason", "heuristic_signals", "decided_by", "created_at"], "referencias": ["pix_charges"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_plano_servicos", "name": "plano_servicos", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Serviços incluídos em cada plano de assinatura.", "val": 12, "details": {"colunas": ["plano_id", "servico_id", "created_at"], "referencias": ["servicos", "planos"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_planos", "name": "planos", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Planos de fidelidade e assinaturas mensais de cortes para clientes.", "val": 12, "details": {"colunas": ["id", "nome", "descricao", "preco_mensal", "limite_agendamentos_mes", "prioridade_agendamento", "beneficios_json", "ativo", "created_at", "updated_at"], "referencias": [], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_pontos", "name": "pontos", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Controle de pontuação do programa de fidelidade por cliente.", "val": 12, "details": {"colunas": ["id", "user_id", "promocao_id", "pontos", "last_awarded_at", "created_at", "updated_at"], "referencias": ["auth", "promocoes"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_portfolio_images", "name": "portfolio_images", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Galeria de fotos de cortes enviadas diretamente pelo barbeiro.", "val": 12, "details": {"colunas": ["id", "barbeiro_id", "tenant_id", "image_url", "caption", "ordem", "created_at", "updated_at"], "referencias": ["tenants", "barbeiros"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_profiles", "name": "profiles", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Perfis de usuários do Supabase Auth com nome, telefone, email e avatar.", "val": 12, "details": {"colunas": ["id", "nome", "cpf", "blocked", "created_at", "updated_at"], "referencias": ["auth"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_promocoes", "name": "promocoes", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Promoções vigentes com regras de desconto automático na finalização.", "val": 12, "details": {"colunas": ["id", "nome", "descricao", "pontos_necessarios", "weekly_required", "ativo", "created_at"], "referencias": [], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_push_subscriptions", "name": "push_subscriptions", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Inscrições de Web Push Notification para alertas no navegador.", "val": 12, "details": {"colunas": ["id", "user_id", "barbeiro_id", "endpoint", "p256dh", "auth", "subscription_json", "device_type", "user_agent", "last_seen_at", "created_at", "updated_at"], "referencias": ["auth", "barbeiros"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_relatorios_mensais", "name": "relatorios_mensais", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Dados consolidados de fechamento mensal para relatórios DRE.", "val": 12, "details": {"colunas": ["id", "mes", "ano", "receita_total", "receita_app", "receita_barbearia", "receita_credito", "receita_plano", "taxas_asaas", "lucro_liquido", "total_agendamentos", "agendamentos_completados", "agendamentos_cancelados", "agendamentos_no_show", "variacao_receita_percentual"], "referencias": [], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_resgates", "name": "resgates", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Histórico de benefícios e cortes resgatados com pontos de fidelidade.", "val": 12, "details": {"colunas": ["id", "user_id", "promocao_id", "status", "appointment_id", "created_at", "used_at", "expired_at"], "referencias": ["agendamentos", "auth", "promocoes"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_saques", "name": "saques", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Solicitações de transferência Pix realizadas pelos profissionais.", "val": 12, "details": {"colunas": ["id", "user_id", "barbeiro_id", "valor", "chave_pix_id", "chave_pix_valor", "chave_pix_tipo", "status", "motivo_cancelamento", "processado_em", "created_at", "updated_at"], "referencias": ["chaves_pix", "barbeiros"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_servicos", "name": "servicos", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Catálogo de serviços oferecidos com preço base, duração em minutos e categoria.", "val": 12, "details": {"colunas": ["id", "nome", "descricao", "duracao_minutos", "preco", "custo_produtos", "custo_mao_obra", "ativo", "created_at", "updated_at"], "referencias": [], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_support_conversations", "name": "support_conversations", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Sessões de conversa mantidas com a IA no chat de suporte.", "val": 12, "details": {"colunas": ["id", "user_id", "status", "created_at", "updated_at", "last_message_at", "rating", "resolved_at"], "referencias": ["auth"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_support_messages", "name": "support_messages", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Histórico de mensagens trocadas nos chamados de suporte.", "val": 12, "details": {"colunas": ["id", "conversation_id", "role", "content", "metadata", "created_at"], "referencias": ["support_conversations"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_support_tickets", "name": "support_tickets", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Chamados de suporte abertos por clientes ou barbeiros.", "val": 12, "details": {"colunas": ["id", "conversation_id", "user_id", "title", "description", "status", "priority", "category", "location", "error_message", "metadata", "created_at", "updated_at", "resolved_at"], "referencias": ["auth", "support_conversations"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_system_config", "name": "system_config", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Variáveis de configuração do sistema em runtime.", "val": 12, "details": {"colunas": ["id", "chave", "valor", "descricao", "updated_at", "updated_by"], "referencias": ["auth"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_system_health_checks", "name": "system_health_checks", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Métricas de saúde e disponibilidade dos serviços.", "val": 12, "details": {"colunas": ["id", "service_name", "status", "last_check_at", "error_message", "response_time_ms", "metadata"], "referencias": [], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_system_logs", "name": "system_logs", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Log central de erros e exceções não tratadas.", "val": 12, "details": {"colunas": ["id", "level", "category", "message", "details", "user_id", "created_at"], "referencias": [], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_taxas_gateway", "name": "taxas_gateway", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Configuração de tarifas operacionais de cartão e Pix dos gateways.", "val": 12, "details": {"colunas": ["id", "metodo_pagamento", "tipo_taxa", "valor_taxa", "descricao", "ativo", "created_at", "updated_at"], "referencias": [], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_tenant_assinaturas", "name": "tenant_assinaturas", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Assinatura do SaaS da barbearia com a plataforma DUB.", "val": 12, "details": {"colunas": ["id", "tenant_id", "plano_id", "status", "trial_start", "trial_end", "subscription_start", "next_billing_date", "cancelled_at", "payment_method", "payment_reference", "created_at", "updated_at"], "referencias": ["tenant_planos", "tenants"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_tenant_cakto_events", "name": "tenant_cakto_events", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Webhooks de pagamento da plataforma de checkout Cakto.", "val": 12, "details": {"colunas": ["id", "tenant_id", "event_type", "cakto_order_id", "payload", "processed", "created_at"], "referencias": ["tenants"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_tenant_clientes", "name": "tenant_clientes", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Visão isolada de clientes vinculados ao tenant.", "val": 12, "details": {"colunas": ["id", "tenant_id", "user_id", "created_at", "added_by"], "referencias": ["tenants"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_tenant_members", "name": "tenant_members", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Membros e administradores com acesso à barbearia.", "val": 12, "details": {"colunas": ["id", "tenant_id", "user_id", "role", "created_at"], "referencias": ["tenants"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_tenant_mensagem_templates", "name": "tenant_mensagem_templates", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Templates customizados no nível da barbearia.", "val": 12, "details": {"colunas": ["id", "tenant_id", "slug", "conteudo", "ativo", "created_at", "updated_at"], "referencias": ["tenants"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_tenant_plano_faixas", "name": "tenant_plano_faixas", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Faixas de preço e limites de barbeiros por plano SaaS.", "val": 12, "details": {"colunas": ["id", "plano_id", "min_barbeiros", "max_barbeiros", "preco_cheio", "preco_promocional", "created_at"], "referencias": ["tenant_planos"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_tenant_planos", "name": "tenant_planos", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Tabela de planos da plataforma DUB para as barbearias.", "val": 12, "details": {"colunas": ["id", "nome", "descricao", "preco_mensal", "preco_anual", "destaque", "funcionalidades", "ativo", "created_at", "updated_at"], "referencias": [], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_tenant_unidades", "name": "tenant_unidades", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Unidades associadas ao tenant.", "val": 12, "details": {"colunas": ["id", "tenant_id", "nome", "slug", "cnpj", "cpf", "email", "telefone", "whatsapp", "site", "logo_url", "cep", "rua", "numero", "complemento"], "referencias": ["tenants"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_tenant_webhook_config", "name": "tenant_webhook_config", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Configurações de webhooks específicas da barbearia.", "val": 12, "details": {"colunas": ["id", "tenant_id", "webhook_url", "ativo", "created_at", "updated_at"], "referencias": ["tenants"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_tenants", "name": "tenants", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Registro do tenant proprietário da barbearia.", "val": 12, "details": {"colunas": ["id", "owner_user_id", "nome", "slogan", "cnpj", "cpf", "email", "telefone", "whatsapp", "site", "logo_url", "rua", "numero", "bairro", "cidade"], "referencias": [], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_ti_impersonation_logs", "name": "ti_impersonation_logs", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Auditoria de acessos administrativos de suporte técnico.", "val": 12, "details": {"colunas": ["id", "operador_id", "operador_email", "cliente_id", "cliente_nome", "cliente_email", "token", "expires_at", "usado_em", "ip_address", "created_at"], "referencias": ["auth"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_ti_mudancas_agendadas", "name": "ti_mudancas_agendadas", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Agendamento de migrações e manutenções programadas.", "val": 12, "details": {"colunas": ["id", "operador_id", "operador_email", "titulo", "descricao", "tipo", "payload", "payload_antes", "payload_depois", "status", "aplicar_em", "aplicada_em", "cancelada_em", "erro_msg", "created_at"], "referencias": ["auth"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_ti_permissoes", "name": "ti_permissoes", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Permissões de desenvolvedores e time de engenharia.", "val": 12, "details": {"colunas": ["id", "user_id", "perm_clientes", "perm_usuarios", "perm_barbearias", "perm_tenants", "perm_agendamentos", "perm_financeiro", "perm_notificacoes", "perm_webhooks", "perm_dispositivos", "perm_manutencao", "perm_logs", "perm_agendadas", "perm_monitoramento"], "referencias": ["auth"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_ti_security_config", "name": "ti_security_config", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Políticas de segurança, rate limit e bloqueios de IP.", "val": 12, "details": {"colunas": ["id", "password_hash", "created_at", "updated_at"], "referencias": [], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_ti_usuarios", "name": "ti_usuarios", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Usuários com credenciais de acesso ao suporte avançado TI.", "val": 12, "details": {"colunas": ["id", "user_id", "email", "nome", "ativo", "criado_por", "created_at", "updated_at"], "referencias": ["auth"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_transacoes_financeiras", "name": "transacoes_financeiras", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Livro-razão financeiro com todas as movimentações de entrada e saída.", "val": 12, "details": {"colunas": ["id", "carteira_id", "barbeiro_id", "tipo", "valor", "status", "saldo_anterior", "saldo_posterior", "efi_e2e_id", "efi_charge_id", "chave_pix_destino", "descricao", "erro_mensagem", "metadata", "created_at"], "referencias": ["efi_pix_charges", "barbeiros", "carteiras"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_user_roles", "name": "user_roles", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Definição de papéis de controle de acesso (admin, barber, client, unit_admin).", "val": 12, "details": {"colunas": ["id", "user_id", "role", "created_at"], "referencias": ["auth"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_webhook_config", "name": "webhook_config", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Configuração de endpoints para envio de eventos externos.", "val": 12, "details": {"colunas": ["id", "webhook_url", "ativo", "created_at", "updated_at"], "referencias": [], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_webhook_logs", "name": "webhook_logs", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Histórico de disparos de webhooks com payload e código de resposta.", "val": 12, "details": {"colunas": ["id", "provider", "event_type", "payload", "processed_at", "created_at"], "referencias": [], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_whatsapp_instances", "name": "whatsapp_instances", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Instâncias da Evolution API/Z-API conectadas via QR Code ou Pairing Code.", "val": 12, "details": {"colunas": ["id", "barbeiro_id", "instance_name", "api_key", "status", "qrcode_base64", "connected_at", "created_at", "updated_at"], "referencias": ["barbeiros"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_whatsapp_verification_codes", "name": "whatsapp_verification_codes", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Códigos de validação de número de WhatsApp.", "val": 12, "details": {"colunas": ["id", "user_id", "phone", "code", "expires_at", "verified_at", "attempts", "created_at", "user_name", "user_email", "user_cpf"], "referencias": [], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "tbl_woovi_charges", "name": "woovi_charges", "cluster": "database", "category": "Tabela PostgreSQL", "desc": "Cobranças Pix criadas na Woovi com CorrelationID, QR Code e status.", "val": 12, "details": {"colunas": ["id", "agendamento_id", "barbeiro_id", "correlation_id", "charge_id", "br_code", "qr_code_image", "value_centavos", "status", "paid_at", "raw_response", "created_at", "updated_at"], "referencias": ["agendamentos", "barbeiros"], "seguranca": "RLS (Row Level Security) Ativo"}}, {"id": "api_woovi", "name": "Woovi / OpenPix API", "cluster": "external", "category": "API Pix", "desc": "API bancária de Pix instantâneo, subcontas e liquidação automatizada em segundos.", "val": 22, "details": {}}, {"id": "api_efi", "name": "EFI Bank API (Gerencianet)", "cluster": "external", "category": "Banco Digital", "desc": "Gateway financeiro com certificado digital mTLS para emissão de Pix e verificação DICT.", "val": 19, "details": {}}, {"id": "api_evolution", "name": "Evolution API (WhatsApp)", "cluster": "external", "category": "Conector WhatsApp", "desc": "Servidor WebSocket/HTTP que gerencia instâncias do WhatsApp e entrega de mensagens.", "val": 21, "details": {}}, {"id": "api_openai", "name": "OpenAI API (GPT-4o)", "cluster": "external", "category": "Inteligência Artificial", "desc": "Modelos de linguagem para atendimento inteligente com RAG e assistente virtual BIA.", "val": 20, "details": {}}, {"id": "api_gemini", "name": "Google Gemini API", "cluster": "external", "category": "Inteligência Artificial", "desc": "Modelo de linguagem para geração multimodal e criação de cópias publicitárias.", "val": 18, "details": {}}, {"id": "api_instagram", "name": "Instagram Graph API", "cluster": "external", "category": "Rede Social", "desc": "API da Meta para sincronização automática de fotos recentes e carrosséis no app.", "val": 17, "details": {}}, {"id": "api_google_cal", "name": "Google Calendar API", "cluster": "external", "category": "Calendário", "desc": "Sincronização com o calendário Google pessoal do barbeiro para evitar overbooking.", "val": 16, "details": {}}, {"id": "api_firebase", "name": "Firebase Cloud Messaging (FCM)", "cluster": "external", "category": "Web Push", "desc": "Infraestrutura do Google para entrega instantânea de notificações Push em celulares.", "val": 18, "details": {}}, {"id": "hk_appointments", "name": "useAppointments", "cluster": "hooks", "category": "Custom Hook", "desc": "Consome e sincroniza a lista de agendamentos em tempo real via Supabase Realtime.", "val": 16, "details": {}}, {"id": "hk_agenda_mutations", "name": "useAgendaMutations", "cluster": "hooks", "category": "Custom Hook", "desc": "Mutações otimistas para criação, reagendamento e cancelamento de horários sem travar a UI.", "val": 16, "details": {}}, {"id": "hk_barber_agenda", "name": "useBarberAgenda", "cluster": "hooks", "category": "Custom Hook", "desc": "Carrega horários, pausas e compromissos específicos do barbeiro selecionado.", "val": 15, "details": {}}, {"id": "hk_barber_dashboard", "name": "useBarberDashboard", "cluster": "hooks", "category": "Custom Hook", "desc": "Calcula métricas diárias, faturamento e resumo financeiro do profissional.", "val": 16, "details": {}}, {"id": "hk_woovi_wallet", "name": "useWooviWallet", "cluster": "hooks", "category": "Custom Hook", "desc": "Consulta saldo, status da subconta e histórico de transações da carteira.", "val": 17, "details": {}}, {"id": "hk_auth_ready", "name": "useAuthReady", "cluster": "hooks", "category": "Custom Hook", "desc": "Garante que o estado de autenticação está consolidado antes de liberar navegação restrita.", "val": 15, "details": {}}, {"id": "hk_tenant", "name": "useTenant", "cluster": "hooks", "category": "Custom Hook", "desc": "Recupera os dados da barbearia ativa com base no slug ou domínio acessado.", "val": 17, "details": {}}, {"id": "hk_push", "name": "usePushNotifications", "cluster": "hooks", "category": "Custom Hook", "desc": "Controla autorização do navegador e envia o token de inscrição para a tabela push_subscriptions.", "val": 14, "details": {}}, {"id": "hk_maintenance", "name": "useMaintenanceMode", "cluster": "hooks", "category": "Custom Hook", "desc": "Intercepta rotas e renderiza tela de bloqueio quando a barbearia entra em manutenção.", "val": 14, "details": {}}, {"id": "hk_status_bar", "name": "useStatusBarColor", "cluster": "hooks", "category": "Custom Hook", "desc": "Ajusta a barra de status do celular conforme o tema (escuro/claro/carteira) no PWA.", "val": 13, "details": {}}], "links": [{"source": "hub_core", "target": "hub_landing", "type": "powers", "label": "coordena"}, {"source": "hub_core", "target": "hub_client", "type": "powers", "label": "coordena"}, {"source": "hub_core", "target": "hub_barber", "type": "powers", "label": "coordena"}, {"source": "hub_core", "target": "hub_admin", "type": "powers", "label": "coordena"}, {"source": "hub_core", "target": "hub_financial", "type": "powers", "label": "coordena"}, {"source": "hub_core", "target": "hub_whatsapp", "type": "powers", "label": "coordena"}, {"source": "hub_core", "target": "hub_ai", "type": "powers", "label": "coordena"}, {"source": "hub_core", "target": "hub_subscriptions", "type": "powers", "label": "coordena"}, {"source": "hub_core", "target": "hub_store", "type": "powers", "label": "coordena"}, {"source": "hub_core", "target": "hub_edge_functions", "type": "powers", "label": "coordena"}, {"source": "hub_core", "target": "hub_database", "type": "powers", "label": "coordena"}, {"source": "hub_core", "target": "hub_external", "type": "powers", "label": "coordena"}, {"source": "hub_core", "target": "hub_hooks", "type": "powers", "label": "coordena"}, {"source": "hub_landing", "target": "page_index", "type": "route", "label": "rota"}, {"source": "hub_landing", "target": "page_auth", "type": "route", "label": "rota"}, {"source": "hub_landing", "target": "page_auth_callback", "type": "route", "label": "rota"}, {"source": "hub_landing", "target": "page_onboarding", "type": "route", "label": "rota"}, {"source": "hub_landing", "target": "page_tenant_public", "type": "route", "label": "rota"}, {"source": "hub_landing", "target": "page_forgot_password", "type": "route", "label": "rota"}, {"source": "hub_landing", "target": "page_reset_password", "type": "route", "label": "rota"}, {"source": "hub_admin", "target": "page_agenda_fullscreen", "type": "route", "label": "rota"}, {"source": "hub_admin", "target": "page_admin_relatorios", "type": "route", "label": "rota"}, {"source": "hub_admin", "target": "page_admin_main", "type": "route", "label": "rota"}, {"source": "hub_barber", "target": "page_barbeiro_main", "type": "route", "label": "rota"}, {"source": "hub_client", "target": "page_cliente_main", "type": "route", "label": "rota"}, {"source": "hub_client", "target": "page_cliente_agendar", "type": "route", "label": "rota"}, {"source": "hub_subscriptions", "target": "page_cliente_assinar", "type": "route", "label": "rota"}, {"source": "hub_ai", "target": "page_support_chat", "type": "route", "label": "rota"}, {"source": "hub_admin", "target": "page_unit_admin_auth", "type": "route", "label": "rota"}, {"source": "hub_admin", "target": "page_unit_admin_dash", "type": "route", "label": "rota"}, {"source": "hub_landing", "target": "page_test_login", "type": "route", "label": "rota"}, {"source": "hub_landing", "target": "page_not_found", "type": "route", "label": "rota"}, {"source": "page_admin_main", "target": "adm_dashboard_kpis", "type": "contains", "label": "aba do painel"}, {"source": "page_admin_main", "target": "adm_agenda_grid", "type": "contains", "label": "aba do painel"}, {"source": "page_admin_main", "target": "adm_financeiro_flow", "type": "contains", "label": "aba do painel"}, {"source": "page_admin_main", "target": "adm_equipe_barbeiros", "type": "contains", "label": "aba do painel"}, {"source": "page_admin_main", "target": "adm_servicos_catalog", "type": "contains", "label": "aba do painel"}, {"source": "page_admin_main", "target": "adm_horarios_config", "type": "contains", "label": "aba do painel"}, {"source": "page_admin_main", "target": "adm_unidades_rede", "type": "contains", "label": "aba do painel"}, {"source": "page_admin_main", "target": "adm_crm_clientes", "type": "contains", "label": "aba do painel"}, {"source": "page_admin_main", "target": "adm_campanhas_mkt", "type": "contains", "label": "aba do painel"}, {"source": "page_admin_main", "target": "adm_disparos_painel", "type": "contains", "label": "aba do painel"}, {"source": "page_admin_main", "target": "adm_cupons_promocoes", "type": "contains", "label": "aba do painel"}, {"source": "page_admin_main", "target": "adm_planos_gestao", "type": "contains", "label": "aba do painel"}, {"source": "page_admin_main", "target": "adm_loja_estoque", "type": "contains", "label": "aba do painel"}, {"source": "page_admin_main", "target": "adm_suporte_tickets", "type": "contains", "label": "aba do painel"}, {"source": "page_admin_main", "target": "adm_dados_empresa", "type": "contains", "label": "aba do painel"}, {"source": "page_admin_main", "target": "adm_seguranca_pin", "type": "contains", "label": "aba do painel"}, {"source": "page_barbeiro_main", "target": "barb_dashboard_view", "type": "contains", "label": "aba do barbeiro"}, {"source": "page_barbeiro_main", "target": "barb_agenda_timeline", "type": "contains", "label": "aba do barbeiro"}, {"source": "page_barbeiro_main", "target": "barb_carteira_pix", "type": "contains", "label": "aba do barbeiro"}, {"source": "page_barbeiro_main", "target": "barb_saque_instantaneo", "type": "contains", "label": "aba do barbeiro"}, {"source": "page_barbeiro_main", "target": "barb_confirmacao_cortes", "type": "contains", "label": "aba do barbeiro"}, {"source": "page_barbeiro_main", "target": "barb_horarios_individuais", "type": "contains", "label": "aba do barbeiro"}, {"source": "page_barbeiro_main", "target": "barb_portfolio_insta", "type": "contains", "label": "aba do barbeiro"}, {"source": "page_barbeiro_main", "target": "barb_avaliacoes_feed", "type": "contains", "label": "aba do barbeiro"}, {"source": "page_barbeiro_main", "target": "barb_meu_plano", "type": "contains", "label": "aba do barbeiro"}, {"source": "hub_edge_functions", "target": "ef_admin_cancel_appointments", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_ai_support_chat", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_cancel_subscription", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_check_availability", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_confirm_plan_payment", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_create_barber", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_create_payment", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_create_subscription", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_create_tenant_barber", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_create_tenant_plan_subscription", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_delete_barber", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_delete_tenant_account", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_delete_unit", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_efi_create_pix_charge", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_efi_send_pix", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_efi_validate_pix_key", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_efi_webhook", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_encrypt_pix_key", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_execute_scheduled_dispatches", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_generate_caption", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_generate_dispatch_message", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_generate_promotion_ai", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_generate_subscription_charges", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_google_calendar_sync", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_health_check", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_instagram_auth", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_manage_clients", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_process_withdrawal", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_renew_subscription", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_reset_client_password", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_save_efi_credentials", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_send_appointment_reminders", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_send_confirmation_email", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_send_push_notification", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_send_webhook_event", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_speech_to_text", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_store_api", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_update_unit_barbers", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_validate_appointment", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_whatsapp_proxy", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_whatsapp_verification", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_woovi_auto_withdraw_cron", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_woovi_create_charge", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_woovi_create_subaccount", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_woovi_get_balance", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_woovi_history", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_woovi_update_settings", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_woovi_wallet", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_woovi_webhook", "type": "executes", "label": "executa"}, {"source": "hub_edge_functions", "target": "ef_woovi_withdraw", "type": "executes", "label": "executa"}, {"source": "hub_database", "target": "tbl_agendamentos", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_ai_actions_log", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_ai_feedback", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_assinaturas", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_audit_logs", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_barbeiro_formas_pagamento", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_barbeiro_servico_duracao", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_barbeiro_taxa_cancelamento", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_barbeiro_unidades", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_barbeiros", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_barber_fcm_tokens", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_barber_home_snapshot", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_campanhas_config", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_carteiras", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_chaves_pix", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_client_booking_blocks", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_client_home_snapshot", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_cliente_debitos_cancelamento", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_comissoes", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_configuracoes_horario", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_configuracoes_horario_unidade", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_contas_bancarias", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_contas_financeiras", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_creditos", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_depositos", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_discount_coupons", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_disparos_programados", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_dispositivos_autorizados", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_dispositivos_conectados", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_efi_pix_charges", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_efi_pix_payouts", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_efi_saldo_alertas", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_efi_webhook_events", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_email_confirmation_tokens", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_financeiro_marco_zero", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_financial_entries", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_horarios_excepcionais", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_informacoes_aplicativo", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_informacoes_empresa", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_instagram_connections", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_instagram_posts_cache", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_logs_agendamentos", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_loja_cupons", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_manutencao_emails_permitidos", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_mensagem_templates", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_notificacoes", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_pagamentos", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_pagamentos_plano_barbearia", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_pending_bookings", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_pending_tickets", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_pin_financeiro", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_pix_charge_audit", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_plano_servicos", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_planos", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_pontos", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_portfolio_images", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_profiles", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_promocoes", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_push_subscriptions", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_relatorios_mensais", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_resgates", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_saques", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_servicos", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_support_conversations", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_support_messages", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_support_tickets", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_system_config", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_system_health_checks", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_system_logs", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_taxas_gateway", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_tenant_assinaturas", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_tenant_cakto_events", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_tenant_clientes", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_tenant_members", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_tenant_mensagem_templates", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_tenant_plano_faixas", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_tenant_planos", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_tenant_unidades", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_tenant_webhook_config", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_tenants", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_ti_impersonation_logs", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_ti_mudancas_agendadas", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_ti_permissoes", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_ti_security_config", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_ti_usuarios", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_transacoes_financeiras", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_user_roles", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_webhook_config", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_webhook_logs", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_whatsapp_instances", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_whatsapp_verification_codes", "type": "schema", "label": "tabela"}, {"source": "hub_database", "target": "tbl_woovi_charges", "type": "schema", "label": "tabela"}, {"source": "tbl_assinaturas", "target": "tbl_planos", "type": "fk", "label": "referencia"}, {"source": "tbl_agendamentos", "target": "tbl_servicos", "type": "fk", "label": "referencia"}, {"source": "tbl_agendamentos", "target": "tbl_barbeiros", "type": "fk", "label": "referencia"}, {"source": "tbl_pontos", "target": "tbl_promocoes", "type": "fk", "label": "referencia"}, {"source": "tbl_resgates", "target": "tbl_agendamentos", "type": "fk", "label": "referencia"}, {"source": "tbl_resgates", "target": "tbl_promocoes", "type": "fk", "label": "referencia"}, {"source": "tbl_pagamentos", "target": "tbl_assinaturas", "type": "fk", "label": "referencia"}, {"source": "tbl_pagamentos", "target": "tbl_agendamentos", "type": "fk", "label": "referencia"}, {"source": "tbl_financial_entries", "target": "tbl_agendamentos", "type": "fk", "label": "referencia"}, {"source": "tbl_comissoes", "target": "tbl_agendamentos", "type": "fk", "label": "referencia"}, {"source": "tbl_comissoes", "target": "tbl_barbeiros", "type": "fk", "label": "referencia"}, {"source": "tbl_logs_agendamentos", "target": "tbl_agendamentos", "type": "fk", "label": "referencia"}, {"source": "tbl_pending_bookings", "target": "tbl_servicos", "type": "fk", "label": "referencia"}, {"source": "tbl_pending_bookings", "target": "tbl_barbeiros", "type": "fk", "label": "referencia"}, {"source": "tbl_notificacoes", "target": "tbl_agendamentos", "type": "fk", "label": "referencia"}, {"source": "tbl_support_messages", "target": "tbl_support_conversations", "type": "fk", "label": "referencia"}, {"source": "tbl_support_tickets", "target": "tbl_support_conversations", "type": "fk", "label": "referencia"}, {"source": "tbl_pending_tickets", "target": "tbl_support_tickets", "type": "fk", "label": "referencia"}, {"source": "tbl_pending_tickets", "target": "tbl_support_conversations", "type": "fk", "label": "referencia"}, {"source": "tbl_ai_actions_log", "target": "tbl_support_conversations", "type": "fk", "label": "referencia"}, {"source": "tbl_ai_feedback", "target": "tbl_support_messages", "type": "fk", "label": "referencia"}, {"source": "tbl_ai_feedback", "target": "tbl_support_conversations", "type": "fk", "label": "referencia"}, {"source": "tbl_chaves_pix", "target": "tbl_barbeiros", "type": "fk", "label": "referencia"}, {"source": "tbl_saques", "target": "tbl_chaves_pix", "type": "fk", "label": "referencia"}, {"source": "tbl_saques", "target": "tbl_barbeiros", "type": "fk", "label": "referencia"}, {"source": "tbl_depositos", "target": "tbl_barbeiros", "type": "fk", "label": "referencia"}, {"source": "tbl_contas_bancarias", "target": "tbl_barbeiros", "type": "fk", "label": "referencia"}, {"source": "tbl_barbeiro_servico_duracao", "target": "tbl_servicos", "type": "fk", "label": "referencia"}, {"source": "tbl_barbeiro_servico_duracao", "target": "tbl_barbeiros", "type": "fk", "label": "referencia"}, {"source": "tbl_tenant_members", "target": "tbl_tenants", "type": "fk", "label": "referencia"}, {"source": "tbl_tenant_webhook_config", "target": "tbl_tenants", "type": "fk", "label": "referencia"}, {"source": "tbl_tenant_mensagem_templates", "target": "tbl_tenants", "type": "fk", "label": "referencia"}, {"source": "tbl_whatsapp_instances", "target": "tbl_barbeiros", "type": "fk", "label": "referencia"}, {"source": "tbl_tenant_clientes", "target": "tbl_tenants", "type": "fk", "label": "referencia"}, {"source": "tbl_pagamentos_plano_barbearia", "target": "tbl_assinaturas", "type": "fk", "label": "referencia"}, {"source": "tbl_pagamentos_plano_barbearia", "target": "tbl_barbeiros", "type": "fk", "label": "referencia"}, {"source": "tbl_tenant_assinaturas", "target": "tbl_tenant_planos", "type": "fk", "label": "referencia"}, {"source": "tbl_tenant_assinaturas", "target": "tbl_tenants", "type": "fk", "label": "referencia"}, {"source": "tbl_tenant_plano_faixas", "target": "tbl_tenant_planos", "type": "fk", "label": "referencia"}, {"source": "tbl_tenant_cakto_events", "target": "tbl_tenants", "type": "fk", "label": "referencia"}, {"source": "tbl_instagram_connections", "target": "tbl_barbeiros", "type": "fk", "label": "referencia"}, {"source": "tbl_instagram_posts_cache", "target": "tbl_instagram_connections", "type": "fk", "label": "referencia"}, {"source": "tbl_portfolio_images", "target": "tbl_tenants", "type": "fk", "label": "referencia"}, {"source": "tbl_portfolio_images", "target": "tbl_barbeiros", "type": "fk", "label": "referencia"}, {"source": "tbl_tenant_unidades", "target": "tbl_tenants", "type": "fk", "label": "referencia"}, {"source": "tbl_barbeiro_unidades", "target": "tbl_tenant_unidades", "type": "fk", "label": "referencia"}, {"source": "tbl_barbeiro_unidades", "target": "tbl_barbeiros", "type": "fk", "label": "referencia"}, {"source": "tbl_client_booking_blocks", "target": "tbl_tenants", "type": "fk", "label": "referencia"}, {"source": "tbl_client_booking_blocks", "target": "tbl_barbeiros", "type": "fk", "label": "referencia"}, {"source": "tbl_efi_pix_charges", "target": "tbl_barbeiros", "type": "fk", "label": "referencia"}, {"source": "tbl_efi_pix_payouts", "target": "tbl_barbeiros", "type": "fk", "label": "referencia"}, {"source": "tbl_efi_pix_payouts", "target": "tbl_efi_pix_charges", "type": "fk", "label": "referencia"}, {"source": "tbl_contas_financeiras", "target": "tbl_barbeiros", "type": "fk", "label": "referencia"}, {"source": "tbl_carteiras", "target": "tbl_barbeiros", "type": "fk", "label": "referencia"}, {"source": "tbl_transacoes_financeiras", "target": "tbl_efi_pix_charges", "type": "fk", "label": "referencia"}, {"source": "tbl_transacoes_financeiras", "target": "tbl_barbeiros", "type": "fk", "label": "referencia"}, {"source": "tbl_transacoes_financeiras", "target": "tbl_carteiras", "type": "fk", "label": "referencia"}, {"source": "tbl_plano_servicos", "target": "tbl_servicos", "type": "fk", "label": "referencia"}, {"source": "tbl_plano_servicos", "target": "tbl_planos", "type": "fk", "label": "referencia"}, {"source": "tbl_barber_fcm_tokens", "target": "tbl_barbeiros", "type": "fk", "label": "referencia"}, {"source": "tbl_woovi_charges", "target": "tbl_agendamentos", "type": "fk", "label": "referencia"}, {"source": "tbl_woovi_charges", "target": "tbl_barbeiros", "type": "fk", "label": "referencia"}, {"source": "tbl_barber_home_snapshot", "target": "tbl_barbeiros", "type": "fk", "label": "referencia"}, {"source": "tbl_campanhas_config", "target": "tbl_tenants", "type": "fk", "label": "referencia"}, {"source": "tbl_loja_cupons", "target": "tbl_tenants", "type": "fk", "label": "referencia"}, {"source": "tbl_barbeiro_formas_pagamento", "target": "tbl_barbeiros", "type": "fk", "label": "referencia"}, {"source": "tbl_barbeiro_taxa_cancelamento", "target": "tbl_barbeiros", "type": "fk", "label": "referencia"}, {"source": "tbl_cliente_debitos_cancelamento", "target": "tbl_barbeiros", "type": "fk", "label": "referencia"}, {"source": "tbl_configuracoes_horario_unidade", "target": "tbl_tenant_unidades", "type": "fk", "label": "referencia"}, {"source": "tbl_configuracoes_horario_unidade", "target": "tbl_tenants", "type": "fk", "label": "referencia"}, {"source": "tbl_push_subscriptions", "target": "tbl_barbeiros", "type": "fk", "label": "referencia"}, {"source": "tbl_discount_coupons", "target": "tbl_tenants", "type": "fk", "label": "referencia"}, {"source": "hub_external", "target": "api_woovi", "type": "integrates", "label": "integração"}, {"source": "hub_external", "target": "api_efi", "type": "integrates", "label": "integração"}, {"source": "hub_external", "target": "api_evolution", "type": "integrates", "label": "integração"}, {"source": "hub_external", "target": "api_openai", "type": "integrates", "label": "integração"}, {"source": "hub_external", "target": "api_gemini", "type": "integrates", "label": "integração"}, {"source": "hub_external", "target": "api_instagram", "type": "integrates", "label": "integração"}, {"source": "hub_external", "target": "api_google_cal", "type": "integrates", "label": "integração"}, {"source": "hub_external", "target": "api_firebase", "type": "integrates", "label": "integração"}, {"source": "hub_hooks", "target": "hk_appointments", "type": "reactivity", "label": "hook"}, {"source": "hub_hooks", "target": "hk_agenda_mutations", "type": "reactivity", "label": "hook"}, {"source": "hub_hooks", "target": "hk_barber_agenda", "type": "reactivity", "label": "hook"}, {"source": "hub_hooks", "target": "hk_barber_dashboard", "type": "reactivity", "label": "hook"}, {"source": "hub_hooks", "target": "hk_woovi_wallet", "type": "reactivity", "label": "hook"}, {"source": "hub_hooks", "target": "hk_auth_ready", "type": "reactivity", "label": "hook"}, {"source": "hub_hooks", "target": "hk_tenant", "type": "reactivity", "label": "hook"}, {"source": "hub_hooks", "target": "hk_push", "type": "reactivity", "label": "hook"}, {"source": "hub_hooks", "target": "hk_maintenance", "type": "reactivity", "label": "hook"}, {"source": "hub_hooks", "target": "hk_status_bar", "type": "reactivity", "label": "hook"}, {"source": "ef_admin_cancel_appointments", "target": "tbl_agendamentos", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_admin_cancel_appointments", "target": "tbl_creditos", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_admin_cancel_appointments", "target": "tbl_notificacoes", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_admin_cancel_appointments", "target": "tbl_pagamentos", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_admin_cancel_appointments", "target": "tbl_user_roles", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_ai_support_chat", "target": "tbl_agendamentos", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_ai_support_chat", "target": "tbl_ai_actions_log", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_ai_support_chat", "target": "tbl_assinaturas", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_ai_support_chat", "target": "tbl_configuracoes_horario", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_ai_support_chat", "target": "tbl_creditos", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_ai_support_chat", "target": "tbl_horarios_excepcionais", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_ai_support_chat", "target": "tbl_logs_agendamentos", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_ai_support_chat", "target": "tbl_pagamentos", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_ai_support_chat", "target": "tbl_pending_bookings", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_ai_support_chat", "target": "tbl_pending_tickets", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_ai_support_chat", "target": "tbl_pontos", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_ai_support_chat", "target": "tbl_profiles", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_ai_support_chat", "target": "tbl_resgates", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_ai_support_chat", "target": "tbl_support_conversations", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_ai_support_chat", "target": "tbl_support_messages", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_ai_support_chat", "target": "tbl_support_tickets", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_ai_support_chat", "target": "tbl_system_logs", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_ai_support_chat", "target": "tbl_webhook_logs", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_ai_support_chat", "target": "api_openai", "type": "calls", "label": "requisição"}, {"source": "ef_cancel_subscription", "target": "tbl_assinaturas", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_check_availability", "target": "tbl_agendamentos", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_check_availability", "target": "tbl_barbeiros", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_check_availability", "target": "tbl_pending_bookings", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_check_availability", "target": "api_openai", "type": "calls", "label": "requisição"}, {"source": "ef_confirm_plan_payment", "target": "tbl_agendamentos", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_confirm_plan_payment", "target": "tbl_assinaturas", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_confirm_plan_payment", "target": "tbl_barbeiros", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_confirm_plan_payment", "target": "tbl_pagamentos", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_confirm_plan_payment", "target": "tbl_pagamentos_plano_barbearia", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_confirm_plan_payment", "target": "tbl_profiles", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_confirm_plan_payment", "target": "tbl_user_roles", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_create_barber", "target": "tbl_barbeiros", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_create_barber", "target": "tbl_user_roles", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_create_payment", "target": "tbl_agendamentos", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_create_payment", "target": "tbl_barbeiro_servico_duracao", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_create_payment", "target": "tbl_barbeiros", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_create_payment", "target": "tbl_configuracoes_horario", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_create_payment", "target": "tbl_horarios_excepcionais", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_create_payment", "target": "tbl_notificacoes", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_create_payment", "target": "tbl_pagamentos", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_create_payment", "target": "tbl_pending_bookings", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_create_payment", "target": "tbl_profiles", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_create_payment", "target": "tbl_servicos", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_create_subscription", "target": "tbl_assinaturas", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_create_subscription", "target": "tbl_barbeiros", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_create_subscription", "target": "tbl_planos", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_create_subscription", "target": "tbl_profiles", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_create_tenant_barber", "target": "tbl_barbeiros", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_create_tenant_barber", "target": "tbl_tenants", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_create_tenant_barber", "target": "tbl_user_roles", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_create_tenant_plan_subscription", "target": "tbl_barbeiros", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_create_tenant_plan_subscription", "target": "tbl_informacoes_empresa", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_create_tenant_plan_subscription", "target": "tbl_profiles", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_create_tenant_plan_subscription", "target": "tbl_system_config", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_create_tenant_plan_subscription", "target": "tbl_tenant_assinaturas", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_create_tenant_plan_subscription", "target": "tbl_tenant_members", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_create_tenant_plan_subscription", "target": "tbl_tenant_planos", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_create_tenant_plan_subscription", "target": "tbl_tenant_unidades", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_create_tenant_plan_subscription", "target": "tbl_tenants", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_create_tenant_plan_subscription", "target": "tbl_woovi_charges", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_barber", "target": "tbl_agendamentos", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_barber", "target": "tbl_ai_actions_log", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_barber", "target": "tbl_ai_feedback", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_barber", "target": "tbl_assinaturas", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_barber", "target": "tbl_audit_logs", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_barber", "target": "tbl_barbeiro_servico_duracao", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_barber", "target": "tbl_barbeiro_unidades", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_barber", "target": "tbl_barbeiros", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_barber", "target": "tbl_chaves_pix", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_barber", "target": "tbl_comissoes", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_barber", "target": "tbl_contas_bancarias", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_barber", "target": "tbl_creditos", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_barber", "target": "tbl_depositos", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_barber", "target": "tbl_dispositivos_conectados", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_barber", "target": "tbl_email_confirmation_tokens", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_barber", "target": "tbl_logs_agendamentos", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_barber", "target": "tbl_notificacoes", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_barber", "target": "tbl_pagamentos", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_barber", "target": "tbl_pending_bookings", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_barber", "target": "tbl_pending_tickets", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_barber", "target": "tbl_pin_financeiro", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_barber", "target": "tbl_pontos", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_barber", "target": "tbl_profiles", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_barber", "target": "tbl_resgates", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_barber", "target": "tbl_saques", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_barber", "target": "tbl_support_conversations", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_barber", "target": "tbl_support_tickets", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_barber", "target": "tbl_tenants", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_barber", "target": "tbl_user_roles", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_barber", "target": "tbl_whatsapp_instances", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_barber", "target": "tbl_whatsapp_verification_codes", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_tenant_account", "target": "tbl_agendamentos", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_tenant_account", "target": "tbl_ai_actions_log", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_tenant_account", "target": "tbl_ai_feedback", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_tenant_account", "target": "tbl_audit_logs", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_tenant_account", "target": "tbl_barbeiro_servico_duracao", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_tenant_account", "target": "tbl_barbeiros", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_tenant_account", "target": "tbl_chaves_pix", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_tenant_account", "target": "tbl_comissoes", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_tenant_account", "target": "tbl_contas_bancarias", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_tenant_account", "target": "tbl_creditos", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_tenant_account", "target": "tbl_depositos", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_tenant_account", "target": "tbl_discount_coupons", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_tenant_account", "target": "tbl_disparos_programados", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_tenant_account", "target": "tbl_dispositivos_conectados", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_tenant_account", "target": "tbl_email_confirmation_tokens", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_tenant_account", "target": "tbl_notificacoes", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_tenant_account", "target": "tbl_pagamentos", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_tenant_account", "target": "tbl_pending_bookings", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_tenant_account", "target": "tbl_pending_tickets", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_tenant_account", "target": "tbl_pin_financeiro", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_tenant_account", "target": "tbl_planos", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_tenant_account", "target": "tbl_pontos", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_tenant_account", "target": "tbl_profiles", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_tenant_account", "target": "tbl_promocoes", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_tenant_account", "target": "tbl_resgates", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_tenant_account", "target": "tbl_saques", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_tenant_account", "target": "tbl_servicos", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_tenant_account", "target": "tbl_support_conversations", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_tenant_account", "target": "tbl_support_tickets", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_tenant_account", "target": "tbl_tenant_members", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_tenant_account", "target": "tbl_tenant_mensagem_templates", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_tenant_account", "target": "tbl_tenant_webhook_config", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_tenant_account", "target": "tbl_tenants", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_tenant_account", "target": "tbl_user_roles", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_tenant_account", "target": "tbl_whatsapp_instances", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_tenant_account", "target": "tbl_whatsapp_verification_codes", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_unit", "target": "tbl_agendamentos", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_unit", "target": "tbl_barbeiro_unidades", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_unit", "target": "tbl_barbeiros", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_unit", "target": "tbl_client_booking_blocks", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_unit", "target": "tbl_configuracoes_horario_unidade", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_unit", "target": "tbl_horarios_excepcionais", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_delete_unit", "target": "tbl_tenant_unidades", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_efi_create_pix_charge", "target": "tbl_barbeiros", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_efi_create_pix_charge", "target": "tbl_chaves_pix", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_efi_create_pix_charge", "target": "tbl_efi_pix_charges", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_efi_create_pix_charge", "target": "api_efi", "type": "calls", "label": "requisição"}, {"source": "ef_efi_send_pix", "target": "tbl_barbeiros", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_efi_send_pix", "target": "tbl_carteiras", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_efi_send_pix", "target": "tbl_chaves_pix", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_efi_send_pix", "target": "tbl_transacoes_financeiras", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_efi_send_pix", "target": "api_efi", "type": "calls", "label": "requisição"}, {"source": "ef_efi_validate_pix_key", "target": "tbl_barbeiros", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_efi_validate_pix_key", "target": "api_efi", "type": "calls", "label": "requisição"}, {"source": "ef_efi_webhook", "target": "tbl_carteiras", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_efi_webhook", "target": "tbl_efi_pix_charges", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_efi_webhook", "target": "tbl_efi_webhook_events", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_efi_webhook", "target": "api_efi", "type": "calls", "label": "requisição"}, {"source": "ef_encrypt_pix_key", "target": "tbl_chaves_pix", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_execute_scheduled_dispatches", "target": "tbl_barbeiros", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_execute_scheduled_dispatches", "target": "tbl_disparos_programados", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_execute_scheduled_dispatches", "target": "tbl_profiles", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_execute_scheduled_dispatches", "target": "tbl_system_logs", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_execute_scheduled_dispatches", "target": "tbl_tenants", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_execute_scheduled_dispatches", "target": "tbl_webhook_config", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_execute_scheduled_dispatches", "target": "tbl_whatsapp_instances", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_execute_scheduled_dispatches", "target": "api_evolution", "type": "calls", "label": "requisição"}, {"source": "ef_generate_caption", "target": "api_openai", "type": "calls", "label": "requisição"}, {"source": "ef_generate_dispatch_message", "target": "api_evolution", "type": "calls", "label": "requisição"}, {"source": "ef_generate_promotion_ai", "target": "tbl_system_logs", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_generate_promotion_ai", "target": "api_openai", "type": "calls", "label": "requisição"}, {"source": "ef_generate_promotion_ai", "target": "api_gemini", "type": "calls", "label": "requisição"}, {"source": "ef_generate_subscription_charges", "target": "tbl_assinaturas", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_google_calendar_sync", "target": "tbl_agendamentos", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_health_check", "target": "tbl_profiles", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_health_check", "target": "tbl_system_health_checks", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_instagram_auth", "target": "tbl_barbeiros", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_instagram_auth", "target": "tbl_instagram_connections", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_instagram_auth", "target": "tbl_instagram_posts_cache", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_instagram_auth", "target": "api_instagram", "type": "calls", "label": "requisição"}, {"source": "ef_manage_clients", "target": "tbl_agendamentos", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_manage_clients", "target": "tbl_audit_logs", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_manage_clients", "target": "tbl_barbeiros", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_manage_clients", "target": "tbl_profiles", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_manage_clients", "target": "tbl_servicos", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_manage_clients", "target": "tbl_system_config", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_manage_clients", "target": "tbl_tenant_clientes", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_manage_clients", "target": "tbl_tenants", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_manage_clients", "target": "tbl_user_roles", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_renew_subscription", "target": "tbl_assinaturas", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_renew_subscription", "target": "tbl_notificacoes", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_renew_subscription", "target": "tbl_planos", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_reset_client_password", "target": "tbl_audit_logs", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_reset_client_password", "target": "tbl_user_roles", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_save_efi_credentials", "target": "tbl_barbeiros", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_save_efi_credentials", "target": "tbl_user_roles", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_save_efi_credentials", "target": "api_efi", "type": "calls", "label": "requisição"}, {"source": "ef_send_appointment_reminders", "target": "tbl_agendamentos", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_send_appointment_reminders", "target": "tbl_barbeiros", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_send_appointment_reminders", "target": "tbl_mensagem_templates", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_send_appointment_reminders", "target": "tbl_profiles", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_send_appointment_reminders", "target": "tbl_servicos", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_send_appointment_reminders", "target": "tbl_tenants", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_send_appointment_reminders", "target": "tbl_webhook_config", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_send_appointment_reminders", "target": "tbl_whatsapp_instances", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_send_appointment_reminders", "target": "api_evolution", "type": "calls", "label": "requisição"}, {"source": "ef_send_confirmation_email", "target": "tbl_email_confirmation_tokens", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_send_confirmation_email", "target": "tbl_system_logs", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_send_confirmation_email", "target": "api_openai", "type": "calls", "label": "requisição"}, {"source": "ef_send_push_notification", "target": "tbl_barbeiros", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_send_push_notification", "target": "tbl_barber_fcm_tokens", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_send_push_notification", "target": "tbl_whatsapp_instances", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_send_push_notification", "target": "api_firebase", "type": "calls", "label": "requisição"}, {"source": "ef_send_webhook_event", "target": "tbl_agendamentos", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_send_webhook_event", "target": "tbl_barbeiros", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_send_webhook_event", "target": "tbl_mensagem_templates", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_send_webhook_event", "target": "tbl_profiles", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_send_webhook_event", "target": "tbl_system_logs", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_send_webhook_event", "target": "tbl_tenants", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_send_webhook_event", "target": "tbl_webhook_config", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_send_webhook_event", "target": "tbl_whatsapp_instances", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_store_api", "target": "tbl_barbeiros", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_store_api", "target": "tbl_notificacoes", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_store_api", "target": "tbl_saques", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_store_api", "target": "tbl_tenants", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_store_api", "target": "tbl_woovi_charges", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_update_unit_barbers", "target": "tbl_barbeiro_unidades", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_validate_appointment", "target": "tbl_agendamentos", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_validate_appointment", "target": "tbl_barbeiros", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_validate_appointment", "target": "tbl_pending_bookings", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_whatsapp_proxy", "target": "tbl_barbeiros", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_whatsapp_proxy", "target": "tbl_tenants", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_whatsapp_proxy", "target": "tbl_whatsapp_instances", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_whatsapp_proxy", "target": "api_evolution", "type": "calls", "label": "requisição"}, {"source": "ef_whatsapp_verification", "target": "tbl_barbeiros", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_whatsapp_verification", "target": "tbl_system_logs", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_whatsapp_verification", "target": "tbl_tenant_clientes", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_whatsapp_verification", "target": "tbl_tenants", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_whatsapp_verification", "target": "tbl_webhook_config", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_whatsapp_verification", "target": "tbl_whatsapp_instances", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_whatsapp_verification", "target": "tbl_whatsapp_verification_codes", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_whatsapp_verification", "target": "api_evolution", "type": "calls", "label": "requisição"}, {"source": "ef_woovi_auto_withdraw_cron", "target": "tbl_barbeiros", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_woovi_auto_withdraw_cron", "target": "tbl_saques", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_woovi_auto_withdraw_cron", "target": "api_woovi", "type": "calls", "label": "requisição"}, {"source": "ef_woovi_create_charge", "target": "tbl_agendamentos", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_woovi_create_charge", "target": "api_woovi", "type": "calls", "label": "requisição"}, {"source": "ef_woovi_create_subaccount", "target": "tbl_barbeiros", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_woovi_create_subaccount", "target": "api_woovi", "type": "calls", "label": "requisição"}, {"source": "ef_woovi_get_balance", "target": "tbl_barbeiros", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_woovi_get_balance", "target": "api_woovi", "type": "calls", "label": "requisição"}, {"source": "ef_woovi_history", "target": "tbl_barbeiros", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_woovi_history", "target": "tbl_saques", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_woovi_history", "target": "tbl_woovi_charges", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_woovi_history", "target": "api_woovi", "type": "calls", "label": "requisição"}, {"source": "ef_woovi_update_settings", "target": "tbl_barbeiros", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_woovi_update_settings", "target": "api_woovi", "type": "calls", "label": "requisição"}, {"source": "ef_woovi_wallet", "target": "tbl_barbeiros", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_woovi_wallet", "target": "tbl_saques", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_woovi_wallet", "target": "tbl_system_config", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_woovi_wallet", "target": "tbl_woovi_charges", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_woovi_wallet", "target": "api_woovi", "type": "calls", "label": "requisição"}, {"source": "ef_woovi_webhook", "target": "tbl_webhook_logs", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_woovi_webhook", "target": "tbl_woovi_charges", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_woovi_webhook", "target": "api_woovi", "type": "calls", "label": "requisição"}, {"source": "ef_woovi_withdraw", "target": "tbl_barbeiros", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_woovi_withdraw", "target": "tbl_saques", "type": "db_access", "label": "lê/escreve"}, {"source": "ef_woovi_withdraw", "target": "api_woovi", "type": "calls", "label": "requisição"}, {"source": "barb_saque_instantaneo", "target": "ef_woovi_withdraw", "type": "triggers", "label": "dispara saque"}, {"source": "barb_carteira_pix", "target": "ef_woovi_get_balance", "type": "queries", "label": "consulta saldo"}, {"source": "page_cliente_agendar", "target": "ef_check_availability", "type": "queries", "label": "calcula horários"}, {"source": "page_cliente_agendar", "target": "ef_validate_appointment", "type": "validates", "label": "valida reserva"}, {"source": "page_cliente_agendar", "target": "ef_woovi_create_charge", "type": "generates", "label": "cria pix"}, {"source": "page_suporte_chat", "target": "ef_ai_support_chat", "type": "chats", "label": "conversa com BIA"}, {"source": "adm_campanhas_mkt", "target": "ef_generate_promotion_ai", "type": "generates", "label": "gera texto IA"}, {"source": "adm_disparos_painel", "target": "ef_execute_scheduled_dispatches", "type": "dispatches", "label": "agenda disparos"}, {"source": "adm_equipe_barbeiros", "target": "ef_create_tenant_barber", "type": "creates", "label": "cria profissional"}, {"source": "adm_equipe_barbeiros", "target": "ef_woovi_create_subaccount", "type": "provisions", "label": "cria subconta Pix"}, {"source": "page_cliente_assinar", "target": "ef_create_subscription", "type": "subscribes", "label": "assina plano"}, {"source": "adm_planos_gestao", "target": "ef_generate_subscription_charges", "type": "recurs", "label": "gera cobranças"}, {"source": "barb_portfolio_insta", "target": "ef_instagram_auth", "type": "authenticates", "label": "conecta Instagram"}, {"source": "page_cliente_agendar", "target": "hk_appointments", "type": "uses", "label": "usa hook"}, {"source": "page_cliente_agendar", "target": "hk_agenda_mutations", "type": "uses", "label": "usa hook"}, {"source": "page_barbeiro_main", "target": "hk_barber_agenda", "type": "uses", "label": "usa hook"}, {"source": "page_barbeiro_main", "target": "hk_barber_dashboard", "type": "uses", "label": "usa hook"}, {"source": "page_barbeiro_main", "target": "hk_woovi_wallet", "type": "uses", "label": "usa hook"}, {"source": "page_admin_main", "target": "hk_tenant", "type": "uses", "label": "usa hook"}, {"source": "page_auth", "target": "hk_auth_ready", "type": "uses", "label": "usa hook"}]};
+    const BRAND_LOGO_SRC = "data:image/png;base64,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";
+
+    // Initialize node styling & dimensions
+    for (let i = 0; i < GRAPH_DATA.nodes.length; i++) {
+      const n = GRAPH_DATA.nodes[i];
+      const clusterDef = GRAPH_DATA.clusters[n.cluster] || { color: '#94a3b8', glow: '#64748b' };
+      n.color = n.color || clusterDef.color;
+      n.glow = n.glow || clusterDef.glow;
+      if (!n.radius) {
+        if (n.id === 'hub_core') n.radius = 28;
+        else if (n.id.startsWith('hub_')) n.radius = 16;
+        else if (n.type === 'hub') n.radius = 15;
+        else if (n.cluster === 'edge_fn') n.radius = 8.5;
+        else if (n.cluster === 'database') n.radius = 7.5;
+        else n.radius = 10;
+      }
+      n.x = 0; n.y = 0; n.z = 0;
+      n.targetX = 0; n.targetY = 0; n.targetZ = 0;
+    }
+
+    // Preload Logo
+    const BrandImage = new Image();
+    BrandImage.src = BRAND_LOGO_SRC;
+
+    // Global Application State
+    const AppState = {
+      width: window.innerWidth,
+      height: window.innerHeight,
+
+      // 3D Camera System
+      camera: {
+        yaw: 0.45,
+        pitch: 0.35,
+        dist: 2600,
+        fov: 950,
+        targetYaw: 0.45,
+        targetPitch: 0.35,
+        targetDist: 2600,
+        focalX: 0,
+        focalY: 0,
+        focalZ: 0,
+        targetFocalX: 0,
+        targetFocalY: 0,
+        targetFocalZ: 0
+      },
+
+      // Interaction State
+      isDragging: false,
+      dragMode: null, // 'orbit' | 'pan'
+      dragStartX: 0,
+      dragStartY: 0,
+      totalDragDist: 0,
+
+      hoveredNode: null,
+      selectedNode: null,
+      activeCluster: "all",
+      activeTour: null,
+      idleRotation: true,
+      physicsRunning: true,
+
+      // Indexed Graph Lookups
+      nodeMap: new Map(),
+      outgoingMap: new Map(),
+      incomingMap: new Map(),
+      neighborsMap: new Map(),
+
+      // Fast Lookup Maps
+      connectedNodeIds: new Set(),
+      connectedLinkIds: new Set(),
+
+      // Quantum Electrons / Photons along links
+      quantumPhotons: []
+    };
+
+    // Index Nodes & Links
+    GRAPH_DATA.nodes.forEach(n => {
+      AppState.nodeMap.set(n.id, n);
+      AppState.outgoingMap.set(n.id, []);
+      AppState.incomingMap.set(n.id, []);
+      AppState.neighborsMap.set(n.id, new Set());
+    });
+
+    GRAPH_DATA.links.forEach(l => {
+      const s = typeof l.source === "object" ? l.source.id : l.source;
+      const t = typeof l.target === "object" ? l.target.id : l.target;
+      l.sId = s;
+      l.tId = t;
+
+      if (AppState.outgoingMap.has(s)) AppState.outgoingMap.get(s).push(l);
+      if (AppState.incomingMap.has(t)) AppState.incomingMap.get(t).push(l);
+      if (AppState.neighborsMap.has(s)) AppState.neighborsMap.get(s).add(t);
+      if (AppState.neighborsMap.has(t)) AppState.neighborsMap.get(t).add(s);
+    });
+
+    // Seed continuous quantum photons
+    for (let i = 0; i < 48; i++) {
+      const l = GRAPH_DATA.links[Math.floor(Math.random() * GRAPH_DATA.links.length)];
+      AppState.quantumPhotons.push({
+        link: l,
+        progress: Math.random(),
+        speed: 0.003 + Math.random() * 0.007,
+        size: 2.5 + Math.random() * 2
+      });
+    }
+
+    // 3D Atomic Math & Physics Engine
+    const PhysicsEngine = {
+      // Rotate 3D vector by pitch (X), yaw (Y), roll (Z)
+      rotateVector: function(x, y, z, pitchDeg, yawDeg, rollDeg = 0) {
+        const p = (pitchDeg * Math.PI) / 180;
+        const yRad = (yawDeg * Math.PI) / 180;
+        const r = (rollDeg * Math.PI) / 180;
+
+        // Roll (Z)
+        const x1 = x * Math.cos(r) - y * Math.sin(r);
+        const y1 = x * Math.sin(r) + y * Math.cos(r);
+        const z1 = z;
+
+        // Pitch (X)
+        const x2 = x1;
+        const y2 = y1 * Math.cos(p) - z1 * Math.sin(p);
+        const z2 = y1 * Math.sin(p) + z1 * Math.cos(p);
+
+        // Yaw (Y)
+        const x3 = x2 * Math.cos(yRad) + z2 * Math.sin(yRad);
+        const y3 = y2;
+        const z3 = -x2 * Math.sin(yRad) + z2 * Math.cos(yRad);
+
+        return { x: x3, y: y3, z: z3 };
+      },
+
+      step: function() {
+        if (!AppState.physicsRunning) return;
+        const nodes = GRAPH_DATA.nodes;
+        const factor = 0.18; // smooth critically damped monotonic glide
+
+        for (let i = 0; i < nodes.length; i++) {
+          const n = nodes[i];
+          const dx = n.targetX - n.x;
+          const dy = n.targetY - n.y;
+          const dz = n.targetZ - n.z;
+
+          if (Math.abs(dx) < 0.15 && Math.abs(dy) < 0.15 && Math.abs(dz) < 0.15) {
+            n.x = n.targetX;
+            n.y = n.targetY;
+            n.z = n.targetZ;
+          } else {
+            n.x += dx * factor;
+            n.y += dy * factor;
+            n.z += dz * factor;
+          }
+        }
+      },
+
+      // Global 3D Atomic Structure Layout
+      setGlobalLayout: function() {
+        AppState.activeCluster = "all";
+        AppState.selectedNode = null;
+        AppState.activeTour = null;
+        AppState.connectedNodeIds.clear();
+        AppState.connectedLinkIds.clear();
+
+        const nodes = GRAPH_DATA.nodes;
+        const placed = new Set();
+
+        // 1. Central Nucleus (0, 0, 0)
+        const coreNode = AppState.nodeMap.get("hub_core");
+        if (coreNode) {
+          coreNode.targetX = 0;
+          coreNode.targetY = 0;
+          coreNode.targetZ = 0;
+          placed.add("hub_core");
+        }
+
+        // 2. Primary Core Hubs: spherical nucleus shell (R = 140)
+        const coreHubs = [
+          AppState.nodeMap.get("tbl_barbeiros"),
+          AppState.nodeMap.get("hub_database"),
+          AppState.nodeMap.get("hub_edge_functions"),
+          AppState.nodeMap.get("hub_external"),
+          AppState.nodeMap.get("hub_auth")
+        ].filter(Boolean);
+
+        coreHubs.forEach((n, i) => {
+          const phi = Math.acos(-1 + (2 * i) / coreHubs.length);
+          const theta = Math.sqrt(coreHubs.length * Math.PI) * phi;
+          n.targetX = 140 * Math.cos(theta) * Math.sin(phi);
+          n.targetY = 140 * Math.sin(theta) * Math.sin(phi);
+          n.targetZ = 140 * Math.cos(phi);
+          placed.add(n.id);
+        });
+
+        // 3. Orbital Alpha (Gestão & Dono, Landing, Subscriptions)
+        // Semi-major a = 780, Semi-minor b = 520, Pitch = 35°, Yaw = 45°
+        const alphaNodes = nodes.filter(n => (n.cluster === "admin" || n.cluster === "landing" || n.cluster === "subscriptions") && !placed.has(n.id));
+        alphaNodes.forEach((n, i) => {
+          const theta = (2 * Math.PI * i) / alphaNodes.length;
+          const localX = 780 * Math.cos(theta);
+          const localY = 520 * Math.sin(theta);
+          const pos = this.rotateVector(localX, localY, 0, 35, 45, 0);
+          n.targetX = pos.x;
+          n.targetY = pos.y;
+          n.targetZ = pos.z;
+          placed.add(n.id);
+        });
+
+        // 4. Orbital Beta (Operação Barbeiro, Cliente, Hooks, Loja)
+        // Semi-major a = 1020, Semi-minor b = 680, Pitch = -35°, Yaw = -45°
+        const betaNodes = nodes.filter(n => (n.cluster === "barber" || n.cluster === "client" || n.cluster === "hooks" || n.cluster === "store") && !placed.has(n.id));
+        betaNodes.forEach((n, i) => {
+          const theta = (2 * Math.PI * i) / betaNodes.length;
+          const localX = 1020 * Math.cos(theta);
+          const localY = 680 * Math.sin(theta);
+          const pos = this.rotateVector(localX, localY, 0, -35, -45, 0);
+          n.targetX = pos.x;
+          n.targetY = pos.y;
+          n.targetZ = pos.z;
+          placed.add(n.id);
+        });
+
+        // 5. Orbital Gamma (Motor Pix & Financeiro, WhatsApp, IA BIA, Gateways Externos)
+        // Semi-major a = 1260, Semi-minor b = 840, Pitch = 0°, Yaw = 90°, Roll = 55°
+        const gammaNodes = nodes.filter(n => (n.cluster === "financial" || n.cluster === "whatsapp" || n.cluster === "ai" || n.cluster === "external") && !placed.has(n.id));
+        gammaNodes.forEach((n, i) => {
+          const theta = (2 * Math.PI * i) / gammaNodes.length;
+          const localX = 1260 * Math.cos(theta);
+          const localY = 840 * Math.sin(theta);
+          const pos = this.rotateVector(localX, localY, 0, 0, 90, 55);
+          n.targetX = pos.x;
+          n.targetY = pos.y;
+          n.targetZ = pos.z;
+          placed.add(n.id);
+        });
+
+        // 6. Valence Shell K (51 Supabase Edge Functions): Wavy Torus Band (R = 1600)
+        const edgeNodes = nodes.filter(n => n.cluster === "edge_fn" && !placed.has(n.id));
+        edgeNodes.forEach((n, i) => {
+          const theta = (2 * Math.PI * i) / edgeNodes.length;
+          const r = 1600;
+          n.targetX = r * Math.cos(theta);
+          n.targetY = 420 * Math.sin(2 * theta);
+          n.targetZ = r * Math.sin(theta);
+          placed.add(n.id);
+        });
+
+        // 7. Valence Cloud L (93 PostgreSQL Tables): Fibonacci Sphere Lattice (R = 2200)
+        const dbNodes = nodes.filter(n => n.cluster === "database" && !placed.has(n.id));
+        const totalDb = dbNodes.length;
+        const phiGolden = Math.PI * (1 + Math.sqrt(5)); // Golden Angle
+
+        dbNodes.forEach((n, i) => {
+          const phi = Math.acos(1 - (2 * (i + 0.5)) / totalDb);
+          const theta = phiGolden * i;
+          const r = 2200;
+          n.targetX = r * Math.sin(phi) * Math.cos(theta);
+          n.targetY = r * Math.cos(phi);
+          n.targetZ = r * Math.sin(phi) * Math.sin(theta);
+          placed.add(n.id);
+        });
+
+        // Reset camera smoothly to global overview
+        AppState.camera.targetFocalX = 0;
+        AppState.camera.targetFocalY = 0;
+        AppState.camera.targetFocalZ = 0;
+        AppState.camera.targetDist = 2600;
+      },
+
+      // Focus camera on single node in 3D
+      focusOnNode: function(node) {
+        AppState.selectedNode = node;
+        AppState.connectedNodeIds.clear();
+        AppState.connectedLinkIds.clear();
+
+        AppState.connectedNodeIds.add(node.id);
+
+        const outLinks = AppState.outgoingMap.get(node.id) || [];
+        outLinks.forEach(l => {
+          AppState.connectedLinkIds.add(l.id || (l.sId + "_" + l.tId));
+          AppState.connectedNodeIds.add(l.tId);
+        });
+
+        const inLinks = AppState.incomingMap.get(node.id) || [];
+        inLinks.forEach(l => {
+          AppState.connectedLinkIds.add(l.id || (l.sId + "_" + l.tId));
+          AppState.connectedNodeIds.add(l.sId);
+        });
+
+        // Animate camera directly to the node
+        AppState.camera.targetFocalX = node.x;
+        AppState.camera.targetFocalY = node.y;
+        AppState.camera.targetFocalZ = node.z;
+        AppState.camera.targetDist = 880;
+      },
+
+      // Focus camera on cluster centroid
+      focusOnCluster: function(clusterKey) {
+        AppState.activeCluster = clusterKey;
+        AppState.selectedNode = null;
+        AppState.connectedNodeIds.clear();
+        AppState.connectedLinkIds.clear();
+
+        if (clusterKey === "all") {
+          this.setGlobalLayout();
+          return;
+        }
+
+        const nodes = GRAPH_DATA.nodes.filter(n => n.cluster === clusterKey);
+        if (nodes.length === 0) return;
+
+        let sumX = 0, sumY = 0, sumZ = 0;
+        nodes.forEach(n => {
+          sumX += n.targetX;
+          sumY += n.targetY;
+          sumZ += n.targetZ;
+          AppState.connectedNodeIds.add(n.id);
+        });
+
+        const cx = sumX / nodes.length;
+        const cy = sumY / nodes.length;
+        const cz = sumZ / nodes.length;
+
+        AppState.camera.targetFocalX = cx;
+        AppState.camera.targetFocalY = cy;
+        AppState.camera.targetFocalZ = cz;
+        AppState.camera.targetDist = clusterKey === "database" || clusterKey === "edge_fn" ? 1800 : 1250;
+      }
+    };
+
+    // 3D Perspective Projection & High-Performance Canvas Renderer
+    const GraphRenderer = {
+      canvas: null,
+      ctx: null,
+      mmCanvas: null,
+      mmCtx: null,
+      quantumPulseTime: 0,
+
+      init: function() {
+        this.canvas = document.getElementById("main-canvas");
+        this.ctx = this.canvas.getContext("2d");
+        this.mmCanvas = document.getElementById("minimap-canvas");
+        this.mmCtx = this.mmCanvas.getContext("2d");
+
+        this.resize();
+        window.addEventListener("resize", () => this.resize());
+
+        // Initialize 3D Layout
+        PhysicsEngine.setGlobalLayout();
+
+        // Start 60 FPS Render Loop
+        requestAnimationFrame(() => this.render());
+      },
+
+      resize: function() {
+        AppState.width = window.innerWidth;
+        AppState.height = window.innerHeight;
+        this.canvas.width = window.innerWidth;
+        this.canvas.height = window.innerHeight;
+
+        this.mmCanvas.width = 145;
+        this.mmCanvas.height = 145;
+      },
+
+      // Perspective 3D Projection Formula
+      project3D: function(x, y, z, width, height, cam) {
+        const dx = x - cam.focalX;
+        const dy = y - cam.focalY;
+        const dz = z - cam.focalZ;
+
+        // Yaw (Y axis)
+        const cosYaw = Math.cos(cam.yaw), sinYaw = Math.sin(cam.yaw);
+        const x1 = dx * cosYaw + dz * sinYaw;
+        const y1 = dy;
+        const z1 = -dx * sinYaw + dz * cosYaw;
+
+        // Pitch (X axis)
+        const cosPitch = Math.cos(cam.pitch), sinPitch = Math.sin(cam.pitch);
+        const x2 = x1;
+        const y2 = y1 * cosPitch - z1 * sinPitch;
+        const z2 = y1 * sinPitch + z1 * cosPitch;
+
+        const zCam = z2 + cam.dist;
+        if (zCam <= 15) return null; // Behind camera plane
+
+        const scale = cam.fov / zCam;
+        const screenX = width / 2 + x2 * scale;
+        const screenY = height / 2 + y2 * scale;
+
+        return {
+          x: screenX,
+          y: screenY,
+          scale: scale,
+          zCam: zCam,
+          rawZ: z2
+        };
+      },
+
+      render: function() {
+        this.quantumPulseTime += 0.025;
+
+        // Continuous subtle atomic ambient drift
+        if (AppState.idleRotation && !AppState.isDragging && !AppState.selectedNode) {
+          AppState.camera.targetYaw += 0.0006;
+        }
+
+        // Camera Smooth Direct Interpolation
+        const cam = AppState.camera;
+        const cFactor = 0.16;
+        cam.yaw += (cam.targetYaw - cam.yaw) * cFactor;
+        cam.pitch += (cam.targetPitch - cam.pitch) * cFactor;
+        cam.dist += (cam.targetDist - cam.dist) * cFactor;
+        cam.focalX += (cam.targetFocalX - cam.focalX) * cFactor;
+        cam.focalY += (cam.targetFocalY - cam.focalY) * cFactor;
+        cam.focalZ += (cam.targetFocalZ - cam.focalZ) * cFactor;
+
+        // Physics step
+        PhysicsEngine.step();
+
+        const ctx = this.ctx;
+        const w = AppState.width;
+        const h = AppState.height;
+
+        // 1. Quantum Dark Vacuum Background
+        ctx.fillStyle = "#07080d";
+        ctx.fillRect(0, 0, w, h);
+
+        // Core Ambient Radial Glow
+        const bgGrad = ctx.createRadialGradient(w / 2, h / 2, 50, w / 2, h / 2, Math.max(w, h) * 0.7);
+        bgGrad.addColorStop(0, "rgba(224, 49, 21, 0.05)");
+        bgGrad.addColorStop(0.4, "rgba(11, 14, 25, 0.85)");
+        bgGrad.addColorStop(1, "rgba(7, 8, 13, 0.98)");
+        ctx.fillStyle = bgGrad;
+        ctx.fillRect(0, 0, w, h);
+
+        // 2. Project all 218 nodes to 3D Screen Space
+        const nodes = GRAPH_DATA.nodes;
+        for (let i = 0; i < nodes.length; i++) {
+          const n = nodes[i];
+          n.proj = this.project3D(n.x, n.y, n.z, w, h, cam);
+        }
+
+        // 3. Draw 3D Atomic Orbital Tracks (Alpha, Beta, Gamma)
+        this.draw3DAtomicOrbits(ctx, w, h, cam);
+
+        // 4. Draw 3D Links & Quantum Filaments
+        this.draw3DLinks(ctx);
+
+        // 5. Draw 3D Depth-Sorted Nodes & Bold Labels
+        this.draw3DNodes(ctx);
+
+        // 6. Draw 3D Orientation Minimap Gyroscope
+        this.render3DMinimap();
+
+        requestAnimationFrame(() => this.render());
+      },
+
+      // Draw the iconic 3D Atomic Orbitals (Ellipses in 3D Space)
+      draw3DAtomicOrbits: function(ctx, w, h, cam) {
+        ctx.save();
+        const rings = [
+          { a: 780, b: 520, p: 35, y: 45, r: 0, color: "rgba(212, 175, 55, 0.18)", label: "ÓRBITA ALPHA: GESTÃO" },
+          { a: 1020, b: 680, p: -35, y: -45, r: 0, color: "rgba(0, 210, 255, 0.18)", label: "ÓRBITA BETA: OPERAÇÃO" },
+          { a: 1260, b: 840, p: 0, y: 90, r: 55, color: "rgba(224, 49, 21, 0.18)", label: "ÓRBITA GAMMA: IA & FINANCEIRO" }
+        ];
+
+        rings.forEach(ring => {
+          ctx.beginPath();
+          let started = false;
+          const segments = 96;
+
+          for (let i = 0; i <= segments; i++) {
+            const theta = (2 * Math.PI * i) / segments;
+            const lx = ring.a * Math.cos(theta);
+            const ly = ring.b * Math.sin(theta);
+            const pos = PhysicsEngine.rotateVector(lx, ly, 0, ring.p, ring.y, ring.r);
+            const p = this.project3D(pos.x, pos.y, pos.z, w, h, cam);
+
+            if (p) {
+              if (!started) {
+                ctx.moveTo(p.x, p.y);
+                started = true;
+              } else {
+                ctx.lineTo(p.x, p.y);
+              }
+            }
+          }
+
+          ctx.strokeStyle = ring.color;
+          ctx.lineWidth = 1.4;
+          ctx.setLineDash([6, 6]);
+          ctx.stroke();
+
+          // Quantum Electron Racing along the 3D ring
+          const electronTheta = (this.quantumPulseTime * 0.4 + (ring.a % 5)) % (Math.PI * 2);
+          const elx = ring.a * Math.cos(electronTheta);
+          const ely = ring.b * Math.sin(electronTheta);
+          const ePos = PhysicsEngine.rotateVector(elx, ely, 0, ring.p, ring.y, ring.r);
+          const eP = this.project3D(ePos.x, ePos.y, ePos.z, w, h, cam);
+
+          if (eP) {
+            ctx.setLineDash([]);
+            ctx.fillStyle = "#ffffff";
+            ctx.shadowColor = ring.color;
+            ctx.shadowBlur = 10;
+            ctx.beginPath();
+            ctx.arc(eP.x, eP.y, Math.max(2, 3.5 * eP.scale), 0, Math.PI * 2);
+            ctx.fill();
+            ctx.shadowBlur = 0;
+          }
+        });
+
+        ctx.restore();
+      },
+
+      // Draw 3D Connecting Filaments
+      draw3DLinks: function(ctx) {
+        ctx.save();
+        const links = GRAPH_DATA.links;
+        const hasSelection = AppState.selectedNode !== null;
+        const hasCluster = AppState.activeCluster !== "all";
+
+        // Separate active vs background links for depth performance
+        for (let i = 0; i < links.length; i++) {
+          const l = links[i];
+          const a = AppState.nodeMap.get(l.sId);
+          const b = AppState.nodeMap.get(l.tId);
+          if (!a || !b || !a.proj || !b.proj) continue;
+
+          const isConnected = hasSelection && (AppState.connectedLinkIds.has(l.id) || (a === AppState.selectedNode || b === AppState.selectedNode));
+          const inActiveCluster = hasCluster && (a.cluster === AppState.activeCluster || b.cluster === AppState.activeCluster);
+
+          if (hasSelection && !isConnected) {
+            continue; // Skip dim non-connected links when a node is highlighted
+          }
+
+          ctx.beginPath();
+          ctx.moveTo(a.proj.x, a.proj.y);
+          ctx.lineTo(b.proj.x, b.proj.y);
+
+          if (isConnected) {
+            // Neon glowing energetic laser
+            ctx.strokeStyle = "rgba(224, 49, 21, 0.85)";
+            ctx.lineWidth = Math.max(1.8, 3.2 * Math.min(a.proj.scale, b.proj.scale));
+            ctx.shadowColor = "#e03115";
+            ctx.shadowBlur = 8;
+            ctx.stroke();
+            ctx.shadowBlur = 0;
+          } else if (inActiveCluster) {
+            ctx.strokeStyle = "rgba(0, 210, 255, 0.4)";
+            ctx.lineWidth = 1.2;
+            ctx.stroke();
+          } else if (!hasSelection && !hasCluster) {
+            // Subtle 3D filament with depth-based opacity
+            const avgScale = (a.proj.scale + b.proj.scale) * 0.5;
+            const alpha = Math.min(0.22, Math.max(0.04, 0.15 * avgScale * 1.5));
+            ctx.strokeStyle = `rgba(255, 255, 255, ${alpha.toFixed(3)})`;
+            ctx.lineWidth = Math.max(0.6, 1.0 * avgScale);
+            ctx.stroke();
+          }
+        }
+
+        // Animated Quantum Photons along highlighted links
+        if (hasSelection) {
+          AppState.quantumPhotons.forEach(pt => {
+            const a = AppState.nodeMap.get(pt.link.sId);
+            const b = AppState.nodeMap.get(pt.link.tId);
+            if (!a || !b || !a.proj || !b.proj) return;
+            if (!AppState.connectedLinkIds.has(pt.link.id)) return;
+
+            pt.progress = (pt.progress + pt.speed) % 1.0;
+            const px = a.proj.x + (b.proj.x - a.proj.x) * pt.progress;
+            const py = a.proj.y + (b.proj.y - a.proj.y) * pt.progress;
+
+            ctx.fillStyle = "#ffffff";
+            ctx.shadowColor = "#e03115";
+            ctx.shadowBlur = 8;
+            ctx.beginPath();
+            ctx.arc(px, py, pt.size, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.shadowBlur = 0;
+          });
+        }
+
+        ctx.restore();
+      },
+
+      // Draw 3D Nodes Depth-Sorted with Painter's Algorithm & Bold Typography
+      draw3DNodes: function(ctx) {
+        const nodes = GRAPH_DATA.nodes;
+        const visibleNodes = [];
+
+        for (let i = 0; i < nodes.length; i++) {
+          const n = nodes[i];
+          if (n.proj) visibleNodes.push(n);
+        }
+
+        // Painter's algorithm: sort descending by zCam (far objects first, near objects last)
+        visibleNodes.sort((a, b) => b.proj.zCam - a.proj.zCam);
+
+        const hasSelection = AppState.selectedNode !== null;
+        const hasCluster = AppState.activeCluster !== "all";
+
+        for (let i = 0; i < visibleNodes.length; i++) {
+          const n = visibleNodes[i];
+          const p = n.proj;
+          const isSelected = n === AppState.selectedNode;
+          const isConnected = hasSelection && AppState.connectedNodeIds.has(n.id);
+          const isHovered = n === AppState.hoveredNode;
+          const inCluster = hasCluster && n.cluster === AppState.activeCluster;
+
+          let alpha = 1.0;
+          if (hasSelection) {
+            alpha = isConnected ? 1.0 : 0.15;
+          } else if (hasCluster) {
+            alpha = inCluster ? 1.0 : 0.18;
+          }
+
+          const baseR = n.radius || 10;
+          const r = Math.max(2.5, baseR * p.scale);
+
+          ctx.save();
+          ctx.globalAlpha = alpha;
+
+          // 1. Quantum Glow Halo for major nodes or highlighted
+          if (n.id === "hub_core" || isSelected || isConnected || isHovered) {
+            const glowR = r * (isSelected ? 2.8 : 2.2);
+            const glowGrad = ctx.createRadialGradient(p.x, p.y, r * 0.5, p.x, p.y, glowR);
+            glowGrad.addColorStop(0, n.glow || "rgba(224, 49, 21, 0.6)");
+            glowGrad.addColorStop(1, "rgba(0, 0, 0, 0)");
+            ctx.fillStyle = glowGrad;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, glowR, 0, Math.PI * 2);
+            ctx.fill();
+          }
+
+          // 2. 3D Sphere Shading (Radial gradient offset to simulate light source)
+          const sphereGrad = ctx.createRadialGradient(
+            p.x - r * 0.35, p.y - r * 0.35, r * 0.1,
+            p.x, p.y, r
+          );
+          sphereGrad.addColorStop(0, "#ffffff");
+          sphereGrad.addColorStop(0.35, n.color || "#94a3b8");
+          sphereGrad.addColorStop(1, "#0a0c14");
+
+          ctx.fillStyle = sphereGrad;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Border Ring
+          ctx.strokeStyle = isSelected ? "#ffffff" : (n.glow || "rgba(255, 255, 255, 0.4)");
+          ctx.lineWidth = isSelected ? 2.5 : Math.max(0.8, 1.2 * p.scale);
+          ctx.stroke();
+
+          // Specular Glint Highlight
+          if (r > 5) {
+            ctx.fillStyle = "rgba(255, 255, 255, 0.75)";
+            ctx.beginPath();
+            ctx.arc(p.x - r * 0.35, p.y - r * 0.35, Math.max(1, r * 0.22), 0, Math.PI * 2);
+            ctx.fill();
+          }
+
+          // Central Nucleus: Logo & Corona Waves
+          if (n.id === "hub_core") {
+            // Animated Pulse Rings
+            const pulseR = r + (Math.sin(this.quantumPulseTime * 2) * 0.5 + 0.5) * 16 * p.scale;
+            ctx.strokeStyle = "rgba(224, 49, 21, 0.55)";
+            ctx.lineWidth = 1.8;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, pulseR, 0, Math.PI * 2);
+            ctx.stroke();
+
+            // Brand Logo in Nucleus Center
+            if (BrandImage.complete && BrandImage.naturalWidth > 0 && r > 14) {
+              const iconSize = r * 1.35;
+              ctx.drawImage(BrandImage, p.x - iconSize / 2, p.y - iconSize / 2, iconSize, iconSize);
+            }
+          }
+
+          // Selected Node: Concentric Targeting Ring
+          if (isSelected) {
+            ctx.strokeStyle = "#ffffff";
+            ctx.lineWidth = 2.0;
+            ctx.setLineDash([4, 4]);
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, r + 7, 0, Math.PI * 2);
+            ctx.stroke();
+            ctx.setLineDash([]);
+          }
+
+          // 3. Bold High-Contrast Typography Labels
+          const isMajor = n.id === "hub_core" || n.type === "hub" || isSelected || isHovered;
+          const shouldShowLabel = isSelected || isHovered || isConnected || (isMajor && p.scale > 0.32) || (p.scale > 0.65 && n.cluster !== "database");
+
+          if (shouldShowLabel && alpha > 0.3) {
+            const fontSize = Math.max(10, Math.min(18, Math.round((isMajor ? 13 : 11) * Math.min(1.4, Math.max(0.7, p.scale)))));
+            ctx.font = `${isMajor ? '800' : '700'} ${fontSize}px "Plus Jakarta Sans", sans-serif`;
+            ctx.textAlign = "center";
+            ctx.textBaseline = "top";
+
+            const text = n.name;
+            const textY = p.y + r + 6;
+            const textMetrics = ctx.measureText(text);
+            const pillW = textMetrics.width + 12;
+            const pillH = fontSize + 8;
+            const pillX = p.x - pillW / 2;
+            const pillY = textY - 3;
+
+            // Semi-transparent dark pill background for crisp readability
+            ctx.fillStyle = isSelected ? "rgba(224, 49, 21, 0.85)" : "rgba(11, 14, 25, 0.88)";
+            ctx.beginPath();
+            ctx.roundRect(pillX, pillY, pillW, pillH, 5);
+            ctx.fill();
+
+            if (isSelected) {
+              ctx.strokeStyle = "#ffffff";
+              ctx.lineWidth = 1;
+              ctx.stroke();
+            }
+
+            // Bold white text with subtle shadow
+            ctx.fillStyle = "#ffffff";
+            ctx.fillText(text, p.x, textY);
+          }
+
+          ctx.restore();
+        }
+      },
+
+      // Render Live 3D Miniature Minimap Gyroscope (Bottom Right)
+      render3DMinimap: function() {
+        const ctx = this.mmCtx;
+        const w = 145, h = 145;
+        const cam = AppState.camera;
+
+        ctx.clearRect(0, 0, w, h);
+
+        // Dark Cosmic Background
+        ctx.fillStyle = "#0c0f1a";
+        ctx.fillRect(0, 0, w, h);
+
+        // Miniature camera mirroring main view
+        const mmCam = {
+          yaw: cam.yaw,
+          pitch: cam.pitch,
+          dist: 900,
+          fov: 350,
+          focalX: 0,
+          focalY: 0,
+          focalZ: 0
+        };
+
+        // Draw 3 Miniature 3D Wireframe Rings
+        const rings = [
+          { a: 180, b: 120, p: 35, y: 45, r: 0, color: "rgba(212, 175, 55, 0.5)" },
+          { a: 220, b: 150, p: -35, y: -45, r: 0, color: "rgba(0, 210, 255, 0.5)" },
+          { a: 260, b: 180, p: 0, y: 90, r: 55, color: "rgba(224, 49, 21, 0.5)" }
+        ];
+
+        rings.forEach(ring => {
+          ctx.beginPath();
+          let started = false;
+          for (let i = 0; i <= 36; i++) {
+            const theta = (2 * Math.PI * i) / 36;
+            const lx = ring.a * Math.cos(theta);
+            const ly = ring.b * Math.sin(theta);
+            const pos = PhysicsEngine.rotateVector(lx, ly, 0, ring.p, ring.y, ring.r);
+            const p = this.project3D(pos.x, pos.y, pos.z, w, h, mmCam);
+            if (p) {
+              if (!started) { ctx.moveTo(p.x, p.y); started = true; }
+              else { ctx.lineTo(p.x, p.y); }
+            }
+          }
+          ctx.strokeStyle = ring.color;
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        });
+
+        // Draw Miniature Nucleus
+        const nucP = this.project3D(0, 0, 0, w, h, mmCam);
+        if (nucP) {
+          ctx.fillStyle = "#e03115";
+          ctx.beginPath();
+          ctx.arc(nucP.x, nucP.y, 4, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        // Draw Orientation Vector Axes (X: Red, Y: Green, Z: Blue)
+        const axes = [
+          { x: 120, y: 0, z: 0, color: "#e03115", label: "X" },
+          { x: 0, y: -120, z: 0, color: "#10b981", label: "Y" },
+          { x: 0, y: 0, z: 120, color: "#00d2ff", label: "Z" }
+        ];
+
+        axes.forEach(ax => {
+          const p = this.project3D(ax.x, ax.y, ax.z, w, h, mmCam);
+          if (nucP && p) {
+            ctx.strokeStyle = ax.color;
+            ctx.lineWidth = 1.5;
+            ctx.beginPath();
+            ctx.moveTo(nucP.x, nucP.y);
+            ctx.lineTo(p.x, p.y);
+            ctx.stroke();
+
+            ctx.fillStyle = ax.color;
+            ctx.font = '800 8.5px "Plus Jakarta Sans", sans-serif';
+            ctx.fillText(ax.label, p.x + 3, p.y - 3);
+          }
+        });
+      }
+    };
+
+    // User Event & Interaction Manager
+    const InteractionManager = {
+      container: null,
+      panel: null,
+      tooltip: null,
+
+      init: function() {
+        this.container = document.getElementById("canvas-container");
+        this.panel = document.getElementById("inspector-panel");
+        this.tooltip = document.getElementById("cursor-tooltip");
+
+        this.bindMouseDrag();
+        this.bindFilterBar();
+        this.bindBusinessFlows();
+        this.bindQuickControls();
+        this.bindSearchModal();
+        this.bindInspector();
+      },
+
+      bindMouseDrag: function() {
+        const self = this;
+        const container = this.container;
+
+        // Prevent standard context menu so right-click is free for 3D Pan
+        container.addEventListener("contextmenu", (e) => e.preventDefault());
+
+        container.addEventListener("mousedown", (e) => {
+          AppState.isDragging = true;
+          AppState.dragStartX = e.clientX;
+          AppState.dragStartY = e.clientY;
+          AppState.totalDragDist = 0;
+
+          if (e.button === 2 || e.shiftKey) {
+            AppState.dragMode = "pan";
+          } else {
+            AppState.dragMode = "orbit";
+          }
+
+          container.classList.add("grabbing");
+        });
+
+        window.addEventListener("mousemove", (e) => {
+          if (AppState.isDragging) {
+            const moveX = e.clientX - AppState.dragStartX;
+            const moveY = e.clientY - AppState.dragStartY;
+            AppState.totalDragDist += Math.hypot(moveX, moveY);
+
+            if (AppState.dragMode === "orbit") {
+              // 360° Smooth Orbit Rotation
+              AppState.camera.targetYaw += (moveX / AppState.width) * Math.PI * 2.2;
+              const newPitch = AppState.camera.targetPitch + (moveY / AppState.height) * Math.PI * 1.8;
+              AppState.camera.targetPitch = Math.max(-Math.PI / 2 + 0.05, Math.min(Math.PI / 2 - 0.05, newPitch));
+            } else if (AppState.dragMode === "pan") {
+              // 3D Screen Plane Panning
+              const cam = AppState.camera;
+              const panScale = (cam.dist / cam.fov) * 1.25;
+
+              const cy = Math.cos(cam.yaw), sy = Math.sin(cam.yaw);
+              const cp = Math.cos(cam.pitch), sp = Math.sin(cam.pitch);
+
+              // Camera Right Vector
+              const rx = cy, ry = 0, rz = -sy;
+              // Camera Up Vector
+              const ux = -sy * sp, uy = cp, uz = -cy * sp;
+
+              cam.targetFocalX -= (moveX * rx - moveY * ux) * panScale;
+              cam.targetFocalY -= (moveX * ry - moveY * uy) * panScale;
+              cam.targetFocalZ -= (moveX * rz - moveY * uz) * panScale;
+            }
+
+            AppState.dragStartX = e.clientX;
+            AppState.dragStartY = e.clientY;
+            return;
+          }
+
+          // 3D Hover Hit-Testing
+          const nodes = GRAPH_DATA.nodes;
+          let found = null;
+          let minDepth = Infinity;
+
+          for (let i = 0; i < nodes.length; i++) {
+            const n = nodes[i];
+            if (!n.proj) continue;
+
+            const dx = e.clientX - n.proj.x;
+            const dy = e.clientY - n.proj.y;
+            const baseR = n.radius || 10;
+            const hitR = Math.max(14, baseR * n.proj.scale + 8);
+
+            if (dx * dx + dy * dy <= hitR * hitR) {
+              if (n.proj.zCam < minDepth) {
+                minDepth = n.proj.zCam;
+                found = n;
+              }
+            }
+          }
+
+          const tipDot = document.getElementById("tip-dot");
+          const tipTitle = document.getElementById("tip-title");
+          const tipDesc = document.getElementById("tip-desc");
+
+          if (found !== AppState.hoveredNode) {
+            AppState.hoveredNode = found;
+            if (AppState.hoveredNode) {
+              tipDot.style.background = AppState.hoveredNode.color || "#ffffff";
+              tipTitle.textContent = AppState.hoveredNode.name;
+              tipDesc.textContent = AppState.hoveredNode.desc;
+              self.tooltip.style.left = e.clientX + "px";
+              self.tooltip.style.top = e.clientY + "px";
+              self.tooltip.style.display = "block";
+            } else {
+              self.tooltip.style.display = "none";
+            }
+          } else if (AppState.hoveredNode) {
+            self.tooltip.style.left = e.clientX + "px";
+            self.tooltip.style.top = e.clientY + "px";
+          }
+        });
+
+        window.addEventListener("mouseup", () => {
+          AppState.isDragging = false;
+          AppState.dragMode = null;
+          container.classList.remove("grabbing");
+        });
+
+        // Smooth 3D Zoom on Wheel
+        container.addEventListener("wheel", (e) => {
+          e.preventDefault();
+          const zoomMultiplier = e.deltaY > 0 ? 1.15 : 0.87;
+          AppState.camera.targetDist = Math.max(380, Math.min(5200, AppState.camera.targetDist * zoomMultiplier));
+        }, { passive: false });
+
+        // Node Click & Toggle Deselection
+        container.addEventListener("click", (e) => {
+          if (AppState.totalDragDist > 6) return; // Dragged, not clicked
+
+          const nodes = GRAPH_DATA.nodes;
+          let clicked = null;
+          let minDepth = Infinity;
+
+          for (let i = 0; i < nodes.length; i++) {
+            const n = nodes[i];
+            if (!n.proj) continue;
+
+            const dx = e.clientX - n.proj.x;
+            const dy = e.clientY - n.proj.y;
+            const baseR = n.radius || 10;
+            const hitR = Math.max(14, baseR * n.proj.scale + 8);
+
+            if (dx * dx + dy * dy <= hitR * hitR) {
+              if (n.proj.zCam < minDepth) {
+                minDepth = n.proj.zCam;
+                clicked = n;
+              }
+            }
+          }
+
+          if (clicked) {
+            // If clicking already selected node, DESELECT and return to overview!
+            if (AppState.selectedNode === clicked) {
+              self.closeInspector();
+            } else {
+              self.openInspector(clicked);
+            }
+          } else {
+            // Clicked empty background
+            self.closeInspector();
+          }
+        });
+      },
+
+      openInspector: function(node) {
+        PhysicsEngine.focusOnNode(node);
+
+        const panel = this.panel;
+        const typeBadge = document.getElementById("panel-type-badge");
+        const clusterBadge = document.getElementById("panel-cluster-badge");
+        const title = document.getElementById("panel-title");
+        const desc = document.getElementById("panel-desc");
+        const metaTable = document.getElementById("panel-meta-table");
+        const outBox = document.getElementById("panel-outgoing-box");
+        const inBox = document.getElementById("panel-incoming-box");
+        const outCount = document.getElementById("panel-out-count");
+        const inCount = document.getElementById("panel-in-count");
+
+        typeBadge.textContent = (node.type || "MÓDULO").toUpperCase();
+        clusterBadge.textContent = (GRAPH_DATA.clusters[node.cluster]?.name || node.cluster).toUpperCase();
+        clusterBadge.style.background = node.color || "var(--dub-red)";
+
+        title.textContent = node.name;
+        desc.textContent = node.desc || "Componente arquitetural ativo do ecossistema Barbearia DUB.";
+
+        // Build Meta Rows
+        metaTable.innerHTML = "";
+        const metaEntries = [
+          { key: "ID do Sistema", val: node.id },
+          { key: "Cluster Atômico", val: node.cluster },
+          { key: "Tipo do Nó", val: node.type || "Component" }
+        ];
+
+        if (node.details) {
+          Object.entries(node.details).forEach(([k, v]) => {
+            metaEntries.push({ key: k, val: typeof v === "object" ? JSON.stringify(v) : String(v) });
+          });
+        }
+
+        metaEntries.forEach(m => {
+          const row = document.createElement("div");
+          row.className = "meta-row";
+          row.innerHTML = `<span class="meta-key">${m.key}</span><span class="meta-val">${m.val}</span>`;
+          metaTable.appendChild(row);
+        });
+
+        // Outgoing Pills
+        outBox.innerHTML = "";
+        const outLinks = AppState.outgoingMap.get(node.id) || [];
+        outCount.textContent = outLinks.length;
+
+        outLinks.forEach(l => {
+          const tNode = AppState.nodeMap.get(l.tId);
+          if (!tNode) return;
+          const chip = document.createElement("button");
+          chip.className = "conn-pill";
+          chip.innerHTML = `<span class="conn-pill-dot" style="background:${tNode.color}"></span><span>${tNode.name}</span>`;
+          chip.onclick = () => this.openInspector(tNode);
+          outBox.appendChild(chip);
+        });
+
+        // Incoming Pills
+        inBox.innerHTML = "";
+        const inLinks = AppState.incomingMap.get(node.id) || [];
+        inCount.textContent = inLinks.length;
+
+        inLinks.forEach(l => {
+          const sNode = AppState.nodeMap.get(l.sId);
+          if (!sNode) return;
+          const chip = document.createElement("button");
+          chip.className = "conn-pill";
+          chip.innerHTML = `<span class="conn-pill-dot" style="background:${sNode.color}"></span><span>${sNode.name}</span>`;
+          chip.onclick = () => this.openInspector(sNode);
+          inBox.appendChild(chip);
+        });
+
+        panel.classList.add("open");
+      },
+
+      closeInspector: function() {
+        this.panel.classList.remove("open");
+        AppState.selectedNode = null;
+        AppState.connectedNodeIds.clear();
+        AppState.connectedLinkIds.clear();
+
+        // Return camera to origin
+        AppState.camera.targetFocalX = 0;
+        AppState.camera.targetFocalY = 0;
+        AppState.camera.targetFocalZ = 0;
+        AppState.camera.targetDist = 2600;
+      },
+
+      bindInspector: function() {
+        document.getElementById("panel-close-btn").onclick = () => this.closeInspector();
+        window.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") {
+            this.closeInspector();
+            this.closeSearchModal();
+          }
+        });
+      },
+
+      // Top Filter Bar Chips with Toggle Behavior
+      bindFilterBar: function() {
+        const bar = document.getElementById("filter-bar");
+        bar.innerHTML = "";
+
+        // "Todos" Chip
+        const allChip = document.createElement("button");
+        allChip.className = "filter-chip active";
+        allChip.innerHTML = `<span class="chip-dot" style="background:#ffffff"></span><span>Todos (218)</span>`;
+        allChip.onclick = () => {
+          this.setActiveFilter("all");
+        };
+        bar.appendChild(allChip);
+
+        // Clusters
+        Object.entries(GRAPH_DATA.clusters).forEach(([key, conf]) => {
+          const count = GRAPH_DATA.nodes.filter(n => n.cluster === key).length;
+          if (count === 0) return;
+
+          const chip = document.createElement("button");
+          chip.className = "filter-chip";
+          chip.style.setProperty("--chip-color", conf.color);
+          chip.innerHTML = `<span class="chip-dot" style="background:${conf.color}"></span><span>${conf.name} (${count})</span>`;
+
+          chip.onclick = () => {
+            // If already active, toggle back to ALL
+            if (AppState.activeCluster === key) {
+              this.setActiveFilter("all");
+            } else {
+              this.setActiveFilter(key);
+            }
+          };
+          bar.appendChild(chip);
+        });
+      },
+
+      setActiveFilter: function(clusterKey) {
+        AppState.activeCluster = clusterKey;
+        const chips = document.querySelectorAll(".filter-chip");
+        chips.forEach(c => c.classList.remove("active"));
+
+        if (clusterKey === "all") {
+          chips[0].classList.add("active");
+          PhysicsEngine.setGlobalLayout();
+        } else {
+          PhysicsEngine.focusOnCluster(clusterKey);
+          chips.forEach(c => {
+            if (c.textContent.includes(GRAPH_DATA.clusters[clusterKey]?.name)) {
+              c.classList.add("active");
+            }
+          });
+        }
+      },
+
+      // Business Critical Flows with Toggle Behavior
+      bindBusinessFlows: function() {
+        const buttons = document.querySelectorAll(".flow-btn");
+        buttons.forEach(btn => {
+          btn.onclick = () => {
+            const tourKey = btn.dataset.tour;
+            if (AppState.activeTour === tourKey) {
+              // Deselect flow
+              btn.classList.remove("active");
+              AppState.activeTour = null;
+              PhysicsEngine.setGlobalLayout();
+            } else {
+              buttons.forEach(b => b.classList.remove("active"));
+              btn.classList.add("active");
+              AppState.activeTour = tourKey;
+              this.activateTour(tourKey);
+            }
+          };
+        });
+      },
+
+      activateTour: function(tourKey) {
+        const tourPaths = {
+          booking_pix: ["view_client_booking", "ef_create_pix_charge", "tbl_woovi_charges", "tbl_agendamentos", "ef_whatsapp_proxy"],
+          barber_payout: ["view_barber_dashboard", "ef_woovi_withdraw", "tbl_saques", "tbl_transacoes_financeiras"],
+          ai_support: ["view_admin_ai_assistant", "ef_ai_copilot_chat", "tbl_ai_knowledge_base", "hub_core"],
+          whatsapp_dispatch: ["view_admin_whatsapp", "ef_send_appointment_reminder", "tbl_whatsapp_instances", "tbl_whatsapp_messages_log"],
+          backend_infra: ["hub_core", "hub_database", "hub_edge_functions", "hub_external", "hub_auth"]
+        };
+
+        const path = tourPaths[tourKey] || [];
+        AppState.connectedNodeIds.clear();
+        AppState.connectedLinkIds.clear();
+
+        let sumX = 0, sumY = 0, sumZ = 0;
+        let count = 0;
+
+        path.forEach(id => {
+          const n = AppState.nodeMap.get(id);
+          if (n) {
+            AppState.connectedNodeIds.add(n.id);
+            sumX += n.targetX;
+            sumY += n.targetY;
+            sumZ += n.targetZ;
+            count++;
+          }
+        });
+
+        if (count > 0) {
+          AppState.camera.targetFocalX = sumX / count;
+          AppState.camera.targetFocalY = sumY / count;
+          AppState.camera.targetFocalZ = sumZ / count;
+          AppState.camera.targetDist = 1400;
+        }
+      },
+
+      bindQuickControls: function() {
+        document.getElementById("btn-reset-view").onclick = () => PhysicsEngine.setGlobalLayout();
+        document.getElementById("v-reset").onclick = () => PhysicsEngine.setGlobalLayout();
+
+        const spinBtn = document.getElementById("btn-toggle-spin");
+        spinBtn.onclick = () => {
+          AppState.idleRotation = !AppState.idleRotation;
+          spinBtn.textContent = AppState.idleRotation ? "Pausar" : "Girar";
+          spinBtn.classList.toggle("active", !AppState.idleRotation);
+        };
+
+        document.getElementById("v-zoom-in").onclick = () => {
+          AppState.camera.targetDist = Math.max(380, AppState.camera.targetDist * 0.8);
+        };
+        document.getElementById("v-zoom-out").onclick = () => {
+          AppState.camera.targetDist = Math.min(5200, AppState.camera.targetDist * 1.25);
+        };
+      },
+
+      bindSearchModal: function() {
+        const trigger = document.getElementById("quick-search-trigger");
+        const modal = document.getElementById("search-modal");
+        const input = document.getElementById("search-dialog-input");
+        const results = document.getElementById("search-dialog-results");
+
+        const openSearch = () => {
+          modal.classList.add("open");
+          input.value = "";
+          input.focus();
+          renderResults("");
+        };
+
+        const closeSearch = () => {
+          modal.classList.remove("open");
+        };
+        this.closeSearchModal = closeSearch;
+
+        trigger.onclick = openSearch;
+
+        window.addEventListener("keydown", (e) => {
+          if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
+            e.preventDefault();
+            modal.classList.contains("open") ? closeSearch() : openSearch();
+          }
+        });
+
+        modal.onclick = (e) => {
+          if (e.target === modal) closeSearch();
+        };
+
+        const renderResults = (query) => {
+          results.innerHTML = "";
+          const q = query.trim().toLowerCase();
+          const matches = GRAPH_DATA.nodes.filter(n => {
+            if (!q) return true;
+            return n.name.toLowerCase().includes(q) || (n.desc && n.desc.toLowerCase().includes(q)) || n.id.toLowerCase().includes(q);
+          }).slice(0, 15);
+
+          matches.forEach(m => {
+            const item = document.createElement("div");
+            item.className = "search-item";
+            item.innerHTML = `
+              <div class="search-item-info">
+                <span class="search-item-title">${m.name}</span>
+                <span class="search-item-desc">${m.desc ? m.desc.substring(0, 50) + "..." : m.id}</span>
+              </div>
+              <span class="search-item-badge" style="background:${m.color}33; color:${m.color}">${m.cluster}</span>
+            `;
+            item.onclick = () => {
+              closeSearch();
+              this.openInspector(m);
+            };
+            results.appendChild(item);
+          });
+        };
+
+        input.oninput = (e) => renderResults(e.target.value);
+      }
+    };
+
+    // Initialize application when DOM is ready
+    window.addEventListener("DOMContentLoaded", () => {
+      GraphRenderer.init();
+      InteractionManager.init();
+    });
