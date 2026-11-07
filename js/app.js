@@ -68,6 +68,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const allBtn = document.createElement("button");
   allBtn.className = "filter-tab active";
   allBtn.dataset.cluster = "all";
+  allBtn.setAttribute("role", "tab");
+  allBtn.setAttribute("aria-selected", "true");
+  allBtn.setAttribute("aria-controls", "atomic-view");
   allBtn.innerHTML = '<span class="tab-dot" style="background:#00d2ff"></span> Átomo Completo <span class="tab-count">(' + GRAPH_DATA.nodes.length + ')</span>';
   allBtn.onclick = () => {
     if (AppState.focusMode === "global") return;
@@ -83,13 +86,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const btn = document.createElement("button");
     btn.className = "filter-tab";
     btn.dataset.cluster = k;
+    btn.setAttribute("role", "tab");
+    btn.setAttribute("aria-selected", "false");
+    btn.setAttribute("aria-controls", "atomic-view");
     btn.innerHTML = '<span class="tab-dot" style="background:' + c.color + '"></span> ' + c.name + ' <span class="tab-count">(' + count + ')</span>';
     btn.onclick = () => {
       if (AppState.focusMode === "cluster" && AppState.focusedClusterKey === k) {
         EventManager.resetToGlobal();
       } else {
-        document.querySelectorAll(".filter-tab").forEach(t => t.classList.remove("active"));
+        document.querySelectorAll(".filter-tab").forEach(t => {
+          t.classList.remove("active");
+          t.setAttribute("aria-selected", "false");
+        });
         btn.classList.add("active");
+        btn.setAttribute("aria-selected", "true");
         PhysicsEngine.setClusterLayout(k);
       }
     };

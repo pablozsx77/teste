@@ -7471,4 +7471,3 @@ const GRAPH_DATA = {
     }
   ]
 };
-const BRAND_LOGO_SRC = "assets/logo.png";

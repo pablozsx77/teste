@@ -1,12 +1,78 @@
 // Physics Engine & Quantum Atomic Layout Calculator
 // ZERO WOBBLE: Uses direct critically damped monotonic asymptotic interpolation
 const PhysicsEngine = {
+  // Configuration constants (design tokens mirrored for JS)
+  CONFIG: {
+    // Smoothing factors
+    CAMERA_SMOOTH: 0.14,
+    NODE_SMOOTH: 0.18,
+    ZOOM_SMOOTH: 0.14,
+
+    // Atomic orbital radii
+    NUCLEUS_RADIUS: 160,
+    ORBIT_1_RADIUS: 400,
+    ORBIT_2_RADIUS: 660,
+    ORBIT_3_RADIUS: 920,
+    ORBIT_4_RADIUS: 1140,
+    VALENCE_K_RADIUS: 1380,
+    VALENCE_L1_RADIUS: 1660,
+    VALENCE_L2_RADIUS: 1940,
+
+    // Node focus rings
+    FOCUS_RINGS: [
+      { r: 260, max: 8 },
+      { r: 460, max: 14 },
+      { r: 680, max: 20 },
+      { r: 920, max: 28 },
+      { r: 1160, max: 36 }
+    ],
+
+    // Cluster focus rings
+    CLUSTER_RINGS: [
+      { r: 260, max: 8 },
+      { r: 460, max: 14 },
+      { r: 680, max: 22 },
+      { r: 920, max: 32 }
+    ],
+
+    // Tour
+    TOUR_RADIUS: 420,
+
+    // Zoom bounds
+    ZOOM_MIN: 0.2,
+    ZOOM_MAX: 3.0,
+    ZOOM_FIT_FACTOR: 2250,
+
+    // Quantum quanta counts
+    QUANTA_RING_COUNT: 70,
+    QUANTA_ELLIPSE_COUNT: 30,
+
+    // Elliptical tracks
+    ELLIPTICAL_TRACKS: [
+      { a: 780, b: 340, rot: 0 },
+      { a: 860, b: 380, rot: Math.PI / 3.2 },
+      { a: 940, b: 420, rot: -Math.PI / 3.2 }
+    ],
+
+    // Bohr shells for rendering
+    BOHR_SHELLS: [
+      { r: 160, label: "NÚCLEO CENTRAL", color: "rgba(224, 49, 21, 0.35)", lw: 1.5, dash: [4, 4] },
+      { r: 400, label: "ÓRBITA 1: GESTÃO", color: "rgba(212, 175, 55, 0.16)", lw: 1.0, dash: [6, 6] },
+      { r: 660, label: "ÓRBITA 2: OPERAÇÃO E CLIENTES", color: "rgba(0, 210, 255, 0.14)", lw: 1.0, dash: [6, 6] },
+      { r: 920, label: "ÓRBITA 3: IA E AUTOMAÇÃO", color: "rgba(129, 140, 248, 0.14)", lw: 1.0, dash: [6, 6] },
+      { r: 1140, label: "ÓRBITA 4: GATEWAYS E APIS", color: "rgba(249, 115, 22, 0.14)", lw: 1.0, dash: [6, 6] },
+      { r: 1380, label: "CAMADA K: SUPABASE EDGE FUNCTIONS", color: "rgba(56, 189, 248, 0.18)", lw: 1.2, dash: [8, 8] },
+      { r: 1660, label: "CAMADA L1: BANCO POSTGRESQL", color: "rgba(244, 63, 94, 0.14)", lw: 1.0, dash: [8, 8] },
+      { r: 1940, label: "CAMADA L2: TRANSAÇÕES E AUDITORIA", color: "rgba(244, 63, 94, 0.10)", lw: 1.0, dash: [8, 8] }
+    ]
+  },
+
   // Update node positions smoothly with zero oscillation / bouncing
   step: function() {
     if (!AppState.physicsRunning) return;
 
     const nodes = GRAPH_DATA.nodes;
-    const factor = 0.18; // smooth, crisp, responsive glide with zero overshoot
+    const factor = this.CONFIG.NODE_SMOOTH;
 
     for (let i = 0; i < nodes.length; i++) {
       const n = nodes[i];
@@ -36,6 +102,7 @@ const PhysicsEngine = {
     const cy = AppState.height / 2;
     const nodes = GRAPH_DATA.nodes;
     const placedSet = new Set();
+    const C = this.CONFIG;
 
     // 1. Núcleo Central Atômico (Center: Core Engine)
     const coreNode = AppState.nodeMap.get("hub_core");
@@ -45,7 +112,7 @@ const PhysicsEngine = {
       placedSet.add("hub_core");
     }
 
-    // 2. Núcleo Interno (Prótons & Nêutrons Centrais: R = 160px)
+    // 2. Núcleo Interno (Prótons & Nêutrons Centrais)
     const primaryHubs = [
       AppState.nodeMap.get("tbl_barbeiros"),
       AppState.nodeMap.get("hub_database"),
@@ -56,78 +123,78 @@ const PhysicsEngine = {
 
     primaryHubs.forEach((n, i) => {
       const ang = (i / primaryHubs.length) * Math.PI * 2 - Math.PI / 2;
-      n.targetX = cx + Math.cos(ang) * 160;
-      n.targetY = cy + Math.sin(ang) * 160;
+      n.targetX = cx + Math.cos(ang) * C.NUCLEUS_RADIUS;
+      n.targetY = cy + Math.sin(ang) * C.NUCLEUS_RADIUS;
       placedSet.add(n.id);
     });
 
-    // 3. Órbita 1: Gestão & Dono (R = 400px - 22 nós)
+    // 3. Órbita 1: Gestão & Dono
     const adminNodes = nodes.filter(n => n.cluster === "admin" && !placedSet.has(n.id));
     adminNodes.forEach((n, i) => {
       const t = (i / adminNodes.length) * Math.PI * 2;
-      n.targetX = cx + Math.cos(t) * 400;
-      n.targetY = cy + Math.sin(t) * 400;
+      n.targetX = cx + Math.cos(t) * C.ORBIT_1_RADIUS;
+      n.targetY = cy + Math.sin(t) * C.ORBIT_1_RADIUS;
       placedSet.add(n.id);
     });
 
-    // 4. Órbita 2: Operação Barbeiro, Clientes & Checkout (R = 660px - 25 nós)
+    // 4. Órbita 2: Operação Barbeiro, Clientes & Checkout
     const orb2Nodes = nodes.filter(n =>
       ["barber", "client", "financial", "landing"].includes(n.cluster) && !placedSet.has(n.id)
     );
     orb2Nodes.forEach((n, i) => {
       const t = (i / orb2Nodes.length) * Math.PI * 2 + 0.12;
-      n.targetX = cx + Math.cos(t) * 660;
-      n.targetY = cy + Math.sin(t) * 660;
+      n.targetX = cx + Math.cos(t) * C.ORBIT_2_RADIUS;
+      n.targetY = cy + Math.sin(t) * C.ORBIT_2_RADIUS;
       placedSet.add(n.id);
     });
 
-    // 5. Órbita 3: Automação WhatsApp, IA BIA, Assinaturas, Loja & Hooks (R = 920px - 17 nós)
+    // 5. Órbita 3: Automação WhatsApp, IA BIA, Assinaturas, Loja & Hooks
     const orb3Nodes = nodes.filter(n =>
       ["whatsapp", "ai", "subscriptions", "store", "hooks"].includes(n.cluster) && !placedSet.has(n.id)
     );
     orb3Nodes.forEach((n, i) => {
       const t = (i / orb3Nodes.length) * Math.PI * 2 + 0.25;
-      n.targetX = cx + Math.cos(t) * 920;
-      n.targetY = cy + Math.sin(t) * 920;
+      n.targetX = cx + Math.cos(t) * C.ORBIT_3_RADIUS;
+      n.targetY = cy + Math.sin(t) * C.ORBIT_3_RADIUS;
       placedSet.add(n.id);
     });
 
-    // 6. Órbita 4: Polos de Gateways & APIs Externas (R = 1140px - 9 nós)
+    // 6. Órbita 4: Polos de Gateways & APIs Externas
     const extNodes = nodes.filter(n => n.cluster === "external" && !placedSet.has(n.id));
     extNodes.forEach((n, i) => {
       const t = (i / Math.max(1, extNodes.length)) * Math.PI * 2 + 0.35;
-      n.targetX = cx + Math.cos(t) * 1140;
-      n.targetY = cy + Math.sin(t) * 1140;
+      n.targetX = cx + Math.cos(t) * C.ORBIT_4_RADIUS;
+      n.targetY = cy + Math.sin(t) * C.ORBIT_4_RADIUS;
       placedSet.add(n.id);
     });
 
-    // 7. Camada de Valência K: Supabase Edge Functions (R = 1380px - 50 nós)
+    // 7. Camada de Valência K: Supabase Edge Functions
     const edgeFns = nodes.filter(n => n.cluster === "edge_fn" && !placedSet.has(n.id));
     edgeFns.forEach((n, i) => {
       const t = (i / edgeFns.length) * Math.PI * 2;
-      n.targetX = cx + Math.cos(t) * 1380;
-      n.targetY = cy + Math.sin(t) * 1380;
+      n.targetX = cx + Math.cos(t) * C.VALENCE_K_RADIUS;
+      n.targetY = cy + Math.sin(t) * C.VALENCE_K_RADIUS;
       placedSet.add(n.id);
     });
 
-    // 8. Camada de Valência L: Banco de Dados PostgreSQL (R1 = 1660px, R2 = 1940px - 92 nós)
+    // 8. Camada de Valência L: Banco de Dados PostgreSQL
     const dbTables = nodes.filter(n => n.cluster === "database" && !placedSet.has(n.id));
     const half = Math.ceil(dbTables.length / 2);
     dbTables.forEach((n, i) => {
       if (i < half) {
         const t = (i / half) * Math.PI * 2;
-        n.targetX = cx + Math.cos(t) * 1660;
-        n.targetY = cy + Math.sin(t) * 1660;
+        n.targetX = cx + Math.cos(t) * C.VALENCE_L1_RADIUS;
+        n.targetY = cy + Math.sin(t) * C.VALENCE_L1_RADIUS;
       } else {
         const t = ((i - half) / (dbTables.length - half)) * Math.PI * 2 + (Math.PI / half);
-        n.targetX = cx + Math.cos(t) * 1940;
-        n.targetY = cy + Math.sin(t) * 1940;
+        n.targetX = cx + Math.cos(t) * C.VALENCE_L2_RADIUS;
+        n.targetY = cy + Math.sin(t) * C.VALENCE_L2_RADIUS;
       }
       placedSet.add(n.id);
     });
 
     // Set camera to frame the full atom majestically
-    const optimalZoom = Math.max(0.40, Math.min(0.82, Math.min(AppState.width, AppState.height) / 2250));
+    const optimalZoom = Math.max(0.40, Math.min(0.82, Math.min(AppState.width, AppState.height) / C.ZOOM_FIT_FACTOR));
     AppState.targetCamX = cx;
     AppState.targetCamY = cy;
     AppState.targetZoom = optimalZoom;
@@ -146,16 +213,10 @@ const PhysicsEngine = {
     targetNode.targetY = cy;
 
     const neighborIds = Array.from(AppState.neighborsMap.get(targetNode.id) || []);
-    const ringDefs = [
-      { r: 260, max: 8 },
-      { r: 460, max: 14 },
-      { r: 680, max: 20 },
-      { r: 920, max: 28 },
-      { r: 1160, max: 36 }
-    ];
+    const C = this.CONFIG;
 
     let allocated = 0;
-    ringDefs.forEach((ringDef, rIdx) => {
+    C.FOCUS_RINGS.forEach((ringDef, rIdx) => {
       const countInRing = Math.min(neighborIds.length - allocated, ringDef.max);
       if (countInRing <= 0) return;
 
@@ -212,15 +273,10 @@ const PhysicsEngine = {
       });
     });
 
-    const cRingDefs = [
-      { r: 260, max: 8 },
-      { r: 460, max: 14 },
-      { r: 680, max: 22 },
-      { r: 920, max: 32 }
-    ];
+    const C = this.CONFIG;
 
     let allocated = 0;
-    cRingDefs.forEach((rDef, rIdx) => {
+    C.CLUSTER_RINGS.forEach((rDef, rIdx) => {
       const countInRing = Math.min(clusterNodes.length - allocated, rDef.max);
       if (countInRing <= 0) return;
 
@@ -269,7 +325,7 @@ const PhysicsEngine = {
     const stepCount = tour.steps.length;
     const tourNodeIds = new Set(tour.steps.map(s => s.id));
 
-    const tourRadius = 420;
+    const tourRadius = this.CONFIG.TOUR_RADIUS;
     tour.steps.forEach((s, idx) => {
       const sNode = AppState.nodeMap.get(s.id);
       if (!sNode) return;

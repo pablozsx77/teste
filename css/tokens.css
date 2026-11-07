@@ -1,0 +1,178 @@
+/* Barbearia DUB - Design Tokens (Single Source of Truth) */
+:root {
+  /* ===== COLOR PALETTE ===== */
+  /* Brand Core */
+  --color-brand-red: #e03115;
+  --color-brand-red-glow: rgba(224, 49, 21, 0.45);
+  --color-brand-red-strong: rgba(224, 49, 21, 0.6);
+  --color-brand-red-subtle: rgba(224, 49, 21, 0.18);
+  --color-brand-gold: #d4af37;
+  --color-brand-gold-glow: rgba(212, 175, 55, 0.35);
+  --color-brand-gold-subtle: rgba(212, 175, 55, 0.14);
+  --color-brand-cyan: #00d2ff;
+  --color-brand-cyan-glow: rgba(0, 210, 255, 0.35);
+  --color-brand-cyan-strong: rgba(0, 210, 255, 0.6);
+  --color-brand-cyan-subtle: rgba(0, 210, 255, 0.12);
+
+  /* Semantic Backgrounds */
+  --color-bg-deep: #07080d;
+  --color-bg-main: #07080d;
+  --color-bg-elevated: #0e1019;
+  --color-bg-card: #131622;
+  --color-bg-glass: rgba(14, 16, 25, 0.92);
+  --color-bg-glass-strong: rgba(14, 16, 25, 0.96);
+  --color-bg-hover: rgba(24, 27, 40, 0.95);
+  --color-bg-active: rgba(224, 49, 21, 0.22);
+
+  /* Semantic Text */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #9aa8bc;
+  --color-text-muted: #5e6c82;
+  --color-text-dim: #3d4a61;
+  --color-text-on-brand: #ffffff;
+
+  /* Borders & Dividers */
+  --color-border-subtle: rgba(255, 255, 255, 0.09);
+  --color-border-medium: rgba(255, 255, 255, 0.16);
+  --color-border-focus: rgba(224, 49, 21, 0.6);
+  --color-border-cyan: rgba(0, 210, 255, 0.5);
+  --color-border-gold: rgba(212, 175, 55, 0.5);
+
+  /* Shadows & Glows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 15px 40px rgba(0, 0, 0, 0.6);
+  --shadow-xl: 0 20px 50px rgba(0, 0, 0, 0.85);
+  --shadow-glow-red: 0 0 18px rgba(224, 49, 21, 0.35);
+  --shadow-glow-cyan: 0 0 18px rgba(0, 210, 255, 0.3);
+  --shadow-glow-gold: 0 0 14px rgba(212, 175, 55, 0.35);
+  --shadow-inner: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+  /* ===== TYPOGRAPHY ===== */
+  --font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
+
+  --font-size-xs: 9.5px;
+  --font-size-sm: 10.5px;
+  --font-size-base: 11.5px;
+  --font-size-md: 12.5px;
+  --font-size-lg: 13.5px;
+  --font-size-xl: 14.5px;
+  --font-size-2xl: 16px;
+  --font-size-3xl: 19px;
+  --font-size-4xl: 22px;
+
+  --font-weight-normal: 500;
+  --font-weight-medium: 600;
+  --font-weight-semibold: 700;
+  --font-weight-bold: 800;
+  --font-weight-black: 900;
+
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.4;
+  --line-height-relaxed: 1.6;
+
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.04em;
+  --letter-spacing-wider: 0.08em;
+  --letter-spacing-ultra: 0.12em;
+
+  /* ===== SPACING ===== */
+  --space-1: 2px;
+  --space-2: 4px;
+  --space-3: 6px;
+  --space-4: 8px;
+  --space-5: 10px;
+  --space-6: 12px;
+  --space-7: 14px;
+  --space-8: 16px;
+  --space-10: 20px;
+  --space-12: 24px;
+  --space-14: 28px;
+  --space-16: 32px;
+  --space-20: 40px;
+  --space-24: 48px;
+
+  /* ===== BORDER RADIUS ===== */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 10px;
+  --radius-2xl: 12px;
+  --radius-3xl: 14px;
+  --radius-full: 9999px;
+
+  /* ===== TRANSITIONS ===== */
+  --transition-fast: 0.12s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-normal: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-bounce: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ===== Z-INDEX SCALE ===== */
+  --z-bg: 0;
+  --z-canvas: 1;
+  --z-radar: 10;
+  --z-filter: 15;
+  --z-header: 20;
+  --z-dock: 20;
+  --z-tooltip: 40;
+  --z-panel: 30;
+  --z-search: 50;
+  --z-modal: 60;
+  --z-loading: 100;
+
+  /* ===== LAYOUT CONSTANTS ===== */
+  --header-height: 72px;
+  --filter-height: 44px;
+  --panel-width: 430px;
+  --panel-width-max: calc(100vw - 40px);
+  --dock-size: 28px;
+  --radar-width: 140px;
+  --radar-height: 95px;
+
+  /* ===== ATOMIC MODEL CONSTANTS ===== */
+  --nucleus-radius: 160;
+  --orbit-1-radius: 400;
+  --orbit-2-radius: 660;
+  --orbit-3-radius: 920;
+  --orbit-4-radius: 1140;
+  --valence-k-radius: 1380;
+  --valence-l1-radius: 1660;
+  --valence-l2-radius: 1940;
+
+  /* ===== CLUSTER COLORS (mirrored from data.js for CSS access) ===== */
+  --cluster-core: #f8fafc;
+  --cluster-landing: #94a3b8;
+  --cluster-admin: #d4af37;
+  --cluster-barber: #10b981;
+  --cluster-client: #38bdf8;
+  --cluster-financial: #34d399;
+  --cluster-whatsapp: #22c55e;
+  --cluster-ai: #818cf8;
+  --cluster-subscriptions: #fbbf24;
+  --cluster-store: #fb923c;
+  --cluster-edge_fn: #60a5fa;
+  --cluster-database: #f43f5e;
+  --cluster-external: #f97316;
+  --cluster-hooks: #14b8a6;
+}
+
+/* ===== DARK MODE OVERRIDES (if needed) ===== */
+@media (prefers-color-scheme: light) {
+  :root {
+    /* Keep dark theme for this visualization */
+  }
+}
+
+/* ===== REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --transition-fast: 0.01s;
+    --transition-normal: 0.01s;
+    --transition-smooth: 0.01s;
+    --transition-slow: 0.01s;
+    --transition-bounce: 0.01s;
+  }
+}
