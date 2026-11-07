@@ -106,21 +106,23 @@ document.addEventListener("DOMContentLoaded", () => {
     filterBar.appendChild(btn);
   });
 
-  // Init Renderer & Events
-  GraphRenderer.init();
-  EventManager.init();
-
-  // Initial Atomic Global Layout
+  // Initial Atomic Global Layout (define target positions in 3D)
   PhysicsEngine.setGlobalLayout();
 
   // Instantly position nodes on initial boot
   GRAPH_DATA.nodes.forEach(n => {
     n.x = n.targetX;
     n.y = n.targetY;
+    n.z = n.targetZ;
   });
   AppState.camX = AppState.targetCamX;
   AppState.camY = AppState.targetCamY;
+  AppState.camZ = AppState.targetCamZ;
   AppState.zoom = AppState.targetZoom;
+
+  // Init Renderer & Events (creates 3D meshes at correct positions)
+  GraphRenderer.init();
+  EventManager.init();
 
   // Start Animation Loop
   GraphRenderer.render();

@@ -4,9 +4,11 @@ const AppState = {
   height: window.innerHeight,
   camX: window.innerWidth / 2,
   camY: window.innerHeight / 2,
+  camZ: 0,
   zoom: 0.52,
   targetCamX: window.innerWidth / 2,
   targetCamY: window.innerHeight / 2,
+  targetCamZ: 0,
   targetZoom: 0.52,
 
   isDragging: false,
