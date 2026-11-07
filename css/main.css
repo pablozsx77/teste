@@ -419,6 +419,8 @@ a:focus-visible {
   transition: all var(--transition-smooth);
   box-shadow: var(--shadow-md);
   flex-shrink: 0;
+  /* .top-header tem pointer-events: none; este botão precisa reativar cliques */
+  pointer-events: auto;
 }
 
 .sidebar-toggle:hover {
