@@ -403,11 +403,12 @@ a:focus-visible {
   border: 1px solid var(--color-border-subtle);
 }
 
-/* ===== SIDEBAR MENU — GAVETA DE NAVEGAÇÃO ===== */
+/* ===== SIDEBAR MENU — PREMIUM MINIMALISTA ===== */
+
 .sidebar-toggle {
   position: relative;
-  background: var(--color-bg-glass);
-  border: 1px solid var(--color-border-subtle);
+  background: rgba(14, 16, 25, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   color: var(--color-text-primary);
   width: 44px;
   height: 44px;
@@ -417,15 +418,19 @@ a:focus-visible {
   justify-content: center;
   cursor: pointer;
   transition: all var(--transition-smooth);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
   flex-shrink: 0;
-  /* .top-header tem pointer-events: none; este botão precisa reativar cliques */
   pointer-events: auto;
 }
 
 .sidebar-toggle:hover {
-  background: var(--color-brand-red-subtle);
-  border-color: rgba(224, 49, 21, 0.45);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.sidebar-toggle:active {
+  transform: scale(0.96);
 }
 
 .sidebar-toggle svg {
@@ -438,13 +443,13 @@ a:focus-visible {
   fill: none;
 }
 
-/* Backdrop ao abrir a gaveta */
+/* Backdrop ao abrir a gaveta — mais escuro e refinado */
 .sidebar-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.55);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  background: rgba(3, 4, 7, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   z-index: calc(var(--z-panel) - 1);
   opacity: 0;
   visibility: hidden;
@@ -456,24 +461,24 @@ a:focus-visible {
   visibility: visible;
 }
 
-/* Gaveta */
+/* Gaveta — vidro premium, borda sutil, sombra contida */
 .sidebar-menu {
   position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
   width: 320px;
-  background: var(--color-bg-glass-strong);
-  backdrop-filter: blur(30px);
-  -webkit-backdrop-filter: blur(30px);
-  border-right: 1px solid var(--color-border-subtle);
+  background: rgba(7, 8, 13, 0.94);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
   flex-direction: column;
   z-index: var(--z-panel);
   transform: translateX(-100%);
   transition: transform var(--transition-slow);
   overflow-y: auto;
-  box-shadow: var(--shadow-xl);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
 }
 
 .sidebar-menu.open {
@@ -484,24 +489,25 @@ a:focus-visible {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--space-6) var(--space-8);
-  border-bottom: 1px solid var(--color-border-subtle);
+  padding: var(--space-8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   flex-shrink: 0;
 }
 
 .sidebar-brand {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
+  gap: var(--space-4);
 }
 
 .sidebar-logo {
   width: 32px;
   height: 32px;
   border-radius: var(--radius-lg);
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(255, 255, 255, 0.04);
   padding: var(--space-1);
-  border: 1px solid rgba(224, 49, 21, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 12px rgba(224, 49, 21, 0.25);
 }
 
 .sidebar-brand-text {
@@ -513,8 +519,8 @@ a:focus-visible {
 }
 
 .sidebar-close-btn {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid var(--color-border-subtle);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   color: var(--color-text-muted);
   width: 36px;
   height: 36px;
@@ -528,8 +534,13 @@ a:focus-visible {
 }
 
 .sidebar-close-btn:hover {
-  background: var(--color-brand-red-subtle);
+  background: rgba(224, 49, 21, 0.12);
+  border-color: rgba(224, 49, 21, 0.35);
   color: var(--color-text-primary);
+}
+
+.sidebar-close-btn:active {
+  transform: scale(0.94);
 }
 
 .sidebar-close-btn svg {
@@ -545,7 +556,7 @@ a:focus-visible {
 .sidebar-content {
   display: flex;
   flex-direction: column;
-  gap: var(--space-8);
+  gap: var(--space-10);
   padding: var(--space-8);
   flex: 1;
 }
@@ -553,26 +564,87 @@ a:focus-visible {
 .sidebar-section {
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
+  gap: var(--space-5);
 }
 
 .sidebar-section-title {
   font-size: var(--font-size-xs);
   font-weight: var(--font-weight-black);
   text-transform: uppercase;
-  letter-spacing: var(--letter-spacing-wider);
-  color: var(--color-text-muted);
-  padding-bottom: var(--space-2);
-  border-bottom: 1px solid var(--color-border-subtle);
+  letter-spacing: var(--letter-spacing-ultra);
+  color: var(--color-text-dim);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* Busca dentro da gaveta */
+/* ===== BUSCA ===== */
 .sidebar-section .search-container {
   width: 100%;
   max-width: none;
+  position: relative;
 }
 
-/* Fluxos críticos — empilhados verticalmente (menu) */
+.sidebar-section .search-input-field {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-5) var(--space-4) var(--space-10);
+  color: var(--color-text-primary);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  outline: none;
+  transition: all var(--transition-smooth);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.sidebar-section .search-input-field::placeholder {
+  color: var(--color-text-dim);
+  font-weight: var(--font-weight-medium);
+}
+
+.sidebar-section .search-input-field:focus {
+  border-color: rgba(224, 49, 21, 0.45);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3), 0 0 16px rgba(224, 49, 21, 0.15);
+}
+
+.sidebar-section .search-svg-icon {
+  position: absolute;
+  left: var(--space-5);
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  color: var(--color-text-muted);
+  pointer-events: none;
+  transition: color var(--transition-smooth);
+}
+
+.sidebar-section .search-kbd-tag {
+  position: absolute;
+  right: var(--space-4);
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-black);
+  font-family: var(--font-family);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  padding: var(--space-1) var(--space-2);
+  color: var(--color-text-muted);
+  transition: all var(--transition-fast);
+}
+
+.sidebar-section .search-input-field:focus ~ .search-kbd-tag {
+  background: rgba(224, 49, 21, 0.12);
+  border-color: rgba(224, 49, 21, 0.4);
+  color: var(--color-brand-gold);
+}
+
+/* ===== FLUXOS CRÍTICOS — botões em lista premium ===== */
 .sidebar-section .flow-buttons {
   flex-direction: column;
   gap: var(--space-2);
@@ -581,9 +653,60 @@ a:focus-visible {
 .sidebar-section .flow-btn {
   width: 100%;
   justify-content: flex-start;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-left: 2px solid transparent;
+  color: var(--color-text-secondary);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  padding: var(--space-4) var(--space-6);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  position: relative;
+  overflow: hidden;
 }
 
-/* Órbitas — lista vertical na gaveta */
+.sidebar-section .flow-btn::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--color-brand-red);
+  opacity: 0;
+  transition: opacity var(--transition-smooth);
+}
+
+.sidebar-section .flow-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: var(--color-text-primary);
+}
+
+.sidebar-section .flow-btn:hover::before {
+  opacity: 1;
+}
+
+.sidebar-section .flow-btn.active {
+  background: rgba(224, 49, 21, 0.08);
+  border-color: rgba(224, 49, 21, 0.25);
+  border-left-color: var(--color-brand-red);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-black);
+  box-shadow: 0 0 14px rgba(224, 49, 21, 0.15);
+}
+
+.sidebar-section .flow-btn.active::before {
+  opacity: 1;
+}
+
+/* ===== ÓRBITAS — lista limpa com indicadores ===== */
 .sidebar-section .filter-bar {
   position: static;
   top: auto;
@@ -592,51 +715,152 @@ a:focus-visible {
   flex-direction: column;
   width: 100%;
   overflow-y: auto;
-  max-height: 40vh;
+  max-height: 42vh;
   padding: 0;
   margin: 0;
   scrollbar-width: thin;
 }
 
 .sidebar-section .filter-bar::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
+}
+
+.sidebar-section .filter-bar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-full);
 }
 
 .sidebar-section .filter-tab {
   width: 100%;
   justify-content: flex-start;
-  padding: var(--space-3) var(--space-4);
+  padding: var(--space-4) var(--space-5);
   white-space: normal;
   text-align: left;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-left: 2px solid transparent;
+  color: var(--color-text-secondary);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.sidebar-section .filter-tab:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--color-text-primary);
+}
+
+.sidebar-section .filter-tab.active {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.12);
+  border-left-color: var(--color-brand-cyan);
+  color: var(--color-text-primary);
+  font-weight: var(--font-weight-black);
+}
+
+.sidebar-section .filter-tab .tab-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 8px currentColor;
 }
 
 .sidebar-section .filter-tab .tab-count {
   margin-left: auto;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-black);
+  opacity: 0.5;
+  color: var(--color-text-muted);
 }
 
-/* Controles de visão */
+/* ===== CONTROLES DE VISÃO — secundários, discretos ===== */
 .sidebar-controls {
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
+  gap: var(--space-2);
 }
 
 .sidebar-controls .btn-action {
   width: 100%;
   justify-content: flex-start;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-lg);
+  color: var(--color-text-secondary);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  padding: var(--space-4) var(--space-6);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.sidebar-controls .btn-action:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--color-text-primary);
+}
+
+.sidebar-controls .btn-action svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .dock-row {
   display: flex;
   gap: var(--space-1);
+  margin-top: var(--space-1);
 }
 
 .dock-row .btn-dock {
   flex: 1;
   justify-content: center;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: var(--color-text-muted);
+  width: 100%;
+  height: 40px;
+  border-radius: var(--radius-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-fast);
 }
 
-/* Responsivo: gaveta mais estreita ou cheia em mobile */
+.dock-row .btn-dock:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: var(--color-text-primary);
+}
+
+.dock-row .btn-dock svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  fill: none;
+}
+
+/* Responsivo */
 @media (max-width: 768px) {
   .sidebar-menu {
     width: 280px;
